@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бухгалтерія для українців у Польщі — Gryphon Group</title>
+<meta name="description" content="Ведення JDG і sp. z o.o. у Польщі українською та російською. Пояснюємо ZUS, VAT, KSeF людською мовою. Калькулятор вартості, відповідь у месенджері за 2–3 год.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F6F1E8; --sand-2:#EFE8DA; --paper:#FBF8F2; --white:#FFFFFF;
+  --ink:#1B1A17; --muted:#5C574E; --hair:rgba(27,26,23,.12);
+  --green:#8A5524; --green-d:#43291A; --green-50:#EFE3D0;
+  --amber:#B5791A; --amber-50:#F7EEDC; --wa:#1FA855;
+  --r:16px; --r-sm:10px; --shadow:0 1px 0 rgba(27,26,23,.04), 0 18px 40px -28px rgba(11,77,59,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Manrope",sans-serif;color:var(--ink);line-height:1.65;
+  background:var(--sand);
+  background-image:radial-gradient(1200px 600px at 80% -10%, #FCEFD7 0%, rgba(252,239,215,0) 60%),
+                   radial-gradient(900px 500px at -10% 10%, #EFE3D0 0%, rgba(239,227,208,0) 55%);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:"Spectral",serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:16px;border-radius:999px;
+  padding:15px 26px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s ease, box-shadow .2s ease}
+.btn:active{transform:scale(.98)}
+.btn-wa{background:var(--green);color:#fff;box-shadow:0 12px 26px -14px rgba(67,41,26,.55)}
+.btn-wa:hover{box-shadow:0 16px 30px -14px rgba(67,41,26,.7)}
+.btn-wa.on-dark{background:var(--amber);color:#3a2407}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--sand)}
+.wa-ic{width:20px;height:20px;flex:0 0 auto}
+section{padding:74px 0}
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--green-d);
+  background:var(--green-50);border-radius:999px;padding:6px 13px}
+
+/* HERO */
+.hero{padding:54px 0 64px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:52px;margin:18px 0 18px}
+.hero h1 em{font-style:normal;color:inherit}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:560px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;font-size:14px;color:var(--muted)}
+.trust b{color:var(--ink);font-weight:700}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--amber)}
+.hero-card{background:var(--white);border:1px solid var(--hair);border-radius:24px;padding:26px;box-shadow:var(--shadow)}
+.hero-card h3{font-size:21px;margin-bottom:14px}
+.hero-card ul{list-style:none;display:grid;gap:12px}
+.hero-card li{display:flex;gap:11px;font-size:15px;align-items:flex-start}
+.chk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--green-50);color:var(--green);
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-top:1px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(16px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* PAINS */
+.pains{background:var(--paper);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.sec-head{max-width:680px;margin-bottom:36px}
+.sec-head h2{font-size:36px;margin:12px 0 10px}
+.sec-head p{color:var(--muted);font-size:17px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:22px}
+.card .ico{font-size:22px;width:44px;height:44px;border-radius:12px;background:var(--amber-50);color:var(--amber);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.card h3{font-size:18px;margin-bottom:7px}
+.card p{font-size:14.5px;color:var(--muted)}
+
+/* CALC */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.calc{background:var(--white);border:1px solid var(--hair);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
+.calc label{display:block;font-size:13.5px;font-weight:700;margin:16px 0 7px;color:var(--ink)}
+.calc label:first-of-type{margin-top:4px}
+.field{position:relative}
+select,input[type=number]{width:100%;font-family:inherit;font-size:15.5px;color:var(--ink);background:var(--paper);
+  border:1.5px solid var(--hair);border-radius:var(--r-sm);padding:13px 14px;appearance:none;cursor:pointer;transition:border-color .15s}
+select:focus,input:focus{outline:none;border-color:var(--green)}
+.field::after{content:"";position:absolute;right:15px;top:50%;width:9px;height:9px;border-right:2px solid var(--muted);
+  border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.field.num::after{display:none}
+.toggle{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:14.5px;cursor:pointer;color:var(--muted)}
+.result{margin-top:22px;background:#F4EADA;color:var(--ink);border:1px solid var(--hair);border-radius:var(--r);padding:20px 22px}
+.result .small{font-size:13px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.result .price{font-family:"Spectral",serif;font-size:42px;font-weight:600;line-height:1.1;margin:2px 0;color:var(--green-d)}
+.result .price span{font-size:18px;color:var(--muted)}
+.result .bd{font-size:13px;color:var(--muted);margin-top:8px;border-top:1px solid var(--hair);padding-top:8px}
+.result .btn{margin-top:16px;width:100%;justify-content:center}
+.calc-note{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+
+/* lists */
+.lists{display:grid;gap:16px}
+.list-card{background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:22px 24px}
+.list-card.incl{border-left:4px solid var(--green)}
+.list-card h3{font-size:19px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.list-card ul{list-style:none;display:grid;gap:10px}
+.list-card li{display:flex;gap:10px;font-size:14.5px;align-items:flex-start}
+.li-ic{flex:0 0 auto;color:var(--green);font-weight:800;margin-top:1px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;color:var(--amber);background:var(--amber-50);
+  border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:middle}
+details.extra{background:var(--paper);border:1px solid var(--hair);border-radius:var(--r);padding:4px 22px}
+details.extra summary{cursor:pointer;font-weight:700;font-size:16px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.extra summary::-webkit-details-marker{display:none}
+details.extra summary .plus{color:var(--green);font-size:20px;transition:transform .2s}
+details.extra[open] summary .plus{transform:rotate(45deg)}
+details.extra .body{padding:0 0 18px;font-size:14px;color:var(--muted)}
+details.extra .body ul{list-style:none;display:grid;gap:7px;margin-top:4px}
+details.extra .body li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--hair);padding-bottom:6px}
+details.extra .body li b{color:var(--ink);font-weight:600;white-space:nowrap}
+
+/* diff */
+.diff{background:var(--paper);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.diff .cards{grid-template-columns:repeat(3,1fr)}
+.diff .card{border-top:3px solid var(--green)}
+
+/* FAQ */
+.faq{max-width:780px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--hair);padding:6px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:17.5px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .plus{color:var(--green);flex:0 0 auto;transition:transform .2s}
+.faq details[open] summary .plus{transform:rotate(45deg)}
+.faq .ans{color:var(--muted);font-size:15.5px;padding:0 0 18px}
+
+/* STEPS — як ми працюємо */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{position:relative;background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:24px 22px}
+.step .snum{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
+  background:var(--green);color:#fff;font-family:"Spectral",serif;font-size:22px;font-weight:600;margin-bottom:14px}
+.step h3{font-size:17px;margin-bottom:7px}
+.step p{font-size:14px;color:var(--muted)}
+.step .when{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--amber);background:var(--amber-50);border-radius:6px;padding:3px 9px}
+@media(min-width:861px){.steps .step:not(:last-child)::after{content:"";position:absolute;top:46px;right:-10px;width:20px;height:2px;background:var(--green-50);z-index:1}}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* SWITCH — перехід від бухгалтера */
+.switch-card{display:grid;grid-template-columns:1fr 1fr;background:var(--white);border:1px solid var(--hair);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.switch-l{padding:40px;background:var(--green-50)}
+.switch-l h2{font-size:27px;margin:12px 0 18px;color:var(--green-d)}
+.switch-pains{list-style:none;display:grid;gap:11px}
+.switch-pains li{position:relative;padding-left:24px;font-size:15px;color:var(--green-d)}
+.switch-pains li::before{content:"–";position:absolute;left:6px;color:var(--green);font-weight:800}
+.switch-r{padding:40px}
+.switch-r h3{font-size:20px;margin-bottom:16px}
+.switch-r ul{list-style:none;display:grid;gap:11px;margin-bottom:20px}
+.switch-r li{font-size:15px;display:flex;gap:9px;align-items:flex-start}
+.switch-r .btn{width:100%;justify-content:center}
+.switch-note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+@media(max-width:860px){.switch-card{grid-template-columns:1fr}.switch-l,.switch-r{padding:30px 24px}.switch-l h2{font-size:24px}}
+
+/* LEAD FORM */
+.form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:start}
+.form-l h2{font-size:32px;margin:12px 0 14px}
+.form-l p{color:var(--muted);font-size:16.5px;margin-bottom:18px}
+.form-bul{list-style:none;display:grid;gap:10px}
+.form-bul li{display:flex;gap:9px;font-size:15px;align-items:flex-start}
+.form-card{background:var(--white);border:1px solid var(--hair);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+.form-card label{display:block;font-size:13.5px;font-weight:700;margin:14px 0 6px;color:var(--ink)}
+.form-card > label:first-of-type{margin-top:0}
+.form-card .opt{font-weight:500;color:var(--muted)}
+.form-card input[type=text],.form-card input[type=tel],.form-card input[type=email],.form-card textarea{
+  width:100%;font-family:inherit;font-size:15.5px;color:var(--ink);background:var(--paper);
+  border:1.5px solid var(--hair);border-radius:var(--r-sm);padding:13px 14px;transition:border-color .15s}
+.form-card textarea{resize:vertical}
+.form-card input:focus,.form-card textarea:focus{outline:none;border-color:var(--green)}
+.form-card input.err,.form-card textarea.err{border-color:#C0392B}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13px;line-height:1.45;color:var(--muted);cursor:pointer}
+.consent input{flex:0 0 auto;width:18px;height:18px;margin-top:1px;accent-color:var(--green);cursor:pointer}
+.consent a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
+.consent a:hover{color:var(--green-d)}
+.form-card .btn{width:100%;justify-content:center;margin-top:20px}
+.form-status{font-size:14px;margin-top:12px;text-align:center;display:none}
+.form-status.ok{display:block;color:#2E7D32}
+.form-status.bad{display:block;color:#C0392B}
+.form-alt{font-size:13.5px;color:var(--muted);margin-top:14px;text-align:center}
+.form-alt a{color:var(--green);font-weight:700;text-decoration:none}
+@media(max-width:860px){.form-grid{grid-template-columns:1fr}.form-l h2{font-size:26px}}
+
+/* CTA band */
+.cta-band{background:var(--green-50);color:var(--ink);border:1px solid var(--hair);border-radius:26px;padding:50px;text-align:center}
+.cta-band h2{font-size:36px;color:var(--ink);margin-bottom:12px}
+.cta-band p{color:var(--muted);max-width:520px;margin:0 auto 26px;font-size:17px}
+
+/* footer */
+footer{background:var(--sand-2);color:var(--muted);padding:48px 0 30px;font-size:14px;border-top:1px solid var(--hair)}
+footer .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+footer h4{color:var(--ink);font-family:"Spectral",serif;font-size:18px;margin-bottom:12px}
+footer a{color:var(--green-d);text-decoration:none;border-bottom:1px solid rgba(67,41,26,.25)}
+footer a:hover{color:var(--ink)}
+footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,26,.15);font-size:12.5px;color:var(--muted);opacity:.85;line-height:1.7}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(20,19,16,.6);display:none;align-items:flex-start;justify-content:center;
+  padding:40px 18px;z-index:100;overflow:auto}
+.modal.open{display:flex}
+.modal .box{background:var(--paper);max-width:720px;width:100%;border-radius:18px;padding:34px 36px;position:relative}
+.modal .box h2{font-size:26px;margin-bottom:6px}
+.modal .box h3{font-family:"Manrope";font-size:15px;font-weight:700;margin:16px 0 4px;color:var(--ink)}
+.modal .box p{font-size:14px;color:var(--muted);margin-bottom:6px}
+.modal .x{position:absolute;top:16px;right:18px;font-size:26px;background:none;border:0;cursor:pointer;color:var(--muted);line-height:1}
+
+.ico3d{width:66px;height:66px;object-fit:contain;display:block;margin-bottom:12px;filter:drop-shadow(0 8px 14px rgba(67,41,26,.18))}
+.hero-visual{border-radius:24px;overflow:hidden;border:1px solid var(--hair);box-shadow:var(--shadow);background:var(--white)}
+.hero-visual img{display:block;width:100%;height:auto}
+.sec-head{position:relative}
+.calc-deco{position:absolute;right:0;top:-10px;width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(67,41,26,.18))}
+@media(max-width:560px){.calc-deco{display:none}}
+.topbar{border-bottom:1px solid var(--hair);background:rgba(246,241,232,.88);position:sticky;top:0;z-index:50}
+.tb{display:flex;align-items:center;justify-content:space-between;padding:11px 0}
+.tb-right{display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{height:48px;width:auto;border-radius:3px}
+.brand .bt{display:flex;flex-direction:column;line-height:1.08}
+.brand .bt b{font-family:"Spectral",serif;font-weight:600;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--green-d)}
+.brand .bt small{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--green-d);margin-top:3px}
+.lang{display:inline-flex;align-items:center;background:var(--green-50);border:1px solid var(--hair);border-radius:100px;padding:3px}
+.lang button{font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;padding:6px 11px;border-radius:100px;color:var(--green-d);background:none;border:0;cursor:pointer;transition:.2s}
+.lang button.active{background:var(--green);color:#fff}
+.tb .btn{padding:10px 18px;font-size:14px}
+@media(max-width:560px){.tb .btn{display:none}.brand .bt b{font-size:19px}.brand .bt small{font-size:10px}}
+.painlist{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.painlist .p{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:15px 18px;font-size:15.5px}
+.painlist .q{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--green-50);color:var(--green-d);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin-top:1px}
+@media(max-width:620px){.painlist{grid-template-columns:1fr}}
+@media(max-width:860px){
+  .hero-grid,.calc-grid{grid-template-columns:1fr}
+  .cards,.diff .cards{grid-template-columns:1fr}
+  footer .fgrid{grid-template-columns:1fr}
+  .hero h1{font-size:38px}.sec-head h2,.cta-band h2{font-size:29px}
+  section{padding:54px 0}.cta-band{padding:36px 22px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="wrap tb">
+    <a class="brand" href="#"><img src="img/logo-mark.png" alt="Gryphon Group"><span class="bt"><b>Gryphon Group</b><small>Sp. z o.o.</small></span></a>
+    <div class="tb-right">
+      <div class="lang" id="lang"><button data-lang="ua" class="active">UA</button><button data-lang="ru">RU</button></div>
+      <a class="btn btn-wa wa" data-msg="Вітаю! Маю питання по бухгалтерії"><span data-i18n="nav_cta">Написати нам</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow rv" data-i18n="hero_eyebrow">Бухгалтерія для українців у Польщі</span>
+      <h1 class="rv" style="animation-delay:.05s" data-i18n="hero_h1">Відкрили JDG чи <em>sp. z o.o.</em> — і не розумієте, що з ZUS, VAT і KSeF?</h1>
+      <p class="lead rv" style="animation-delay:.12s" data-i18n="hero_lead">Переводимо польську бюрократію на зрозумілу вам мову — українською й російською — і беремо її на себе. Дедлайни під контролем, відповідь у месенджері за 2–3 години.</p>
+      <div class="hero-cta rv" style="animation-delay:.18s">
+        <a class="btn btn-wa wa" href="#" data-msg="Вітаю! Відкриваю/веду бізнес у Польщі, хочу консультацію по бухгалтерії (СТАРТ)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="hero_cta_wa">Написати в WhatsApp</span></a>
+        <a class="btn btn-ghost" href="#kalkulator" data-i18n="hero_cta_calc">Порахувати вартість</a>
+      </div>
+      <div class="trust rv" style="animation-delay:.24s">
+        <span><span class="dot"></span><span data-i18n="trust_1"><b>Рідна мова</b> — укр/рус</span></span>
+        <span><span class="dot"></span><span data-i18n="trust_2">Відповідь за <b>2–3 год</b></span></span>
+        <span><span class="dot"></span><span data-i18n="trust_3"><b>1-й місяць</b> без ризику</span></span>
+      </div>
+    </div>
+    <div class="hero-visual rv" style="animation-delay:.2s">
+      <img src="img/hero-a.png" alt="Привітна бухгалтер у світлому офісі">
+    </div>
+  </div>
+</header>
+
+<!-- PAINS -->
+<section class="pains">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag" data-i18n="pains_tag">Це про вас?</span>
+      <h2 data-i18n="pains_h2">Коли «nie ogarniam» — це нормально</h2>
+      <p data-i18n="pains_p">Польська система складна навіть для поляків. Ви не зобов'язані розбиратися в усіх абревіатурах, щоб спокійно вести бізнес.</p>
+    </div>
+    <div class="painlist">
+      <div class="p"><span class="q">?</span><span data-i18n="pain_1">«Відкрив фірму, щоб заробляти більше — а не тонути в паперах, яких не розумію»</span></div>
+      <div class="p"><span class="q">?</span><span data-i18n="pain_2">«Не розумію, що вибрати: ryczałt, skala чи liniowy»</span></div>
+      <div class="p"><span class="q">?</span><span data-i18n="pain_3">«Чекаю тиждень на відповідь від бухгалтера»</span></div>
+      <div class="p"><span class="q">?</span><span data-i18n="pain_4">«Ніхто не нагадує про дедлайни, wakacje od ZUS чи Mały ZUS Plus»</span></div>
+      <div class="p"><span class="q">?</span><span data-i18n="pain_5">«Боюся штрафу через одну дрібну формальність»</span></div>
+      <div class="p"><span class="q">?</span><span data-i18n="pain_6">«З KSeF лишаюсь сам — ще й чужою мовою»</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WARMING -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag" data-i18n="warm_tag">Ви не самі</span>
+      <h2 data-i18n="warm_h2">Що ваш бухгалтер робить за вас</h2>
+      <p data-i18n="warm_p">Справжній бухгалтер, не бот. Не мусите пам'ятати абревіатури й дедлайни — ми тримаємо це за вас.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><img class="ico3d" src="img/ic-docs.png" alt=""><h3 data-i18n="warm_c1_h">Веде і пояснює</h3><p data-i18n="warm_c1_p">Пояснимо кожне рішення простими словами. Не знаємо відповіді — перевіримо й повернемось із нею.</p></div>
+      <div class="card"><img class="ico3d" src="img/ic-clock.png" alt=""><h3 data-i18n="warm_c2_h">Тримає дедлайни</h3><p data-i18n="warm_c2_p">Нагадування SMS: 19-го — ZUS і PIT, 24-го — VAT. Нічого не треба тримати в голові.</p></div>
+      <div class="card"><img class="ico3d" src="img/ic-phone.png" alt=""><h3 data-i18n="warm_c3_h">На зв'язку 2–3 год</h3><p data-i18n="warm_c3_p">Зателефонуємо в urząd і ZUS замість вас. Відповідь у месенджері в робочий час за 2–3 години.</p></div>
+    </div>
+    <div class="list-card incl" style="margin-top:16px">
+      <h3 data-i18n="warm_list_h">✓ І ще ми беремо на себе</h3>
+      <ul>
+        <li><span class="li-ic">✓</span><span data-i18n="warm_li1">Подаємо декларації в US і ZUS — без вашої участі</span></li>
+        <li><span class="li-ic">✓</span><span data-i18n="warm_li2">Повідомляємо про зміни в законах, що стосуються саме вас</span></li>
+        <li><span class="li-ic">✓</span><span data-i18n="warm_li3">Оформлюємо wakacje od ZUS, щоб пільга не пропала</span></li>
+        <li><span class="li-ic">✓</span><span data-i18n="warm_li4">Допомагаємо виставити фактуру і налаштувати KSeF під ключ</span></li>
+        <li><span class="li-ic">✓</span><span data-i18n="warm_li5">Перший місяць — без ризику: не підійде, спокійно розходимось</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CALC -->
+<section id="kalkulator">
+  <div class="wrap">
+    <div class="sec-head">
+      <img class="calc-deco" src="img/obj-calc.png" alt="">
+      <span class="tag" data-i18n="calc_tag">Прозора ціна</span>
+      <h2 data-i18n="calc_h2">Порахуйте орієнтовну вартість обслуговування</h2>
+      <p data-i18n="calc_p">Оберіть форму, статус VAT і кількість документів. Точну вартість підтвердимо в розмові — без прихованих доплат «за кожне слово».</p>
+    </div>
+    <div class="calc-grid">
+      <div class="calc">
+        <label for="forma" data-i18n="calc_l_forma">Форма бізнесу</label>
+        <div class="field"><select id="forma">
+          <option value="ryczalt" data-i18n="opt_ryczalt">JDG — ryczałt</option>
+          <option value="kpir" data-i18n="opt_kpir">JDG — KPiR (книга)</option>
+          <option value="spzoo" data-i18n="opt_spzoo">sp. z o.o. — повна бухгалтерія</option>
+        </select></div>
+
+        <label for="vat" data-i18n="calc_l_vat">Платник VAT</label>
+        <div class="field"><select id="vat">
+          <option value="nie" data-i18n="opt_vat_no">Ні</option>
+          <option value="tak" data-i18n="opt_vat_yes">Так (+ JPK_VAT)</option>
+        </select></div>
+
+        <label for="docs" data-i18n="calc_l_docs">Документів на місяць</label>
+        <div class="field"><select id="docs"></select></div>
+
+        <label for="prac" data-i18n="calc_l_prac">Працівники (kadry-płace), осіб</label>
+        <div class="field num"><input type="number" id="prac" min="0" value="0"></div>
+
+        <div class="result">
+          <div class="small" data-i18n="calc_small">Орієнтовно netto / місяць</div>
+          <div class="price" id="price">300 <span>zł</span></div>
+          <div class="bd" id="bd"></div>
+          <a class="btn btn-wa wa" href="#" data-msg="Вітаю! Порахував(ла) на сайті орієнтовну вартість. Хочу точну пропозицію (СТАРТ)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="calc_btn">Отримати пропозицію</span></a>
+        </div>
+        <p class="calc-note" data-i18n="calc_note">Калькулятор показує орієнтовну ціну місячного обслуговування. Додаткові послуги (реєстрація sp. z o.o., річний звіт, декларації тощо) — у переліку праворуч.</p>
+      </div>
+
+      <div class="lists">
+        <div class="list-card incl">
+          <h3 data-i18n="incl_h">✓ Включено в тариф</h3>
+          <ul>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_1">Свій бухгалтер + необмежені консультації, відповідь 2–3 год</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_2">Розрахунок авансів PIT і VAT, висилка JPK_VAT, VAT-UE</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_3">Розрахунки ZUS і річний składki zdrowotnej</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_4">Представництво перед US / ZUS</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_5">Програма фактурування + супровід KSeF</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_6">Пояснення рішень українською / російською</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_7">Річна декларація PIT власника на основі наших книг<span class="badge">0 zł</span></span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_8">Відкриття JDG безкоштовно (договір від 12 міс)</span></li>
+          </ul>
+        </div>
+        <details class="extra">
+          <summary><span data-i18n="extra_summary">Додаткові послуги (окрема оплата)</span> <span class="plus">+</span></summary>
+          <div class="body">
+            <p data-i18n="extra_p">Найчастіші — повний перелік надамо разом із договором:</p>
+            <ul>
+              <li data-i18n="extra_1">Реєстрація sp. z o.o. <b>1300 zł</b></li>
+              <li data-i18n="extra_2">Працівники (kadry-płace) <b>40–50 zł/особу</b></li>
+              <li data-i18n="extra_3">Річний звіт sp. z o.o. <b>від 700 zł</b></li>
+              <li data-i18n="extra_4">Bilans otwarcia <b>+800 zł</b></li>
+              <li data-i18n="extra_5">Виставлення фактури в імені клієнта <b>40 zł</b></li>
+              <li data-i18n="extra_6">Довідки US / ZUS <b>70–100 zł</b></li>
+              <li data-i18n="extra_7">Декларації VAT-26, A1, PCC, IFT <b>60–250 zł</b></li>
+              <li data-i18n="extra_8">Документи import / eksport <b>+30 zł/док</b></li>
+              <li data-i18n="extra_9">Термінові / святкові послуги <b>+100%</b></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFF -->
+<section class="diff">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag" data-i18n="diff_tag">Чим відрізняємось</span>
+      <h2 data-i18n="diff_h2">Чому нас обирають українці в Польщі</h2>
+    </div>
+    <div class="cards">
+      <div class="card"><img class="ico3d" src="img/ic-chat.png" alt=""><h3 data-i18n="diff_c1_h">Рідною мовою</h3><p data-i18n="diff_c1_p">Пояснюємо ZUS, VAT, KSeF українською й російською. Без мовного бар'єра і страху помилитися чужою мовою.</p></div>
+      <div class="card"><img class="ico3d" src="img/ic-coins.png" alt=""><h3 data-i18n="diff_c2_h">Чесна, прозора ціна</h3><p data-i18n="diff_c2_p">Бачите вартість одразу в калькуляторі. Багато бюро ховають ціну «за запитом» — у нас усе відкрито.</p></div>
+      <div class="card"><img class="ico3d" src="img/ic-handshake.png" alt=""><h3 data-i18n="diff_c3_h">Свій бухгалтер, не «робот»</h3><p data-i18n="diff_c3_p">Закріплений спеціаліст, який відповідає за 2–3 год і пояснює рішення, а не онлайн-сервіс «зроби сам».</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin:0 auto 36px;text-align:center">
+      <span class="tag" data-i18n="steps_tag">Просто і прозоро</span>
+      <h2 data-i18n="steps_h2">Як ми працюємо — 4 кроки</h2>
+      <p style="margin:0 auto" data-i18n="steps_p">Від першого повідомлення до спокою, коли всі декларації подані без вашої участі.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="snum">1</span>
+        <h3 data-i18n="step1_h">Договір і ваш бухгалтер</h3>
+        <p data-i18n="step1_p">Підписуємо договір, закріплюємо за вами особистого бухгалтера й даємо доступ до програми. Усе онлайн, без поїздок.</p>
+      </div>
+      <div class="step">
+        <span class="snum">2</span>
+        <h3 data-i18n="step2_h">Ви шлете документи</h3>
+        <p data-i18n="step2_p">Фото, скан або PDF через месенджер чи платформу — до 5-го числа. Нічого роздруковувати чи возити не треба.</p>
+        <span class="when" data-i18n="step2_when">до 5-го числа</span>
+      </div>
+      <div class="step">
+        <span class="snum">3</span>
+        <h3 data-i18n="step3_h">Ми ведемо й рахуємо</h3>
+        <p data-i18n="step3_p">Проводимо документи, рахуємо ZUS, PIT і VAT. До 18-го надсилаємо e-mail зі сумами податків до сплати.</p>
+        <span class="when" data-i18n="step3_when">до 18-го числа</span>
+      </div>
+      <div class="step">
+        <span class="snum">4</span>
+        <h3 data-i18n="step4_h">Подаємо й нагадуємо</h3>
+        <p data-i18n="step4_p">Самі подаємо декларації в US і ZUS. SMS-нагадування: 19-го — ZUS і PIT, 24-го — VAT. Ви нічого не тримаєте в голові.</p>
+        <span class="when" data-i18n="step4_when">19-го та 24-го</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SWITCH -->
+<section>
+  <div class="wrap">
+    <div class="switch-card">
+      <div class="switch-l">
+        <span class="tag" data-i18n="sw_tag">Уже маєте бухгалтера?</span>
+        <h2 data-i18n="sw_h2">Платите бухгалтеру, а відповіді все одно шукаєте на форумах?</h2>
+        <ul class="switch-pains">
+          <li data-i18n="sw_p1">Не бере слухавку, на повідомлення відповідає за тиждень</li>
+          <li data-i18n="sw_p2">За рік — жодної поради чи пояснення, за що ви платите</li>
+          <li data-i18n="sw_p3">Знову підняли ціну, а сервіс лишився той самий</li>
+          <li data-i18n="sw_p4">Помилки в розрахунках, декларації подаються із запізненням</li>
+        </ul>
+      </div>
+      <div class="switch-r">
+        <h3 data-i18n="sw_r_h">Перенесемо облік без хаосу</h3>
+        <ul>
+          <li><span class="li-ic">✓</span><span data-i18n="sw_r1">Заберемо документи в попереднього бюро і звіримо залишки</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="sw_r2">Пояснимо вашу ситуацію зрозумілою мовою — українською / російською</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="sw_r3">Нормальний контакт: відповідь за 2–3 год, без доплат «за кожне слово»</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="sw_r4">Перший місяць — без ризику: не підійде, спокійно розходимось</span></li>
+        </ul>
+        <a class="btn btn-wa wa" href="#" data-msg="Вітаю! Хочу перейти від свого бухгалтера. Що для цього потрібно? (ПЕРЕХІД)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="sw_btn">Написати в WhatsApp</span></a>
+        <p class="switch-note" data-i18n="sw_note">Або напишіть слово <b>ПЕРЕХІД</b> — скажемо, які документи потрібні, щоб спокійно змінити бухгалтера.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin:0 auto 36px;text-align:center">
+      <span class="tag" data-i18n="faq_tag">Часті питання</span>
+      <h2 data-i18n="faq_h2">Коротко про головне</h2>
+    </div>
+    <div class="faq">
+      <details open><summary><span data-i18n="faq_q1">Якою мовою ви працюєте?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a1">Українською та російською. Пояснюємо ZUS, VAT, KSeF, ryczałt/skala/liniowy простими словами — без мовного бар'єра і страху помилитися чужою мовою.</div></details>
+      <details><summary><span data-i18n="faq_q2">Як виглядає співпраця крок за кроком?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a2">Підписуємо договір, призначаємо вашого бухгалтера й даємо доступ до програми. Документи за місяць надсилаєте до 5-го числа, ми проводимо їх до 18-го, рахуємо ZUS/PIT/VAT і самі подаємо декларації в уряди.</div></details>
+      <details><summary><span data-i18n="faq_q3">Я не у вашому місті — можна співпрацювати?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a3">Так, працюємо 100% онлайн по всій Польщі. Усі документи й формальності вирішуємо дистанційно — без поїздок.</div></details>
+      <details><summary><span data-i18n="faq_q4">Як передавати документи?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a4">Фото, скан або PDF через месенджер чи онлайн-платформу, доступно 24/7. Нічого роздруковувати чи возити не треба.</div></details>
+      <details><summary><span data-i18n="faq_q5">Чи нагадуєте про дедлайни?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a5">Так. SMS-нагадування: 19-го — ZUS і PIT, 24-го — VAT; до 18-го — e-mail зі сумами податків до сплати. Нічого не треба тримати в голові.</div></details>
+      <details><summary><span data-i18n="faq_q6">Чи мушу сам подавати декларації?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a6">Ні. Ваш бухгалтер готує і подає всі декларації в ZUS і US без вашої участі.</div></details>
+      <details><summary><span data-i18n="faq_q7">Можна перейти від іншого бухгалтера?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a7">Так. Перенесемо облік без хаосу, пояснимо вашу ситуацію і будемо на зв'язку. Перший місяць — без ризику.</div></details>
+      <details><summary><span data-i18n="faq_q8">Чи допомагаєте відкрити JDG або sp. z o.o.?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a8">Так. Відкриття JDG — безкоштовно за договір обслуговування від 12 міс; реєстрацію sp. z o.o. зробимо під ключ. Пояснимо кожен крок і допоможемо обрати правильний PKD.</div></details>
+      <details><summary><span data-i18n="faq_q9">KSeF — що мені робити?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a9">Пояснимо простими словами і налаштуємо під ключ: доступи, виставлення й отримання фактур. З KSeF ви не лишитесь сам.</div></details>
+      <details><summary><span data-i18n="faq_q10">Що входить у ціну обслуговування?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a10">Свій бухгалтер, необмежені консультації з відповіддю за 2–3 год, розрахунок податків і ZUS, висилка JPK_VAT/VAT-UE, супровід KSeF і річна декларація PIT власника на основі наших книг — без доплат.</div></details>
+      <details><summary><span data-i18n="faq_q11">Це фіксована ціна чи залежить від документів?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a11">Фіксована за обраний щабель «до N документів». У калькуляторі ви одразу бачите вартість для вашої ситуації.</div></details>
+      <details><summary><span data-i18n="faq_q12">Фірма ще не працює — скільки платити?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a12">Для sp. z o.o., яка ще не веде діяльності (до 5 документів) — лише 350 zł/міс (300 без VAT). Поки фірма не заробляє, ви не платите великі гроші.</div></details>
+      <details><summary><span data-i18n="faq_q13">Що з річним звітом sp. z o.o.?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a13">Це окрема послуга, але ціну фіксуємо наперед — від 700 zł, без сюрпризів наприкінці року.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section id="zayavka">
+  <div class="wrap">
+    <div class="form-grid">
+      <div class="form-l">
+        <span class="tag" data-i18n="form_tag">Залиште заявку</span>
+        <h2 data-i18n="form_h2">Передзвонимо і розберемо вашу ситуацію</h2>
+        <p data-i18n="form_p">Залиште контакти — зв'яжемося в робочий час за 2–3 години. Безкоштовно й без зобов'язань: підкажемо, з чого почати або як перейти від бухгалтера.</p>
+        <ul class="form-bul">
+          <li><span class="li-ic">✓</span><span data-i18n="form_b1">Відповідь у месенджері / телефоном за 2–3 год</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="form_b2">Українською та російською</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="form_b3">Перший розбір ситуації — безкоштовно</span></li>
+        </ul>
+      </div>
+      <form class="form-card" id="leadForm" novalidate>
+        <input type="hidden" name="source" value="Лендинг бухгалтерія">
+        <input type="text" name="company_extra" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+        <label for="f-name"><span data-i18n="form_l_name">Ім'я</span> <span style="color:#C0392B">*</span></label>
+        <input type="text" id="f-name" name="name" placeholder="Як до вас звертатися" data-i18n-ph="form_ph_name" required>
+
+        <label for="f-phone"><span data-i18n="form_l_phone">Телефон</span> <span style="color:#C0392B">*</span></label>
+        <input type="tel" id="f-phone" name="phone" placeholder="+48 ___ ___ ___" required>
+
+        <label for="f-email"><span data-i18n="form_l_email">E-mail</span> <span style="color:#C0392B">*</span></label>
+        <input type="email" id="f-email" name="email" placeholder="you@example.com" required>
+
+        <label for="f-msg"><span data-i18n="form_l_msg">Коротко про ситуацію</span> <span class="opt" data-i18n="form_opt">(необов'язково)</span></label>
+        <textarea id="f-msg" name="message" rows="3" placeholder="Напр.: відкриваю JDG / хочу перейти від бухгалтера / питання по KSeF" data-i18n-ph="form_ph_msg"></textarea>
+
+        <label class="consent"><input type="checkbox" id="consentMain" name="consent" required><span data-i18n="consent_main">Я ознайомився/лася з <a href="#" class="open-policy">Політикою приватності</a> і даю згоду на обробку моїх даних з метою опрацювання заявки та зворотного зв'язку.</span></label>
+        <label class="consent"><input type="checkbox" id="consentMkt" name="consent_marketing" value="yes"><span data-i18n="consent_mkt">Погоджуюся отримувати від Gryphon Group комерційні пропозиції e-mail, телефоном або SMS.</span></label>
+
+        <button type="submit" class="btn btn-wa" id="leadSubmit" data-i18n="form_btn">Надіслати заявку</button>
+        <p class="form-status" id="formStatus" role="status"></p>
+        <p class="form-alt"><span data-i18n="form_alt_pre">Бажаєте швидше? </span><a href="#" class="wa" data-msg="Вітаю! Хочу залишити заявку по бухгалтерії (СТАРТ)"><span data-i18n="form_alt_link">Напишіть у WhatsApp →</span></a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <h2 data-i18n="cta_h2">Розберемо вашу ситуацію за 10 хвилин</h2>
+      <p data-i18n="cta_p">Напишіть у WhatsApp слово СТАРТ — поставимо кілька питань і підкажемо, з чого почати: реєстрація, налаштування ZUS/VAT/KSeF або перехід від бухгалтера.</p>
+      <a class="btn btn-wa wa" href="#" data-msg="СТАРТ"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="cta_btn">Написати в WhatsApp</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <img src="img/logo-mark.png" alt="" style="height:46px;margin-bottom:10px;display:block">
+        <h4>Gryphon Group Sp. z o.o.</h4>
+        <p style="font-size:12.5px;margin-bottom:8px">NIP 8133823354 · REGON 384467200 · KRS 0000805925 · RPK047401</p>
+        <p data-i18n="foot_desc">Бухгалтерія та реєстрація бізнесу для українців у Польщі. JDG, sp. z o.o., ZUS, VAT, KSeF — рідною мовою.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot_contact_h">Контакт</h4>
+        <p><span data-i18n="foot_phone_label">Тел. / WhatsApp:</span><br><a class="wa" href="#" data-msg="Вітаю! Маю питання по бухгалтерії">+48 516 929 619</a></p>
+        <p><span data-i18n="foot_email_label">E-mail: </span><a href="mailto:admin@gryphongroup.pl">admin@gryphongroup.pl</a></p>
+        <p>ul. Aleja Armii Krajowej 80/18,<br>35-307 Rzeszów</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot_docs_h">Документи</h4>
+        <p><a href="#" class="open-policy" data-i18n="foot_privacy">Політика приватності</a></p>
+      </div>
+    </div>
+    <div class="legal">
+      © 2026 Gryphon Group Sp. z o.o.
+    </div>
+  </div>
+</footer>
+
+<!-- POLICY MODAL -->
+<div class="modal" id="policyModal">
+  <div class="box">
+    <button class="x" id="closePolicy" aria-label="Закрити">×</button>
+    <h2 data-i18n="pp_title">Політика приватності</h2>
+    <p style="font-size:13px" data-i18n="pp_meta">Остання редакція: 13.06.2026 · відповідає RODO (Регламент ЄС 2016/679)</p>
+    <h3 data-i18n="pp_h1">1. Адміністратор даних</h3>
+    <p data-i18n="pp_1">Gryphon Group Sp. z o.o., ul. Aleja Armii Krajowej 80 lok 18, 35-307 Rzeszów. NIP 8133823354, REGON 384467200, KRS 0000805925, RPK047401. Контакт: admin@gryphongroup.pl, +48 516 929 619.</p>
+    <h3 data-i18n="pp_h2">2. Які дані обробляємо</h3>
+    <p data-i18n="pp_2">Через форму заявки на сайті або коли ви пишете нам у WhatsApp / телефоном: ім'я, номер телефону, адресу e-mail та зміст звернення. Надання даних добровільне, але без обов'язкових полів ми не зможемо опрацювати заявку та зв'язатися з вами.</p>
+    <h3 data-i18n="pp_h3">3. Мета та підстава</h3>
+    <p data-i18n="pp_3">Опрацювання звернення й підготовка пропозиції — ст. 6 ч. 1 літ. b / f RODO; маркетинг власних послуг — літ. f; комерційна інформація — лише за окремою згодою (літ. a); виконання обов'язків закону — літ. c.</p>
+    <h3 data-i18n="pp_h4">4. Строк зберігання</h3>
+    <p data-i18n="pp_4">Протягом опрацювання запиту й листування, далі — до спливу строку давності претензій. Дані на підставі згоди — до її відкликання.</p>
+    <h3 data-i18n="pp_h5">5. Одержувачі</h3>
+    <p data-i18n="pp_5">Постачальники, що обслуговують адміністратора (хостинг, e-mail, CRM, аналітика, IT) — лише в потрібному обсязі на підставі договорів доручення.</p>
+    <h3 data-i18n="pp_h6">6. Ваші права</h3>
+    <p data-i18n="pp_6">Доступ, виправлення, видалення, обмеження, перенесення, заперечення та відкликання згоди в будь-який момент. Відкликання не впливає на законність попередньої обробки.</p>
+    <h3 data-i18n="pp_h7">7. Скарга</h3>
+    <p data-i18n="pp_7">Ви маєте право подати скаргу до Prezes UODO, ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl.</p>
+    <h3 data-i18n="pp_h8">8. Cookie</h3>
+    <p data-i18n="pp_8">Сайт використовує технічно необхідні cookie. Аналітичні / маркетингові (Meta Pixel) — для оцінки ефективності реклами.</p>
+  </div>
+</div>
+
+<script>
+/* ---- Meta Pixel (підставити PIXEL_ID; не вантажиться на localhost) ---- */
+var PIXEL_ID='YOUR_PIXEL_ID';
+var IS_LOCAL=/localhost|127\.0\.0\.1/.test(location.hostname)||location.protocol==='file:';
+if(!IS_LOCAL){
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+try{fbq('init',PIXEL_ID);fbq('track','PageView');}catch(e){}
+}
+
+/* ---- Мова (поточна) ---- */
+var currentLang='ua';
+
+/* ---- Pricing (договірний прайс 2026) ---- */
+var PRICES={
+  ryczalt:{do5:{nie:200,tak:300},do15:{nie:280,tak:350},do25:{nie:340,tak:390},do40:{nie:420,tak:480},do65:{nie:630,tak:690},do80:{nie:850,tak:900},do100:{nie:930,tak:990}},
+  kpir:{do5:{nie:200,tak:300},do15:{nie:280,tak:350},do25:{nie:340,tak:390},do40:{nie:420,tak:480},do65:{nie:650,tak:710},do80:{nie:900,tak:960},do100:{nie:1020,tak:1060}},
+  spzoo:{do5:{nie:300,tak:350},do30:{nie:600,tak:700},do50:{nie:1000,tak:1250}}
+};
+var DOC_LABELS={do5:'до 5',do15:'до 15',do25:'до 25',do30:'до 30',do40:'до 40',do50:'до 50',do65:'до 65',do80:'до 80',do100:'до 100'};
+var EMP=50;
+var formaEl=document.getElementById('forma'),vatEl=document.getElementById('vat'),docsEl=document.getElementById('docs'),pracEl=document.getElementById('prac'),priceEl=document.getElementById('price'),bdEl=document.getElementById('bd');
+var calcTracked=false;
+
+function fillDocs(){
+  var f=formaEl.value,keys=Object.keys(PRICES[f]);
+  var suf=currentLang==='ru'?' документов':' документів';
+  docsEl.innerHTML=keys.map(function(k){return '<option value="'+k+'">'+DOC_LABELS[k]+suf+'</option>';}).join('');
+}
+function calc(){
+  var f=formaEl.value,v=vatEl.value,d=docsEl.value;
+  if(!PRICES[f][d])d=Object.keys(PRICES[f])[0];
+  var base=PRICES[f][d][v];
+  var prac=Math.max(0,parseInt(pracEl.value)||0);
+  var empCost=prac*EMP;
+  var total=base+empCost;
+  priceEl.innerHTML=total.toLocaleString('pl-PL')+' <span>zł</span>';
+  var bd=(currentLang==='ru'?'Обслуживание: ':'Обслуговування: ')+base+' zł';
+  if(empCost>0)bd+=(currentLang==='ru'?' · сотрудники: ':' · працівники: ')+empCost+' zł ('+prac+'×'+EMP+')';
+  bdEl.textContent=bd;
+  if(!calcTracked){calcTracked=true;try{fbq('track','ViewContent',{content_name:'kalkulator'});}catch(e){}}
+}
+[formaEl,vatEl,pracEl].forEach(function(el){el.addEventListener('change',function(){if(el===formaEl)fillDocs();calc();});});
+docsEl.addEventListener('change',calc);
+fillDocs();calc();
+
+/* ---- WhatsApp links + Lead pixel ---- */
+var WA='48516929619';
+document.querySelectorAll('a.wa').forEach(function(a){
+  var msg=a.getAttribute('data-msg')||'Вітаю!';
+  a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+  a.target='_blank';a.rel='noopener';
+  a.addEventListener('click',function(){try{fbq('track','Lead',{content_name:msg.slice(0,40)});}catch(e){}});
+});
+
+/* ---- Policy modal ---- */
+var modal=document.getElementById('policyModal');
+document.addEventListener('click',function(e){var t=e.target.closest('.open-policy');if(t){e.preventDefault();modal.classList.add('open');}});
+document.getElementById('closePolicy').addEventListener('click',function(){modal.classList.remove('open');});
+modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.remove('open');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')modal.classList.remove('open');});
+
+/* ---- Статуси форми (UA/RU) ---- */
+var FMSG={
+  ua:{fill:'Заповніть ім’я, телефон, e-mail і позначте згоду на обробку даних.',nowire:'Форма ще не підключена. Напишіть нам у WhatsApp — відповімо швидко.',ok:'Дякуємо! Заявку отримано — зв’яжемося з вами найближчим часом.',hp:'Дякуємо! Заявку отримано.',fail:'Не вдалося надіслати. Напишіть нам у WhatsApp — відповімо швидко.',sending:'Надсилаємо…'},
+  ru:{fill:'Заполните имя, телефон, e-mail и отметьте согласие на обработку данных.',nowire:'Форма ещё не подключена. Напишите нам в WhatsApp — ответим быстро.',ok:'Спасибо! Заявка получена — свяжемся с вами в ближайшее время.',hp:'Спасибо! Заявка получена.',fail:'Не удалось отправить. Напишите нам в WhatsApp — ответим быстро.',sending:'Отправляем…'}
+};
+function fmsg(k){return (FMSG[currentLang]||FMSG.ua)[k];}
+
+/* ---- Lead form (Google Apps Script → Telegram + Google Sheet) ---- */
+/* Підставити Web App URL після деплою скрипта (integrations/google-apps-script.gs) */
+var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbxxEkveBM4hSsZlobcugRAHLc0RpkCYnr4Lpb4vHpwfGw32kbrOzT1hlflt8K-1bsa2/exec';
+var leadForm=document.getElementById('leadForm');
+if(leadForm){
+  var statusEl=document.getElementById('formStatus');
+  leadForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    /* honeypot: бот заповнив приховане поле → тихо «успіх», нічого не шлемо */
+    var hp=leadForm.querySelector('.hp');
+    if(hp&&hp.value){statusEl.className='form-status ok';statusEl.textContent=fmsg('hp');leadForm.reset();return;}
+    var ok=true;
+    ['f-name','f-phone','f-email'].forEach(function(id){var el=document.getElementById(id);if(!el.value.trim()){el.classList.add('err');ok=false;}else{el.classList.remove('err');}});
+    var consent=document.getElementById('consentMain');
+    if(!ok||!consent.checked){
+      statusEl.className='form-status bad';
+      statusEl.textContent=fmsg('fill');
+      return;
+    }
+    if(!LEAD_ENDPOINT||LEAD_ENDPOINT.indexOf('PASTE_')===0){
+      statusEl.className='form-status bad';
+      statusEl.textContent=fmsg('nowire');
+      return;
+    }
+    var btn=document.getElementById('leadSubmit'),old=btn.textContent;btn.disabled=true;btn.textContent=fmsg('sending');
+    var body=new URLSearchParams();new FormData(leadForm).forEach(function(v,k){body.append(k,v);});
+    fetch(LEAD_ENDPOINT,{method:'POST',body:body})
+      .then(function(r){return r.json().catch(function(){return {ok:r.ok};});})
+      .then(function(res){
+        if(res&&res.ok){
+          statusEl.className='form-status ok';
+          statusEl.textContent=fmsg('ok');
+          leadForm.reset();
+          try{fbq('track','Lead',{content_name:'form'});}catch(e){}
+        }else{
+          statusEl.className='form-status bad';
+          statusEl.textContent=fmsg('fail');
+        }
+      })
+      .catch(function(){statusEl.className='form-status bad';statusEl.textContent=fmsg('fail');})
+      .finally(function(){btn.disabled=false;btn.textContent=old;});
+  });
+}
+
+/* ---- i18n UA/RU (перемикач як на лендингу лізингу) ---- */
+var RU={
+  nav_cta:"Написать нам",
+  hero_eyebrow:"Бухгалтерия для украинцев в Польше",
+  hero_h1:"Открыли JDG или <em>sp. z o.o.</em> — и не понимаете, что с ZUS, VAT и KSeF?",
+  hero_lead:"Переводим польскую бюрократию на понятный вам язык — на украинском и русском — и берём её на себя. Дедлайны под контролем, ответ в мессенджере за 2–3 часа.",
+  hero_cta_wa:"Написать в WhatsApp",
+  hero_cta_calc:"Рассчитать стоимость",
+  trust_1:"<b>Родной язык</b> — укр/рус",
+  trust_2:"Ответ за <b>2–3 ч</b>",
+  trust_3:"<b>1-й месяц</b> без риска",
+  pains_tag:"Это про вас?",
+  pains_h2:"Когда «nie ogarniam» — это нормально",
+  pains_p:"Польская система сложна даже для поляков. Вы не обязаны разбираться во всех аббревиатурах, чтобы спокойно вести бизнес.",
+  pain_1:"«Открыл фирму, чтобы зарабатывать больше — а не тонуть в бумагах, которых не понимаю»",
+  pain_2:"«Не понимаю, что выбрать: ryczałt, skala или liniowy»",
+  pain_3:"«Жду неделю ответа от бухгалтера»",
+  pain_4:"«Никто не напоминает о дедлайнах, wakacje od ZUS или Mały ZUS Plus»",
+  pain_5:"«Боюсь штрафа из-за одной мелкой формальности»",
+  pain_6:"«С KSeF остаюсь один — да ещё на чужом языке»",
+  warm_tag:"Вы не одни",
+  warm_h2:"Что ваш бухгалтер делает за вас",
+  warm_p:"Настоящий бухгалтер, не бот. Не нужно помнить аббревиатуры и дедлайны — мы держим это за вас.",
+  warm_c1_h:"Ведёт и объясняет",
+  warm_c1_p:"Объясним каждое решение простыми словами. Не знаем ответа — проверим и вернёмся с ним.",
+  warm_c2_h:"Держит дедлайны",
+  warm_c2_p:"Напоминания SMS: 19-го — ZUS и PIT, 24-го — VAT. Ничего не нужно держать в голове.",
+  warm_c3_h:"На связи 2–3 ч",
+  warm_c3_p:"Позвоним в urząd и ZUS вместо вас. Ответ в мессенджере в рабочее время за 2–3 часа.",
+  warm_list_h:"✓ И ещё мы берём на себя",
+  warm_li1:"Подаём декларации в US и ZUS — без вашего участия",
+  warm_li2:"Сообщаем об изменениях в законах, которые касаются именно вас",
+  warm_li3:"Оформляем wakacje od ZUS, чтобы льгота не пропала",
+  warm_li4:"Помогаем выставить фактуру и настроить KSeF под ключ",
+  warm_li5:"Первый месяц — без риска: не подойдёт, спокойно расходимся",
+  calc_tag:"Прозрачная цена",
+  calc_h2:"Рассчитайте ориентировочную стоимость обслуживания",
+  calc_p:"Выберите форму, статус VAT и количество документов. Точную стоимость подтвердим в разговоре — без скрытых доплат «за каждое слово».",
+  calc_l_forma:"Форма бизнеса",
+  opt_ryczalt:"JDG — ryczałt",
+  opt_kpir:"JDG — KPiR (книга)",
+  opt_spzoo:"sp. z o.o. — полная бухгалтерия",
+  calc_l_vat:"Плательщик VAT",
+  opt_vat_no:"Нет",
+  opt_vat_yes:"Да (+ JPK_VAT)",
+  calc_l_docs:"Документов в месяц",
+  calc_l_prac:"Сотрудники (kadry-płace), чел.",
+  calc_small:"Ориентировочно netto / месяц",
+  calc_btn:"Получить предложение",
+  calc_note:"Калькулятор показывает ориентировочную цену месячного обслуживания. Дополнительные услуги (регистрация sp. z o.o., годовой отчёт, декларации и т. д.) — в списке справа.",
+  incl_h:"✓ Включено в тариф",
+  incl_1:"Свой бухгалтер + неограниченные консультации, ответ 2–3 ч",
+  incl_2:"Расчёт авансов PIT и VAT, отправка JPK_VAT, VAT-UE",
+  incl_3:"Расчёты ZUS и годовой składki zdrowotnej",
+  incl_4:"Представительство перед US / ZUS",
+  incl_5:"Программа фактурирования + сопровождение KSeF",
+  incl_6:"Объяснение решений на украинском / русском",
+  incl_7:"Годовая декларация PIT владельца на основе наших книг<span class=\"badge\">0 zł</span>",
+  incl_8:"Открытие JDG бесплатно (договор от 12 мес)",
+  extra_summary:"Дополнительные услуги (отдельная оплата)",
+  extra_p:"Самые частые — полный список предоставим вместе с договором:",
+  extra_1:"Регистрация sp. z o.o. <b>1300 zł</b>",
+  extra_2:"Сотрудники (kadry-płace) <b>40–50 zł/чел.</b>",
+  extra_3:"Годовой отчёт sp. z o.o. <b>от 700 zł</b>",
+  extra_4:"Bilans otwarcia <b>+800 zł</b>",
+  extra_5:"Выставление фактуры от имени клиента <b>40 zł</b>",
+  extra_6:"Справки US / ZUS <b>70–100 zł</b>",
+  extra_7:"Декларации VAT-26, A1, PCC, IFT <b>60–250 zł</b>",
+  extra_8:"Документы import / eksport <b>+30 zł/док</b>",
+  extra_9:"Срочные / праздничные услуги <b>+100%</b>",
+  diff_tag:"Чем отличаемся",
+  diff_h2:"Почему нас выбирают украинцы в Польше",
+  diff_c1_h:"На родном языке",
+  diff_c1_p:"Объясняем ZUS, VAT, KSeF на украинском и русском. Без языкового барьера и страха ошибиться на чужом языке.",
+  diff_c2_h:"Честная, прозрачная цена",
+  diff_c2_p:"Видите стоимость сразу в калькуляторе. Многие бюро прячут цену «по запросу» — у нас всё открыто.",
+  diff_c3_h:"Свой бухгалтер, не «робот»",
+  diff_c3_p:"Закреплённый специалист, который отвечает за 2–3 ч и объясняет решения, а не онлайн-сервис «сделай сам».",
+  steps_tag:"Просто и прозрачно",
+  steps_h2:"Как мы работаем — 4 шага",
+  steps_p:"От первого сообщения до спокойствия, когда все декларации поданы без вашего участия.",
+  step1_h:"Договор и ваш бухгалтер",
+  step1_p:"Подписываем договор, закрепляем за вами личного бухгалтера и даём доступ к программе. Всё онлайн, без поездок.",
+  step2_h:"Вы присылаете документы",
+  step2_p:"Фото, скан или PDF через мессенджер или платформу — до 5-го числа. Ничего распечатывать или возить не нужно.",
+  step2_when:"до 5-го числа",
+  step3_h:"Мы ведём и считаем",
+  step3_p:"Проводим документы, считаем ZUS, PIT и VAT. До 18-го отправляем e-mail с суммами налогов к уплате.",
+  step3_when:"до 18-го числа",
+  step4_h:"Подаём и напоминаем",
+  step4_p:"Сами подаём декларации в US и ZUS. SMS-напоминания: 19-го — ZUS и PIT, 24-го — VAT. Вы ничего не держите в голове.",
+  step4_when:"19-го и 24-го",
+  sw_tag:"Уже есть бухгалтер?",
+  sw_h2:"Платите бухгалтеру, а ответы всё равно ищете на форумах?",
+  sw_p1:"Не берёт трубку, на сообщения отвечает через неделю",
+  sw_p2:"За год — ни одного совета или объяснения, за что вы платите",
+  sw_p3:"Снова подняли цену, а сервис остался прежним",
+  sw_p4:"Ошибки в расчётах, декларации подаются с опозданием",
+  sw_r_h:"Перенесём учёт без хаоса",
+  sw_r1:"Заберём документы у предыдущего бюро и сверим остатки",
+  sw_r2:"Объясним вашу ситуацию понятным языком — на украинском / русском",
+  sw_r3:"Нормальный контакт: ответ за 2–3 ч, без доплат «за каждое слово»",
+  sw_r4:"Первый месяц — без риска: не подойдёт, спокойно расходимся",
+  sw_btn:"Написать в WhatsApp",
+  sw_note:"Или напишите слово <b>ПЕРЕХІД</b> — скажем, какие документы нужны, чтобы спокойно сменить бухгалтера.",
+  faq_tag:"Частые вопросы",
+  faq_h2:"Коротко о главном",
+  faq_q1:"На каком языке вы работаете?",
+  faq_a1:"На украинском и русском. Объясняем ZUS, VAT, KSeF, ryczałt/skala/liniowy простыми словами — без языкового барьера и страха ошибиться на чужом языке.",
+  faq_q2:"Как выглядит сотрудничество шаг за шагом?",
+  faq_a2:"Подписываем договор, назначаем вашего бухгалтера и даём доступ к программе. Документы за месяц присылаете до 5-го числа, мы проводим их до 18-го, считаем ZUS/PIT/VAT и сами подаём декларации в органы.",
+  faq_q3:"Я не в вашем городе — можно сотрудничать?",
+  faq_a3:"Да, работаем 100% онлайн по всей Польше. Все документы и формальности решаем дистанционно — без поездок.",
+  faq_q4:"Как передавать документы?",
+  faq_a4:"Фото, скан или PDF через мессенджер или онлайн-платформу, доступно 24/7. Ничего распечатывать или возить не нужно.",
+  faq_q5:"Напоминаете о дедлайнах?",
+  faq_a5:"Да. SMS-напоминания: 19-го — ZUS и PIT, 24-го — VAT; до 18-го — e-mail с суммами налогов к уплате. Ничего не нужно держать в голове.",
+  faq_q6:"Должен ли я сам подавать декларации?",
+  faq_a6:"Нет. Ваш бухгалтер готовит и подаёт все декларации в ZUS и US без вашего участия.",
+  faq_q7:"Можно перейти от другого бухгалтера?",
+  faq_a7:"Да. Перенесём учёт без хаоса, объясним вашу ситуацию и будем на связи. Первый месяц — без риска.",
+  faq_q8:"Помогаете открыть JDG или sp. z o.o.?",
+  faq_a8:"Да. Открытие JDG — бесплатно при договоре обслуживания от 12 мес; регистрацию sp. z o.o. сделаем под ключ. Объясним каждый шаг и поможем выбрать правильный PKD.",
+  faq_q9:"KSeF — что мне делать?",
+  faq_a9:"Объясним простыми словами и настроим под ключ: доступы, выставление и получение фактур. С KSeF вы не останетесь один.",
+  faq_q10:"Что входит в цену обслуживания?",
+  faq_a10:"Свой бухгалтер, неограниченные консультации с ответом за 2–3 ч, расчёт налогов и ZUS, отправка JPK_VAT/VAT-UE, сопровождение KSeF и годовая декларация PIT владельца на основе наших книг — без доплат.",
+  faq_q11:"Это фиксированная цена или зависит от документов?",
+  faq_a11:"Фиксированная за выбранную ступень «до N документов». В калькуляторе вы сразу видите стоимость для вашей ситуации.",
+  faq_q12:"Фирма ещё не работает — сколько платить?",
+  faq_a12:"Для sp. z o.o., которая ещё не ведёт деятельность (до 5 документов) — всего 350 zł/мес (300 без VAT). Пока фирма не зарабатывает, вы не платите большие деньги.",
+  faq_q13:"Что с годовым отчётом sp. z o.o.?",
+  faq_a13:"Это отдельная услуга, но цену фиксируем заранее — от 700 zł, без сюрпризов в конце года.",
+  form_tag:"Оставьте заявку",
+  form_h2:"Перезвоним и разберём вашу ситуацию",
+  form_p:"Оставьте контакты — свяжемся в рабочее время за 2–3 часа. Бесплатно и без обязательств: подскажем, с чего начать или как перейти от бухгалтера.",
+  form_b1:"Ответ в мессенджере / по телефону за 2–3 ч",
+  form_b2:"На украинском и русском",
+  form_b3:"Первый разбор ситуации — бесплатно",
+  form_l_name:"Имя",
+  form_ph_name:"Как к вам обращаться",
+  form_l_phone:"Телефон",
+  form_l_email:"E-mail",
+  form_l_msg:"Коротко о ситуации",
+  form_opt:"(необязательно)",
+  form_ph_msg:"Напр.: открываю JDG / хочу перейти от бухгалтера / вопрос по KSeF",
+  consent_main:"Я ознакомился(лась) с <a href=\"#\" class=\"open-policy\">Политикой конфиденциальности</a> и даю согласие на обработку моих данных с целью обработки заявки и обратной связи.",
+  consent_mkt:"Согласен(на) получать от Gryphon Group коммерческие предложения по e-mail, телефону или SMS.",
+  form_btn:"Отправить заявку",
+  form_alt_pre:"Хотите быстрее? ",
+  form_alt_link:"Напишите в WhatsApp →",
+  cta_h2:"Разберём вашу ситуацию за 10 минут",
+  cta_p:"Напишите в WhatsApp слово СТАРТ — зададим несколько вопросов и подскажем, с чего начать: регистрация, настройка ZUS/VAT/KSeF или переход от бухгалтера.",
+  cta_btn:"Написать в WhatsApp",
+  foot_desc:"Бухгалтерия и регистрация бизнеса для украинцев в Польше. JDG, sp. z o.o., ZUS, VAT, KSeF — на родном языке.",
+  foot_contact_h:"Контакт",
+  foot_phone_label:"Тел. / WhatsApp:",
+  foot_email_label:"E-mail: ",
+  foot_docs_h:"Документы",
+  foot_privacy:"Политика конфиденциальности",
+  pp_title:"Политика конфиденциальности",
+  pp_meta:"Последняя редакция: 13.06.2026 · соответствует RODO (Регламент ЕС 2016/679)",
+  pp_h1:"1. Администратор данных",
+  pp_1:"Gryphon Group Sp. z o.o., ul. Aleja Armii Krajowej 80 lok 18, 35-307 Rzeszów. NIP 8133823354, REGON 384467200, KRS 0000805925, RPK047401. Контакт: admin@gryphongroup.pl, +48 516 929 619.",
+  pp_h2:"2. Какие данные обрабатываем",
+  pp_2:"Через форму заявки на сайте или когда вы пишете нам в WhatsApp / по телефону: имя, номер телефона, адрес e-mail и содержание обращения. Предоставление данных добровольное, но без обязательных полей мы не сможем обработать заявку и связаться с вами.",
+  pp_h3:"3. Цель и основание",
+  pp_3:"Обработка обращения и подготовка предложения — ст. 6 ч. 1 лит. b / f RODO; маркетинг собственных услуг — лит. f; коммерческая информация — только по отдельному согласию (лит. a); выполнение обязанностей закона — лит. c.",
+  pp_h4:"4. Срок хранения",
+  pp_4:"В течение обработки запроса и переписки, далее — до истечения срока давности претензий. Данные на основании согласия — до его отзыва.",
+  pp_h5:"5. Получатели",
+  pp_5:"Поставщики, обслуживающие администратора (хостинг, e-mail, CRM, аналитика, IT) — только в необходимом объёме на основании договоров поручения.",
+  pp_h6:"6. Ваши права",
+  pp_6:"Доступ, исправление, удаление, ограничение, перенос, возражение и отзыв согласия в любой момент. Отзыв не влияет на законность предыдущей обработки.",
+  pp_h7:"7. Жалоба",
+  pp_7:"Вы имеете право подать жалобу в Prezes UODO, ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl.",
+  pp_h8:"8. Cookie",
+  pp_8:"Сайт использует технически необходимые cookie. Аналитические / маркетинговые (Meta Pixel) — для оценки эффективности рекламы."
+};
+var i18nNodes=document.querySelectorAll('[data-i18n]');
+var i18nPh=document.querySelectorAll('[data-i18n-ph]');
+var UA={};i18nNodes.forEach(function(n){UA[n.getAttribute('data-i18n')]=n.innerHTML;});
+var UA_ph={};i18nPh.forEach(function(n){UA_ph[n.getAttribute('data-i18n-ph')]=n.getAttribute('placeholder');});
+function setLang(lang){
+  var dict=lang==='ru'?RU:null;
+  i18nNodes.forEach(function(n){var k=n.getAttribute('data-i18n');var v=dict?dict[k]:UA[k];if(v!=null)n.innerHTML=v;});
+  i18nPh.forEach(function(n){var k=n.getAttribute('data-i18n-ph');var v=dict?dict[k]:UA_ph[k];if(v!=null)n.setAttribute('placeholder',v);});
+  document.documentElement.lang=lang==='ru'?'ru':'uk';
+  currentLang=lang;
+  document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===lang);});
+  try{localStorage.setItem('gg_lang_ksieg',lang);}catch(e){}
+  fillDocs();calc();
+}
+document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'));});});
+var savedLang='ua';try{savedLang=localStorage.getItem('gg_lang_ksieg')||'ua';}catch(e){}
+if(savedLang==='ru')setLang('ru');
+</script>
+</body>
+</html>
