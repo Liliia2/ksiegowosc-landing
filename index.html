@@ -347,6 +347,33 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
 .band--deep .card h3,.band--deep .list-card h3{color:#FBF3E6}
 .band--deep .card p,.band--deep .list-card li{color:#E3D3BC;line-height:1.7}
 .band--deep .list-card.incl{border-left-color:#E8C98A}
+
+/* ===== HOVER-ОЖИВЛЕННЯ (як на лендингу лізингу) ===== */
+/* плавний підйом карток + тінь + акцент рамки */
+.painlist .p, .cards .card, .list-card, .step{
+  transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s cubic-bezier(.2,.8,.2,1), border-color .4s;
+  will-change:transform}
+.painlist .p:hover, .cards .card:hover, .list-card:hover, .step:hover{
+  transform:translateY(-7px);
+  box-shadow:0 1px 0 rgba(67,41,26,.05), 0 26px 50px -26px rgba(67,41,26,.5);
+  border-color:rgba(138,85,36,.42)}
+/* мікро-збільшення лінійної іконки на hover картки */
+.cards .card .ico-line, .painlist .p .q{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.cards .card:hover .ico-line{transform:scale(1.07)}
+.painlist .p:hover .q{transform:scale(1.12)}
+/* номер кроку «оживає» */
+.step .snum{transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .3s}
+.step:hover .snum{transform:scale(1.08);box-shadow:0 10px 22px -10px rgba(67,41,26,.55)}
+/* кнопки трохи піднімаються */
+.btn:hover{transform:translateY(-2px)}
+/* FAQ та «Додаткові послуги» — м'який акцент при наведенні */
+.faq details summary:hover, details.extra summary:hover{color:var(--green-d)}
+.faq details:hover{border-bottom-color:rgba(138,85,36,.4)}
+/* поважати системне «менше анімації» */
+@media(prefers-reduced-motion:reduce){
+  *{transition:none !important; animation:none !important}
+  .painlist .p:hover, .cards .card:hover, .list-card:hover, .step:hover, .btn:hover{transform:none}
+}
 </style>
 </head>
 <body>
