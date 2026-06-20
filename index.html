@@ -11,7 +11,7 @@
 <style>
 :root{
   --sand:#F6F1E8; --sand-2:#EFE8DA; --paper:#FBF8F2; --white:#FFFFFF;
-  --ink:#1B1A17; --muted:#5C574E; --hair:rgba(27,26,23,.12);
+  --ink:#2A1A0E; --muted:#5A4636; --hair:rgba(42,26,14,.13);
   --green:#8A5524; --green-d:#43291A; --green-50:#EFE3D0;
   --amber:#B5791A; --amber-50:#F7EEDC; --wa:#1FA855;
   --r:16px; --r-sm:10px; --shadow:0 1px 0 rgba(27,26,23,.04), 0 18px 40px -28px rgba(11,77,59,.45);
@@ -27,8 +27,8 @@ body{
 }
 h1,h2,h3{font-family:"Spectral",serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
 .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:16px;border-radius:999px;
+.eyebrow{font-size:17.6px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:21.6px;border-radius:999px;
   padding:15px 26px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s ease, box-shadow .2s ease}
 .btn:active{transform:scale(.98)}
 .btn-wa{background:var(--green);color:#fff;box-shadow:0 12px 26px -14px rgba(67,41,26,.55)}
@@ -36,28 +36,36 @@ h1,h2,h3{font-family:"Spectral",serif;font-weight:600;line-height:1.12;letter-sp
 .btn-wa.on-dark{background:var(--amber);color:#3a2407}
 .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
 .btn-ghost:hover{background:var(--ink);color:var(--sand)}
+.btn-ivory{background:#F6F1E8;color:var(--green-d);box-shadow:0 12px 26px -14px rgba(67,41,26,.42)}
+.btn-ivory:hover{background:#fff;box-shadow:0 16px 30px -14px rgba(67,41,26,.55)}
 .wa-ic{width:20px;height:20px;flex:0 0 auto}
 section{padding:74px 0}
-.tag{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--green-d);
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:17.6px;font-weight:600;color:var(--green-d);
   background:var(--green-50);border-radius:999px;padding:6px 13px}
 
 /* HERO */
-.hero{padding:54px 0 64px;position:relative}
+.hero{padding:64px 0 78px;position:relative;overflow:hidden;
+  background:linear-gradient(90deg, #F6F1E8 0%, #F6F1E8 30%, rgba(246,241,232,.90) 46%, rgba(246,241,232,.5) 66%, rgba(246,241,232,.12) 100%), url(img/warsaw_hero.png) right center/cover no-repeat}
+@media(max-width:860px){.hero{background:linear-gradient(rgba(246,241,232,.88), rgba(246,241,232,.93)), url(img/warsaw_hero.png) center/cover no-repeat}}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-.hero h1{font-size:52px;margin:18px 0 18px}
+.hero h1{font-size:48px;margin:18px 0 18px}
 .hero h1 em{font-style:normal;color:inherit}
-.hero p.lead{font-size:19px;color:var(--muted);max-width:560px}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;font-size:14px;color:var(--muted)}
+.hero p.lead{font-size:25.7px;color:var(--muted);max-width:560px}
+.hero-cta{display:flex;gap:14px;flex-wrap:nowrap;margin-top:28px}
+.hero-cta .btn{font-size:16.5px;padding:14px 22px;white-space:nowrap}
+.trust{display:flex;gap:16px;flex-wrap:nowrap;margin-top:48px;font-size:14.5px;color:var(--muted)}
+.hero-bullets{list-style:none;display:grid;gap:11px;margin-top:20px}
+.hero-bullets li{display:flex;gap:11px;align-items:flex-start;font-size:18px;font-weight:600;color:var(--ink)}
+.hero-bullets .hb-ic{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--green-50);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-top:2px}
 .trust b{color:var(--ink);font-weight:700}
-.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--amber)}
 .hero-card{background:var(--white);border:1px solid var(--hair);border-radius:24px;padding:26px;box-shadow:var(--shadow)}
-.hero-card h3{font-size:21px;margin-bottom:14px}
+.hero-card h3{font-size:28.4px;margin-bottom:14px}
 .hero-card ul{list-style:none;display:grid;gap:12px}
-.hero-card li{display:flex;gap:11px;font-size:15px;align-items:flex-start}
+.hero-card li{display:flex;gap:11px;font-size:20.2px;align-items:flex-start}
 .chk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--green-50);color:var(--green);
-  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-top:1px}
+  display:flex;align-items:center;justify-content:center;font-size:17.6px;font-weight:800;margin-top:1px}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(16px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
@@ -66,152 +74,197 @@ section{padding:74px 0}
 /* PAINS */
 .pains{background:var(--paper);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
 .sec-head{max-width:680px;margin-bottom:36px}
-.sec-head h2{font-size:36px;margin:12px 0 10px}
-.sec-head p{color:var(--muted);font-size:17px}
+.sec-head h2{font-size:48.6px;margin:12px 0 10px}
+.sec-head p{color:var(--muted);font-size:23px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:22px}
-.card .ico{font-size:22px;width:44px;height:44px;border-radius:12px;background:var(--amber-50);color:var(--amber);
+.card .ico{font-size:29.7px;width:44px;height:44px;border-radius:12px;background:var(--amber-50);color:var(--amber);
   display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.card h3{font-size:18px;margin-bottom:7px}
-.card p{font-size:14.5px;color:var(--muted)}
+.card h3{font-size:24.3px;margin-bottom:7px}
+.card p{font-size:19.6px;color:var(--muted)}
 
 /* CALC */
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.calc{background:var(--white);border:1px solid var(--hair);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
-.calc label{display:block;font-size:13.5px;font-weight:700;margin:16px 0 7px;color:var(--ink)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+.calc-grid>.list-card.incl{align-self:stretch}
+.calc-extra{margin-top:24px}
+.calc{background:var(--white);border:1px solid var(--hair);border-radius:22px;padding:26px 26px 36px;position:relative;
+  box-shadow:0 2px 0 rgba(67,41,26,.04), 0 32px 64px -38px rgba(67,41,26,.55)}
+.calc>*{position:relative;z-index:1}
+/* м'яка фонова тінь від віконного світла на бежевій підкладці всього блоку */
+#kalkulator{position:relative}
+#kalkulator::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url(img/shadow_overlay.png) center top/cover no-repeat;mix-blend-mode:multiply;opacity:.03}
+#kalkulator .wrap{position:relative;z-index:1}
+/* «Включено в тариф» — две колонки */
+#kalkulator .list-card.incl{display:flex;flex-direction:column}
+#kalkulator .list-card.incl ul{grid-template-columns:1fr 1fr;gap:11px 22px}
+.incl-foot{margin-top:auto;padding-top:22px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.incl-foot .incl-foot-ic{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--green-50);color:var(--green);margin-top:18px}
+.incl-foot .incl-foot-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.incl-foot p{font-size:17.6px;color:var(--muted);max-width:340px;margin:0}
+@media(max-width:560px){#kalkulator .list-card.incl ul{grid-template-columns:1fr}}
+.calc label{display:block;font-size:18.2px;font-weight:700;margin:16px 0 7px;color:var(--ink)}
 .calc label:first-of-type{margin-top:4px}
 .field{position:relative}
-select,input[type=number]{width:100%;font-family:inherit;font-size:15.5px;color:var(--ink);background:var(--paper);
+select,input[type=number]{width:100%;font-family:inherit;font-size:20.9px;color:var(--ink);background:var(--paper);
   border:1.5px solid var(--hair);border-radius:var(--r-sm);padding:13px 14px;appearance:none;cursor:pointer;transition:border-color .15s}
 select:focus,input:focus{outline:none;border-color:var(--green)}
 .field::after{content:"";position:absolute;right:15px;top:50%;width:9px;height:9px;border-right:2px solid var(--muted);
   border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
 .field.num::after{display:none}
-.toggle{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:14.5px;cursor:pointer;color:var(--muted)}
+.toggle{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:19.6px;cursor:pointer;color:var(--muted)}
 .result{margin-top:22px;background:#F4EADA;color:var(--ink);border:1px solid var(--hair);border-radius:var(--r);padding:20px 22px}
-.result .small{font-size:13px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
-.result .price{font-family:"Spectral",serif;font-size:42px;font-weight:600;line-height:1.1;margin:2px 0;color:var(--green-d)}
-.result .price span{font-size:18px;color:var(--muted)}
-.result .bd{font-size:13px;color:var(--muted);margin-top:8px;border-top:1px solid var(--hair);padding-top:8px}
+.result .small{font-size:17.6px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.result .price{font-family:"Spectral",serif;font-size:56.7px;font-weight:600;line-height:1.1;margin:2px 0;color:var(--green-d)}
+.result .price span{font-size:24.3px;color:var(--muted)}
+.result .bd{font-size:17.6px;color:var(--muted);margin-top:8px;border-top:1px solid var(--hair);padding-top:8px}
 .result .btn{margin-top:16px;width:100%;justify-content:center}
-.calc-note{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+.calc-note{font-size:16.9px;color:var(--muted);margin-top:12px;line-height:1.5}
 
 /* lists */
 .lists{display:grid;gap:16px}
 .list-card{background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:22px 24px}
 .list-card.incl{border-left:4px solid var(--green)}
-.list-card h3{font-size:19px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.list-card h3{font-size:25.7px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
 .list-card ul{list-style:none;display:grid;gap:10px}
-.list-card li{display:flex;gap:10px;font-size:14.5px;align-items:flex-start}
+.list-card li{display:flex;gap:10px;font-size:19.6px;align-items:flex-start}
 .li-ic{flex:0 0 auto;color:var(--green);font-weight:800;margin-top:1px}
-.badge{display:inline-block;font-size:11.5px;font-weight:700;color:var(--amber);background:var(--amber-50);
+.badge{display:inline-block;font-size:15.5px;font-weight:700;color:var(--amber);background:var(--amber-50);
   border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:middle}
 details.extra{background:var(--paper);border:1px solid var(--hair);border-radius:var(--r);padding:4px 22px}
-details.extra summary{cursor:pointer;font-weight:700;font-size:16px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.extra summary{cursor:pointer;font-weight:700;font-size:21.6px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
 details.extra summary::-webkit-details-marker{display:none}
-details.extra summary .plus{color:var(--green);font-size:20px;transition:transform .2s}
+details.extra summary .plus{color:var(--green);font-size:13.5px;transition:transform .2s}
 details.extra[open] summary .plus{transform:rotate(45deg)}
-details.extra .body{padding:0 0 18px;font-size:14px;color:var(--muted)}
+details.extra .body{padding:0 0 18px;font-size:18.9px;color:var(--muted)}
 details.extra .body ul{list-style:none;display:grid;gap:7px;margin-top:4px}
 details.extra .body li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--hair);padding-bottom:6px}
 details.extra .body li b{color:var(--ink);font-weight:600;white-space:nowrap}
 
 /* diff */
-.diff{background:var(--paper);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-.diff .cards{grid-template-columns:repeat(3,1fr)}
+.diff{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.diff::after{content:"";position:absolute;right:0;top:0;bottom:0;width:58%;z-index:0;pointer-events:none;
+  background:url(img/abstract_geometry.png) right center/cover no-repeat;mix-blend-mode:screen;opacity:.55}
+.diff .sec-head{text-align:center;max-width:760px;margin:0 auto 38px}
+.diff .cards{grid-template-columns:repeat(3,1fr);align-items:stretch}
+.diff .card{padding:24px 24px 26px}
 .diff .card{border-top:3px solid var(--green)}
 
 /* FAQ */
 .faq{max-width:780px;margin:0 auto}
 .faq details{border-bottom:1px solid var(--hair);padding:6px 0}
-.faq summary{cursor:pointer;font-weight:700;font-size:17.5px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq details:last-child{border-bottom:none}
+.faq summary{cursor:pointer;font-weight:700;font-size:23.6px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary .plus{color:var(--green);flex:0 0 auto;transition:transform .2s}
 .faq details[open] summary .plus{transform:rotate(45deg)}
-.faq .ans{color:var(--muted);font-size:15.5px;padding:0 0 18px}
+.faq .ans{color:var(--muted);font-size:20.9px;padding:0 0 18px}
 
 /* STEPS — як ми працюємо */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.step{position:relative;background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:24px 22px}
+.step{position:relative;background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:24px 22px;display:flex;flex-direction:column}
 .step .snum{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
-  background:var(--green);color:#fff;font-family:"Spectral",serif;font-size:22px;font-weight:600;margin-bottom:14px}
-.step h3{font-size:17px;margin-bottom:7px}
-.step p{font-size:14px;color:var(--muted)}
-.step .when{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--amber);background:var(--amber-50);border-radius:6px;padding:3px 9px}
+  background:var(--green);color:#fff;font-family:"Spectral",serif;font-size:29.7px;font-weight:600;margin-bottom:14px}
+.step h3{font-size:23px;margin-bottom:7px}
+.step p{font-size:18.9px;color:var(--muted)}
+.step .when{align-self:flex-start;margin-top:auto;font-size:16.2px;font-weight:700;color:var(--amber);background:var(--amber-50);border-radius:6px;padding:3px 9px}
 @media(min-width:861px){.steps .step:not(:last-child)::after{content:"";position:absolute;top:46px;right:-10px;width:20px;height:2px;background:var(--green-50);z-index:1}}
 @media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.steps{grid-template-columns:1fr}}
 
 /* SWITCH — перехід від бухгалтера */
 .switch-card{display:grid;grid-template-columns:1fr 1fr;background:var(--white);border:1px solid var(--hair);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
-.switch-l{padding:40px;background:var(--green-50)}
-.switch-l h2{font-size:27px;margin:12px 0 18px;color:var(--green-d)}
-.switch-pains{list-style:none;display:grid;gap:11px}
-.switch-pains li{position:relative;padding-left:24px;font-size:15px;color:var(--green-d)}
+.switch-l{padding:44px 40px;background:var(--green-50);display:flex;flex-direction:column;justify-content:flex-start}
+.switch-l .tag{font-size:22px}
+.switch-l h2{font-size:36.5px;margin:12px 0 18px;color:var(--green-d)}
+.switch-pains{list-style:none;display:grid;gap:16px}
+.switch-pains li{position:relative;padding-left:24px;font-size:20.2px;line-height:1.55;color:var(--green-d)}
 .switch-pains li::before{content:"–";position:absolute;left:6px;color:var(--green);font-weight:800}
-.switch-r{padding:40px}
-.switch-r h3{font-size:20px;margin-bottom:16px}
-.switch-r ul{list-style:none;display:grid;gap:11px;margin-bottom:20px}
-.switch-r li{font-size:15px;display:flex;gap:9px;align-items:flex-start}
-.switch-r .btn{width:100%;justify-content:center}
-.switch-note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
-@media(max-width:860px){.switch-card{grid-template-columns:1fr}.switch-l,.switch-r{padding:30px 24px}.switch-l h2{font-size:24px}}
+.switch-r{padding:56px 40px 44px;display:flex;flex-direction:column;justify-content:flex-start}
+.switch-r h3{font-size:22px;margin-bottom:16px;color:var(--green-d)}
+.switch-r ul{list-style:none;display:grid;gap:16px;margin-bottom:20px}
+.switch-r li{font-size:20.2px;line-height:1.55;display:flex;gap:9px;align-items:flex-start}
+.switch-r .btn{width:100%;justify-content:center;margin-top:auto}
+.switch-note{font-size:15px;color:var(--muted);margin-top:12px;text-align:center}
+@media(max-width:860px){.switch-card{grid-template-columns:1fr}.switch-l,.switch-r{padding:30px 24px}.switch-l h2{font-size:32.4px}}
 
 /* LEAD FORM */
 .form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:start}
-.form-l h2{font-size:32px;margin:12px 0 14px}
-.form-l p{color:var(--muted);font-size:16.5px;margin-bottom:18px}
-.form-bul{list-style:none;display:grid;gap:10px}
-.form-bul li{display:flex;gap:9px;font-size:15px;align-items:flex-start}
+.form-l{align-self:center}
+.form-l h2{font-size:43.2px;margin:12px 0 14px}
+.form-l p{color:var(--muted);font-size:22.3px;line-height:1.6;margin-bottom:28px}
+.form-bul{list-style:none;display:grid;gap:20px}
+.form-bul li{display:flex;gap:9px;font-size:20.2px;line-height:1.5;align-items:flex-start}
 .form-card{background:var(--white);border:1px solid var(--hair);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
-.form-card label{display:block;font-size:13.5px;font-weight:700;margin:14px 0 6px;color:var(--ink)}
+.form-card label{display:block;font-size:18.2px;font-weight:700;margin:14px 0 6px;color:var(--ink)}
 .form-card > label:first-of-type{margin-top:0}
 .form-card .opt{font-weight:500;color:var(--muted)}
 .form-card input[type=text],.form-card input[type=tel],.form-card input[type=email],.form-card textarea{
-  width:100%;font-family:inherit;font-size:15.5px;color:var(--ink);background:var(--paper);
+  width:100%;font-family:inherit;font-size:20.9px;color:var(--ink);background:var(--paper);
   border:1.5px solid var(--hair);border-radius:var(--r-sm);padding:13px 14px;transition:border-color .15s}
 .form-card textarea{resize:vertical}
 .form-card input:focus,.form-card textarea:focus{outline:none;border-color:var(--green)}
 .form-card input.err,.form-card textarea.err{border-color:#C0392B}
-.consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13px;line-height:1.45;color:var(--muted);cursor:pointer}
+.form-card label.consent{display:flex;gap:12px;align-items:flex-start;margin-top:16px;font-size:17.6px;font-weight:500;line-height:1.5;color:var(--muted);cursor:pointer}
+.form-card label.consent + label.consent{margin-top:18px}
 .consent input{flex:0 0 auto;width:18px;height:18px;margin-top:1px;accent-color:var(--green);cursor:pointer}
 .consent a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
 .consent a:hover{color:var(--green-d)}
 .form-card .btn{width:100%;justify-content:center;margin-top:20px}
-.form-status{font-size:14px;margin-top:12px;text-align:center;display:none}
+.form-status{font-size:18.9px;margin-top:12px;text-align:center;display:none}
 .form-status.ok{display:block;color:#2E7D32}
 .form-status.bad{display:block;color:#C0392B}
-.form-alt{font-size:13.5px;color:var(--muted);margin-top:14px;text-align:center}
+.form-alt{font-size:18.2px;color:var(--muted);margin-top:14px;text-align:center}
 .form-alt a{color:var(--green);font-weight:700;text-decoration:none}
-@media(max-width:860px){.form-grid{grid-template-columns:1fr}.form-l h2{font-size:26px}}
+@media(max-width:860px){.form-grid{grid-template-columns:1fr}.form-l h2{font-size:35.1px}}
 
-/* CTA band */
-.cta-band{background:var(--green-50);color:var(--ink);border:1px solid var(--hair);border-radius:26px;padding:50px;text-align:center}
-.cta-band h2{font-size:36px;color:var(--ink);margin-bottom:12px}
-.cta-band p{color:var(--muted);max-width:520px;margin:0 auto 26px;font-size:17px}
+/* CTA — повноширинний фінальний заклик на темному фоні */
+.cta{text-align:center;max-width:780px;margin:0 auto;padding:14px 0}
+.band--deep .cta h2{font-size:66px;line-height:1.06;color:var(--green-d);margin-bottom:22px;letter-spacing:-.015em}
+.band--deep .cta-lead{font-size:27px;font-weight:600;color:var(--green-d);margin:0 auto 8px}
+.band--deep .cta-lead b{color:#9B5E2E;font-weight:800}
+.band--deep .cta-sub{font-size:19.6px;line-height:1.6;color:var(--muted);max-width:600px;margin:0 auto 32px}
+.cta-btn{font-size:21px;padding:19px 38px;background:#9B5E2E;color:#FFFFFF;
+  box-shadow:0 18px 40px -20px rgba(67,41,26,.6)}
+.cta-btn:hover{background:#AE6C38}
+@media(max-width:560px){.band--deep .cta h2{font-size:42px}.cta-lead{font-size:23px}}
 
 /* footer */
-footer{background:var(--sand-2);color:var(--muted);padding:48px 0 30px;font-size:14px;border-top:1px solid var(--hair)}
-footer .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
-footer .fgrid > div:nth-child(2),footer .fgrid > div:nth-child(3){padding-top:56px}
-footer h4{color:var(--ink);font-family:"Spectral",serif;font-size:18px;margin-bottom:12px}
-footer a{color:var(--green-d);text-decoration:none;border-bottom:1px solid rgba(67,41,26,.25)}
-footer a:hover{color:var(--ink)}
-footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,26,.15);font-size:12.5px;color:var(--muted);opacity:.85;line-height:1.7}
+footer{background:#E8D7BA;color:#5A4636;padding:80px 0 0;font-size:18.9px;border-top:1px solid rgba(67,41,26,.12)}
+footer p{color:#5A4636;line-height:1.65}
+footer .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;align-items:start}
+footer h4{color:var(--green-d);font-family:"Spectral",serif;font-size:26px;margin-bottom:14px}
+footer .reqs{font-size:15px;color:var(--green-d);opacity:.6;margin-bottom:10px;line-height:1.6}
+footer a{color:var(--green-d);text-decoration:none;border-bottom:1px solid rgba(67,41,26,.2)}
+footer a:hover{color:var(--green-d);border-bottom-color:rgba(67,41,26,.5)}
+/* нижня строчка-копірайт — коричнева плашка на всю ширину, світлий текст */
+footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;font-size:16.9px;line-height:1.7}
 
 /* modal */
 .modal{position:fixed;inset:0;background:rgba(20,19,16,.6);display:none;align-items:flex-start;justify-content:center;
   padding:40px 18px;z-index:100;overflow:auto}
 .modal.open{display:flex}
 .modal .box{background:var(--paper);max-width:720px;width:100%;border-radius:18px;padding:34px 36px;position:relative}
-.modal .box h2{font-size:26px;margin-bottom:6px}
-.modal .box h3{font-family:"Manrope";font-size:15px;font-weight:700;margin:16px 0 4px;color:var(--ink)}
-.modal .box p{font-size:14px;color:var(--muted);margin-bottom:6px}
-.modal .x{position:absolute;top:16px;right:18px;font-size:26px;background:none;border:0;cursor:pointer;color:var(--muted);line-height:1}
+.modal .box h2{font-size:35.1px;margin-bottom:6px}
+.modal .box h3{font-family:"Manrope";font-size:20.2px;font-weight:700;margin:16px 0 4px;color:var(--ink)}
+.modal .box p{font-size:18.9px;color:var(--muted);margin-bottom:6px}
+.modal .x{position:absolute;top:16px;right:18px;font-size:35.1px;background:none;border:0;cursor:pointer;color:var(--muted);line-height:1}
 
 .ico3d{width:66px;height:66px;object-fit:contain;display:block;margin-bottom:12px;filter:drop-shadow(0 8px 14px rgba(67,41,26,.18))}
-.hero-visual{border-radius:24px;overflow:hidden;border:1px solid var(--hair);box-shadow:var(--shadow);background:var(--white)}
-.hero-visual img{display:block;width:100%;height:auto}
+.ico-line{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:14px;
+  background:var(--green-50);color:var(--green);margin-bottom:14px;border:1px solid rgba(138,85,36,.18)}
+.ico-line svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.diff .ico-line{background:none;border:0;width:auto;height:auto;border-radius:0;margin-bottom:16px}
+.diff .ico-line svg{width:38px;height:38px;stroke-width:1.5}
+.hero-visual{border:0;background:transparent;box-shadow:none;border-radius:0;overflow:hidden}
+.hero-visual{align-self:flex-end;position:relative;z-index:3;overflow:visible;margin-bottom:-60px}
+.hero-visual::after{content:"";position:absolute;left:12%;right:12%;bottom:34px;height:70px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at center, rgba(42,26,14,.4), transparent 72%);filter:blur(10px)}
+.hero-visual img{display:block;width:100%;height:auto;transform:scale(1.9) translateY(31.6%);transform-origin:center bottom;
+  filter:drop-shadow(0 18px 34px rgba(67,41,26,.22));
+  -webkit-mask-image:linear-gradient(to bottom, #000 74%, transparent 99%);
+  mask-image:linear-gradient(to bottom, #000 74%, transparent 99%)}
+.hero-visual img{transform:scale(1.9) translateY(23%)}
 .sec-head{position:relative}
 .calc-deco{position:absolute;right:0;top:-10px;width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(67,41,26,.18))}
 @media(max-width:560px){.calc-deco{display:none}}
@@ -221,25 +274,79 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand img{height:48px;width:auto;border-radius:3px}
 .brand .bt{display:flex;flex-direction:column;line-height:1.08}
-.brand .bt b{font-family:"Spectral",serif;font-weight:600;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--green-d)}
-.brand .bt small{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--green-d);margin-top:3px}
+.brand .bt b{font-family:"Spectral",serif;font-weight:600;font-size:29.7px;letter-spacing:.04em;text-transform:uppercase;color:var(--green-d)}
+.brand .bt small{font-size:15.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--green-d);margin-top:3px}
 .lang{display:inline-flex;align-items:center;background:var(--green-50);border:1px solid var(--hair);border-radius:100px;padding:3px}
-.lang button{font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;padding:6px 11px;border-radius:100px;color:var(--green-d);background:none;border:0;cursor:pointer;transition:.2s}
+.lang button{font-family:inherit;font-size:16.2px;font-weight:700;letter-spacing:.06em;padding:6px 11px;border-radius:100px;color:var(--green-d);background:none;border:0;cursor:pointer;transition:.2s}
 .lang button.active{background:var(--green);color:#fff}
-.tb .btn{padding:10px 18px;font-size:14px}
-@media(max-width:560px){.tb .btn{display:none}.brand .bt b{font-size:19px}.brand .bt small{font-size:10px}}
+.tb .btn{padding:10px 18px;font-size:18.9px}
+@media(max-width:560px){.tb .btn{display:none}.brand .bt b{font-size:25.7px}.brand .bt small{font-size:13.5px}}
 .painlist{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.painlist .p{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:15px 18px;font-size:15.5px}
-.painlist .q{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--green-50);color:var(--green-d);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin-top:1px}
+.painlist .p{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:15px 18px;font-size:20.9px}
+.painlist .q{flex:0 0 auto;width:26px;height:26px;color:var(--green-d);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.painlist .q svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:620px){.painlist{grid-template-columns:1fr}}
 @media(max-width:860px){
   .hero-grid,.calc-grid{grid-template-columns:1fr}
   .cards,.diff .cards{grid-template-columns:1fr}
   footer .fgrid{grid-template-columns:1fr}
   footer .fgrid > div:nth-child(2),footer .fgrid > div:nth-child(3){padding-top:0}
-  .hero h1{font-size:38px}.sec-head h2,.cta-band h2{font-size:29px}
+  .hero h1{font-size:38px}.sec-head h2,.cta-band h2{font-size:39.2px}
   section{padding:54px 0}.cta-band{padding:36px 22px}
+  /* hero: на планшеті/телефоні скидаємо десктопні трансформації постаті */
+  .hero{padding:44px 0 0}
+  .hero-grid{gap:28px}
+  .hero-visual{margin-top:16px;overflow:hidden;border-radius:18px;max-width:340px;margin-left:auto;margin-right:auto;align-self:center;z-index:1}
+  .hero-visual img{transform:none;width:100%}
 }
+@media(max-width:560px){
+  .hero h1{font-size:30px}
+  .hero p.lead{font-size:22.3px}
+  .hero-cta{gap:10px;flex-wrap:wrap}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .trust{gap:10px 16px;flex-wrap:wrap}
+  .hero-visual{max-width:280px}
+  .form-grid{gap:24px}
+  .switch-l,.switch-r{padding:26px 22px}
+  .band--deep{padding-top:62px;padding-bottom:62px}
+}
+
+/* ===== BANDS: фонова логіка блоків (без патерну) ===== */
+.band{position:relative;overflow:hidden}
+.band>.wrap{position:relative;z-index:1}
+
+.band--light{background:#FBF8F2}            /* слонова кістка */
+/* блок «Це про вас?» — суцільний колір слонової кості, без фонової картинки */
+.band--light.pains{background:#FBF8F2;padding-top:118px}
+.pains .sec-head{text-align:center;max-width:760px;margin:0 auto 38px}
+.calc-head{text-align:center;max-width:760px;margin:0 auto 38px}
+.band--dark{background:#E8D7BA}             /* світло-коричневий акцент */
+
+/* глибокий темно-коричневий блок — кремовий текст */
+.band--deep{background:#FBF8F2;color:#43291A}
+/* блок «Що бухгалтер робить за вас» — суцільний світло-коричневий, без фонової картинки */
+.band--light.warm{
+  background:
+    repeating-linear-gradient(0deg, rgba(67,41,26,.02) 0 1px, transparent 1px 30px),
+    repeating-linear-gradient(90deg, rgba(67,41,26,.02) 0 1px, transparent 1px 30px),
+    #F1E8D6;
+  padding-top:88px;padding-bottom:88px}
+.warm .sec-head{text-align:center;max-width:760px;margin:0 auto 38px}
+.warm .sec-head h2{color:var(--green-d)}
+.warm .sec-head p{color:var(--muted)}
+.band--deep h2,.band--deep h3{color:#FBF3E6}
+.band--deep p,.band--deep li,.band--deep .lead{color:#E3D3BC}
+.band--deep .eyebrow,.band--deep .tag{color:#E8C98A;background:transparent}
+.band--deep .li-ic{color:#E8C98A}
+/* у глибокому блоці картки — тёмное стекло, текст кремовий, больше воздуха */
+.band--deep{padding-top:92px;padding-bottom:92px;line-height:1.72}
+.band--deep .sec-head{margin-bottom:42px}
+.band--deep .sec-head p{line-height:1.78}
+.band--deep .card,.band--deep .list-card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+.band--deep .card{padding:28px 26px}
+.band--deep .card h3,.band--deep .list-card h3{color:#FBF3E6}
+.band--deep .card p,.band--deep .list-card li{color:#E3D3BC;line-height:1.7}
+.band--deep .list-card.incl{border-left-color:#E8C98A}
 </style>
 </head>
 <body>
@@ -261,57 +368,62 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
     <div>
       <span class="eyebrow rv" data-i18n="hero_eyebrow">Бухгалтерія для українців у Польщі</span>
       <h1 class="rv" style="animation-delay:.05s" data-i18n="hero_h1">Відкрили JDG чи <em>sp. z o.o.</em> — і не розумієте, що з ZUS, VAT і KSeF?</h1>
-      <p class="lead rv" style="animation-delay:.12s" data-i18n="hero_lead">Переводимо польську бюрократію на зрозумілу вам мову — українською й російською — і беремо її на себе. Дедлайни під контролем, відповідь у месенджері за 2–3 години.</p>
+      <p class="lead rv" style="animation-delay:.12s" data-i18n="hero_lead">Переводимо польську бюрократію на зрозумілу вам мову — українською й російською — і беремо її на себе.</p>
+      <ul class="hero-bullets rv" style="animation-delay:.15s">
+        <li><span class="hb-ic">✓</span><span data-i18n="hero_b1">Команда з практичним досвідом</span></li>
+        <li><span class="hb-ic">✓</span><span data-i18n="hero_b2">Рішення під вашу нішу</span></li>
+        <li><span class="hb-ic">✓</span><span data-i18n="hero_b3">Фокус на бізнес-результаті</span></li>
+      </ul>
       <div class="hero-cta rv" style="animation-delay:.18s">
         <a class="btn btn-wa wa" href="#" data-msg="Вітаю! Відкриваю/веду бізнес у Польщі, хочу консультацію по бухгалтерії (СТАРТ)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="hero_cta_wa">Написати в WhatsApp</span></a>
-        <a class="btn btn-ghost" href="#kalkulator" data-i18n="hero_cta_calc">Порахувати вартість</a>
+        <a class="btn btn-ivory" href="#kalkulator" data-i18n="hero_cta_calc">Порахувати вартість</a>
       </div>
       <div class="trust rv" style="animation-delay:.24s">
         <span><span class="dot"></span><span data-i18n="trust_1"><b>Рідна мова</b> — укр/рус</span></span>
-        <span><span class="dot"></span><span data-i18n="trust_2">Відповідь за <b>2–3 год</b></span></span>
-        <span><span class="dot"></span><span data-i18n="trust_3"><b>1-й місяць</b> без ризику</span></span>
+        <span><span class="dot"></span><span data-i18n="trust_2"><b>Контакт</b> з бухгалтером</span></span>
+        <span><span class="dot"></span><span data-i18n="trust_3"><b>Онлайн</b> по всій Польщі</span></span>
       </div>
     </div>
     <div class="hero-visual rv" style="animation-delay:.2s">
-      <img src="img/hero-a.png" alt="Привітна бухгалтер у світлому офісі">
+      <img src="img/hero-liliia.png" alt="Бухгалтер-експерт Gryphon Group">
     </div>
   </div>
 </header>
 
 <!-- PAINS -->
-<section class="pains">
+<section class="pains band band--light">
   <div class="wrap">
     <div class="sec-head">
       <span class="tag" data-i18n="pains_tag">Це про вас?</span>
-      <h2 data-i18n="pains_h2">Коли «nie ogarniam» — це нормально</h2>
+      <h2 data-i18n="pains_h2">Коли «nie ogarniam» — це&nbsp;нормально</h2>
       <p data-i18n="pains_p">Польська система складна навіть для поляків. Ви не зобов'язані розбиратися в усіх абревіатурах, щоб спокійно вести бізнес.</p>
     </div>
     <div class="painlist">
-      <div class="p"><span class="q">?</span><span data-i18n="pain_1">«Відкрив фірму, щоб заробляти більше — а не тонути в паперах, яких не розумію»</span></div>
-      <div class="p"><span class="q">?</span><span data-i18n="pain_2">«Не розумію, що вибрати: ryczałt, skala чи liniowy»</span></div>
-      <div class="p"><span class="q">?</span><span data-i18n="pain_3">«Чекаю тиждень на відповідь від бухгалтера»</span></div>
-      <div class="p"><span class="q">?</span><span data-i18n="pain_4">«Ніхто не нагадує про дедлайни, wakacje od ZUS чи Mały ZUS Plus»</span></div>
-      <div class="p"><span class="q">?</span><span data-i18n="pain_5">«Боюся штрафу через одну дрібну формальність»</span></div>
-      <div class="p"><span class="q">?</span><span data-i18n="pain_6">«З KSeF лишаюсь сам — ще й чужою мовою»</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 16.5h4"/></svg></span><span data-i18n="pain_1">«Відкрив фірму, щоб заробляти більше — а не тонути в паперах, яких не розумію»</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.02M4.5 12h.02M4.5 18h.02"/></svg></span><span data-i18n="pain_2">«Не розумію, що вибрати: ryczałt, skala чи liniowy»</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><span data-i18n="pain_3">«Чекаю тиждень на відповідь від бухгалтера»</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg></span><span data-i18n="pain_4">«Ніхто не нагадує про дедлайни, wakacje od ZUS чи Mały ZUS Plus»</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M12 4.5l8.5 14.5h-17z"/><path d="M12 10.5v4M12 17.3v.02"/></svg></span><span data-i18n="pain_5">«Боюся штрафу через одну дрібну формальність»</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M9 9.5h6M9 12.5h4"/></svg></span><span data-i18n="pain_6">«З KSeF лишаюсь сам — ще й чужою мовою»</span></div>
     </div>
   </div>
 </section>
 
 <!-- WARMING -->
-<section>
+<section class="band band--light warm">
   <div class="wrap">
     <div class="sec-head">
       <span class="tag" data-i18n="warm_tag">Ви не самі</span>
-      <h2 data-i18n="warm_h2">Що ваш бухгалтер робить за вас</h2>
+      <h2 data-i18n="warm_h2">Що ваш бухгалтер робить&nbsp;за&nbsp;вас</h2>
       <p data-i18n="warm_p">Справжній бухгалтер, не бот. Не мусите пам'ятати абревіатури й дедлайни — ми тримаємо це за вас.</p>
     </div>
     <div class="cards">
-      <div class="card"><img class="ico3d" src="img/ic-docs.png" alt=""><h3 data-i18n="warm_c1_h">Веде і пояснює</h3><p data-i18n="warm_c1_p">Пояснимо кожне рішення простими словами. Не знаємо відповіді — перевіримо й повернемось із нею.</p></div>
-      <div class="card"><img class="ico3d" src="img/ic-clock.png" alt=""><h3 data-i18n="warm_c2_h">Тримає дедлайни</h3><p data-i18n="warm_c2_p">Нагадування SMS: 19-го — ZUS і PIT, 24-го — VAT. Нічого не треба тримати в голові.</p></div>
-      <div class="card"><img class="ico3d" src="img/ic-phone.png" alt=""><h3 data-i18n="warm_c3_h">На зв'язку 2–3 год</h3><p data-i18n="warm_c3_p">Зателефонуємо в urząd і ZUS замість вас. Відповідь у месенджері в робочий час за 2–3 години.</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span><h3 data-i18n="warm_c1_h">Веде і пояснює</h3><p data-i18n="warm_c1_p">Пояснимо кожне рішення простими словами. Не знаємо відповіді — перевіримо й повернемось із нею.</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2"/><path d="M5 3 2.5 5.5M22 6l-2.5-2.5"/></svg></span><h3 data-i18n="warm_c2_h">Тримає дедлайни</h3><p data-i18n="warm_c2_p">Нагадування SMS: 19-го — ZUS і PIT, 24-го — VAT. Нічого не треба тримати в голові.</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></span><h3 data-i18n="warm_c3_h">На зв'язку 2–3 год</h3><p data-i18n="warm_c3_p">Зателефонуємо в urząd і ZUS замість вас. Відповідь у месенджері в робочий час за 2–3 години.</p></div>
     </div>
     <div class="list-card incl" style="margin-top:16px">
-      <h3 data-i18n="warm_list_h">✓ І ще ми беремо на себе</h3>
+      <h3 data-i18n="warm_list_h">І ще ми беремо на себе</h3>
       <ul>
         <li><span class="li-ic">✓</span><span data-i18n="warm_li1">Подаємо декларації в US і ZUS — без вашої участі</span></li>
         <li><span class="li-ic">✓</span><span data-i18n="warm_li2">Повідомляємо про зміни в законах, що стосуються саме вас</span></li>
@@ -324,10 +436,9 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
 </section>
 
 <!-- CALC -->
-<section id="kalkulator">
+<section id="kalkulator" class="band band--light">
   <div class="wrap">
-    <div class="sec-head">
-      <img class="calc-deco" src="img/obj-calc.png" alt="">
+    <div class="sec-head calc-head">
       <span class="tag" data-i18n="calc_tag">Прозора ціна</span>
       <h2 data-i18n="calc_h2">Порахуйте орієнтовну вартість обслуговування</h2>
       <p data-i18n="calc_p">Оберіть форму, статус VAT і кількість документів. Точну вартість підтвердимо в розмові — без прихованих доплат «за кожне слово».</p>
@@ -362,9 +473,8 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
         <p class="calc-note" data-i18n="calc_note">Калькулятор показує орієнтовну ціну місячного обслуговування. Додаткові послуги (реєстрація sp. z o.o., річний звіт, декларації тощо) — у переліку праворуч.</p>
       </div>
 
-      <div class="lists">
-        <div class="list-card incl">
-          <h3 data-i18n="incl_h">✓ Включено в тариф</h3>
+      <div class="list-card incl">
+          <h3 data-i18n="incl_h">Включено в тариф</h3>
           <ul>
             <li><span class="li-ic">✓</span><span data-i18n="incl_1">Свій бухгалтер + необмежені консультації, відповідь 2–3 год</span></li>
             <li><span class="li-ic">✓</span><span data-i18n="incl_2">Розрахунок авансів PIT і VAT, висилка JPK_VAT, VAT-UE</span></li>
@@ -375,8 +485,13 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
             <li><span class="li-ic">✓</span><span data-i18n="incl_7">Річна декларація PIT власника на основі наших книг<span class="badge">0 zł</span></span></li>
             <li><span class="li-ic">✓</span><span data-i18n="incl_8">Відкриття JDG безкоштовно (договір від 12 міс)</span></li>
           </ul>
-        </div>
-        <details class="extra">
+          <div class="incl-foot">
+            <span class="incl-foot-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <p data-i18n="incl_foot">Усе перелічене — без прихованих доплат, у вашій фіксованій ціні.</p>
+          </div>
+      </div>
+    </div>
+    <details class="extra calc-extra">
           <summary><span data-i18n="extra_summary">Додаткові послуги (окрема оплата)</span> <span class="plus">+</span></summary>
           <div class="body">
             <p data-i18n="extra_p">Найчастіші — повний перелік надамо разом із договором:</p>
@@ -393,33 +508,31 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
             </ul>
           </div>
         </details>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- DIFF -->
-<section class="diff">
+<section class="diff band band--dark">
   <div class="wrap">
     <div class="sec-head">
       <span class="tag" data-i18n="diff_tag">Чим відрізняємось</span>
-      <h2 data-i18n="diff_h2">Чому нас обирають українці в Польщі</h2>
+      <h2 data-i18n="diff_h2">Чому нас обирають українці&nbsp;в&nbsp;Польщі</h2>
     </div>
     <div class="cards">
-      <div class="card"><img class="ico3d" src="img/ic-chat.png" alt=""><h3 data-i18n="diff_c1_h">Рідною мовою</h3><p data-i18n="diff_c1_p">Пояснюємо ZUS, VAT, KSeF українською й російською. Без мовного бар'єра і страху помилитися чужою мовою.</p></div>
-      <div class="card"><img class="ico3d" src="img/ic-coins.png" alt=""><h3 data-i18n="diff_c2_h">Чесна, прозора ціна</h3><p data-i18n="diff_c2_p">Бачите вартість одразу в калькуляторі. Багато бюро ховають ціну «за запитом» — у нас усе відкрито.</p></div>
-      <div class="card"><img class="ico3d" src="img/ic-handshake.png" alt=""><h3 data-i18n="diff_c3_h">Свій бухгалтер, не «робот»</h3><p data-i18n="diff_c3_p">Закріплений спеціаліст, який відповідає за 2–3 год і пояснює рішення, а не онлайн-сервіс «зроби сам».</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9s1.3-6.5 3.8-9z"/></svg></span><h3 data-i18n="diff_c1_h">Рідною мовою</h3><p data-i18n="diff_c1_p">Пояснюємо ZUS, VAT, KSeF українською й російською. Без мовного бар'єра і страху помилитися чужою мовою.</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.5-1-1.5-1.6-2.7-1.6-1.7 0-2.9 1.1-2.9 2.5 0 3.1 5.8 1.6 5.8 4.7 0 1.4-1.3 2.5-3 2.5-1.3 0-2.4-.6-2.9-1.7"/><path d="M12 6v1.6M12 16.4V18"/></svg></span><h3 data-i18n="diff_c2_h">Чесна, прозора ціна</h3><p data-i18n="diff_c2_p">Бачите вартість одразу в калькуляторі. Багато бюро ховають ціну «за запитом» — у нас усе відкрито.</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.5c0-3.3 2.9-5.6 6.5-5.6s6.5 2.3 6.5 5.6"/></svg></span><h3 data-i18n="diff_c3_h">Свій бухгалтер, не «робот»</h3><p data-i18n="diff_c3_p">Закріплений спеціаліст, який відповідає за 2–3 год і пояснює рішення, а не онлайн-сервіс «зроби сам».</p></div>
     </div>
   </div>
 </section>
 
 <!-- STEPS -->
-<section>
+<section class="band band--light">
   <div class="wrap">
     <div class="sec-head" style="margin:0 auto 36px;text-align:center">
       <span class="tag" data-i18n="steps_tag">Просто і прозоро</span>
       <h2 data-i18n="steps_h2">Як ми працюємо — 4 кроки</h2>
-      <p style="margin:0 auto" data-i18n="steps_p">Від першого повідомлення до спокою, коли всі декларації подані без вашої участі.</p>
+      <p class="steps-p" style="margin:0 auto" data-i18n="steps_p">Від першого повідомлення до спокою,<br>коли всі декларації подані без вашої&nbsp;участі.</p>
     </div>
     <div class="steps">
       <div class="step">
@@ -450,12 +563,12 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
 </section>
 
 <!-- SWITCH -->
-<section>
+<section class="band band--dark">
   <div class="wrap">
     <div class="switch-card">
       <div class="switch-l">
         <span class="tag" data-i18n="sw_tag">Уже маєте бухгалтера?</span>
-        <h2 data-i18n="sw_h2">Платите бухгалтеру, а відповіді все одно шукаєте на форумах?</h2>
+        <h2 data-i18n="sw_h2">Платите бухгалтеру,<br>а відповіді все<br>одно шукаєте на форумах?</h2>
         <ul class="switch-pains">
           <li data-i18n="sw_p1">Не бере слухавку, на повідомлення відповідає за тиждень</li>
           <li data-i18n="sw_p2">За рік — жодної поради чи пояснення, за що ви платите</li>
@@ -479,7 +592,7 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
 </section>
 
 <!-- FAQ -->
-<section>
+<section class="band band--light">
   <div class="wrap">
     <div class="sec-head" style="margin:0 auto 36px;text-align:center">
       <span class="tag" data-i18n="faq_tag">Часті питання</span>
@@ -504,12 +617,12 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
 </section>
 
 <!-- LEAD FORM -->
-<section id="zayavka">
+<section id="zayavka" class="band band--dark">
   <div class="wrap">
     <div class="form-grid">
       <div class="form-l">
         <span class="tag" data-i18n="form_tag">Залиште заявку</span>
-        <h2 data-i18n="form_h2">Передзвонимо і розберемо вашу ситуацію</h2>
+        <h2 data-i18n="form_h2">Передзвонимо і розберемо<br>вашу ситуацію</h2>
         <p data-i18n="form_p">Залиште контакти — зв'яжемося в робочий час за 2–3 години. Безкоштовно й без зобов'язань: підкажемо, з чого почати або як перейти від бухгалтера.</p>
         <ul class="form-bul">
           <li><span class="li-ic">✓</span><span data-i18n="form_b1">Відповідь у месенджері / телефоном за 2–3 год</span></li>
@@ -545,12 +658,13 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
 </section>
 
 <!-- CTA BAND -->
-<section>
+<section class="band band--deep">
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta">
       <h2 data-i18n="cta_h2">Розберемо вашу ситуацію за 10 хвилин</h2>
-      <p data-i18n="cta_p">Напишіть у WhatsApp слово СТАРТ — поставимо кілька питань і підкажемо, з чого почати: реєстрація, налаштування ZUS/VAT/KSeF або перехід від бухгалтера.</p>
-      <a class="btn btn-wa wa" href="#" data-msg="СТАРТ"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="cta_btn">Написати в WhatsApp</span></a>
+      <p class="cta-lead" data-i18n="cta_lead">Напишіть у WhatsApp<br>слово <b>СТАРТ</b></p>
+      <p class="cta-sub" data-i18n="cta_p">Поставимо кілька питань і підкажемо, з чого почати: реєстрація, налаштування ZUS/VAT/KSeF або перехід від бухгалтера.</p>
+      <a class="btn btn-wa wa cta-btn" href="#" data-msg="СТАРТ"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="cta_btn">Написати в WhatsApp</span></a>
     </div>
   </div>
 </section>
@@ -562,7 +676,7 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
       <div>
         <img src="img/logo-mark.png" alt="" style="height:46px;margin-bottom:10px;display:block">
         <h4>Gryphon Group Sp. z o.o.</h4>
-        <p style="font-size:12.5px;margin-bottom:8px">NIP 8133823354 · REGON 384467200 · KRS 0000805925 · RPK047401</p>
+        <p class="reqs">NIP 8133823354 · REGON 384467200 · KRS 0000805925 · RPK047401</p>
         <p data-i18n="foot_desc">Бухгалтерія та реєстрація бізнесу для українців у Польщі. JDG, sp. z o.o., ZUS, VAT, KSeF — рідною мовою.</p>
       </div>
       <div>
@@ -576,9 +690,9 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
         <p><a href="#" class="open-policy" data-i18n="foot_privacy">Політика приватності</a></p>
       </div>
     </div>
-    <div class="legal">
-      © 2026 Gryphon Group Sp. z o.o.
-    </div>
+  </div>
+  <div class="legal">
+    <div class="wrap">© 2026 Gryphon Group Sp. z o.o.</div>
   </div>
 </footer>
 
@@ -587,7 +701,7 @@ footer .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(67,41,2
   <div class="box">
     <button class="x" id="closePolicy" aria-label="Закрити">×</button>
     <h2 data-i18n="pp_title">Політика приватності</h2>
-    <p style="font-size:13px" data-i18n="pp_meta">Остання редакція: 13.06.2026 · відповідає RODO (Регламент ЄС 2016/679)</p>
+    <p style="font-size:17.6px" data-i18n="pp_meta">Остання редакція: 13.06.2026 · відповідає RODO (Регламент ЄС 2016/679)</p>
     <h3 data-i18n="pp_h1">1. Адміністратор даних</h3>
     <p data-i18n="pp_1">Gryphon Group Sp. z o.o., ul. Aleja Armii Krajowej 80 lok 18, 35-307 Rzeszów. NIP 8133823354, REGON 384467200, KRS 0000805925, RPK047401. Контакт: admin@gryphongroup.pl, +48 516 929 619.</p>
     <h3 data-i18n="pp_h2">2. Які дані обробляємо</h3>
@@ -728,14 +842,17 @@ var RU={
   nav_cta:"Написать нам",
   hero_eyebrow:"Бухгалтерия для украинцев в Польше",
   hero_h1:"Открыли JDG или <em>sp. z o.o.</em> — и не понимаете, что с ZUS, VAT и KSeF?",
-  hero_lead:"Переводим польскую бюрократию на понятный вам язык — на украинском и русском — и берём её на себя. Дедлайны под контролем, ответ в мессенджере за 2–3 часа.",
+  hero_lead:"Переводим польскую бюрократию на понятный вам язык — на украинском и русском — и берём её на себя.",
+  hero_b1:"Команда с практическим опытом",
+  hero_b2:"Решение под вашу нишу",
+  hero_b3:"Фокус на бизнес-результате",
   hero_cta_wa:"Написать в WhatsApp",
   hero_cta_calc:"Рассчитать стоимость",
   trust_1:"<b>Родной язык</b> — укр/рус",
-  trust_2:"Ответ за <b>2–3 ч</b>",
-  trust_3:"<b>1-й месяц</b> без риска",
+  trust_2:"<b>Контакт</b> с бухгалтером",
+  trust_3:"<b>Онлайн</b> по всей Польше",
   pains_tag:"Это про вас?",
-  pains_h2:"Когда «nie ogarniam» — это нормально",
+  pains_h2:"Когда «nie ogarniam» — это&nbsp;нормально",
   pains_p:"Польская система сложна даже для поляков. Вы не обязаны разбираться во всех аббревиатурах, чтобы спокойно вести бизнес.",
   pain_1:"«Открыл фирму, чтобы зарабатывать больше — а не тонуть в бумагах, которых не понимаю»",
   pain_2:"«Не понимаю, что выбрать: ryczałt, skala или liniowy»",
@@ -744,7 +861,7 @@ var RU={
   pain_5:"«Боюсь штрафа из-за одной мелкой формальности»",
   pain_6:"«С KSeF остаюсь один — да ещё на чужом языке»",
   warm_tag:"Вы не одни",
-  warm_h2:"Что ваш бухгалтер делает за вас",
+  warm_h2:"Что ваш бухгалтер делает&nbsp;за&nbsp;вас",
   warm_p:"Настоящий бухгалтер, не бот. Не нужно помнить аббревиатуры и дедлайны — мы держим это за вас.",
   warm_c1_h:"Ведёт и объясняет",
   warm_c1_p:"Объясним каждое решение простыми словами. Не знаем ответа — проверим и вернёмся с ним.",
@@ -752,7 +869,7 @@ var RU={
   warm_c2_p:"Напоминания SMS: 19-го — ZUS и PIT, 24-го — VAT. Ничего не нужно держать в голове.",
   warm_c3_h:"На связи 2–3 ч",
   warm_c3_p:"Позвоним в urząd и ZUS вместо вас. Ответ в мессенджере в рабочее время за 2–3 часа.",
-  warm_list_h:"✓ И ещё мы берём на себя",
+  warm_list_h:"И ещё мы берём на себя",
   warm_li1:"Подаём декларации в US и ZUS — без вашего участия",
   warm_li2:"Сообщаем об изменениях в законах, которые касаются именно вас",
   warm_li3:"Оформляем wakacje od ZUS, чтобы льгота не пропала",
@@ -773,7 +890,7 @@ var RU={
   calc_small:"Ориентировочно netto / месяц",
   calc_btn:"Получить предложение",
   calc_note:"Калькулятор показывает ориентировочную цену месячного обслуживания. Дополнительные услуги (регистрация sp. z o.o., годовой отчёт, декларации и т. д.) — в списке справа.",
-  incl_h:"✓ Включено в тариф",
+  incl_h:"Включено в тариф",
   incl_1:"Свой бухгалтер + неограниченные консультации, ответ 2–3 ч",
   incl_2:"Расчёт авансов PIT и VAT, отправка JPK_VAT, VAT-UE",
   incl_3:"Расчёты ZUS и годовой składki zdrowotnej",
@@ -782,6 +899,7 @@ var RU={
   incl_6:"Объяснение решений на украинском / русском",
   incl_7:"Годовая декларация PIT владельца на основе наших книг<span class=\"badge\">0 zł</span>",
   incl_8:"Открытие JDG бесплатно (договор от 12 мес)",
+  incl_foot:"Всё перечисленное — без скрытых доплат, в вашей фиксированной цене.",
   extra_summary:"Дополнительные услуги (отдельная оплата)",
   extra_p:"Самые частые — полный список предоставим вместе с договором:",
   extra_1:"Регистрация sp. z o.o. <b>1300 zł</b>",
@@ -794,7 +912,7 @@ var RU={
   extra_8:"Документы import / eksport <b>+30 zł/док</b>",
   extra_9:"Срочные / праздничные услуги <b>+100%</b>",
   diff_tag:"Чем отличаемся",
-  diff_h2:"Почему нас выбирают украинцы в Польше",
+  diff_h2:"Почему нас выбирают украинцы&nbsp;в&nbsp;Польше",
   diff_c1_h:"На родном языке",
   diff_c1_p:"Объясняем ZUS, VAT, KSeF на украинском и русском. Без языкового барьера и страха ошибиться на чужом языке.",
   diff_c2_h:"Честная, прозрачная цена",
@@ -803,7 +921,7 @@ var RU={
   diff_c3_p:"Закреплённый специалист, который отвечает за 2–3 ч и объясняет решения, а не онлайн-сервис «сделай сам».",
   steps_tag:"Просто и прозрачно",
   steps_h2:"Как мы работаем — 4 шага",
-  steps_p:"От первого сообщения до спокойствия, когда все декларации поданы без вашего участия.",
+  steps_p:"От первого сообщения до спокойствия,<br>когда все декларации поданы без вашего&nbsp;участия.",
   step1_h:"Договор и ваш бухгалтер",
   step1_p:"Подписываем договор, закрепляем за вами личного бухгалтера и даём доступ к программе. Всё онлайн, без поездок.",
   step2_h:"Вы присылаете документы",
@@ -816,7 +934,7 @@ var RU={
   step4_p:"Сами подаём декларации в US и ZUS. SMS-напоминания: 19-го — ZUS и PIT, 24-го — VAT. Вы ничего не держите в голове.",
   step4_when:"19-го и 24-го",
   sw_tag:"Уже есть бухгалтер?",
-  sw_h2:"Платите бухгалтеру, а ответы всё равно ищете на форумах?",
+  sw_h2:"Платите бухгалтеру,<br>а ответы всё<br>равно ищете на форумах?",
   sw_p1:"Не берёт трубку, на сообщения отвечает через неделю",
   sw_p2:"За год — ни одного совета или объяснения, за что вы платите",
   sw_p3:"Снова подняли цену, а сервис остался прежним",
@@ -857,7 +975,7 @@ var RU={
   faq_q13:"Что с годовым отчётом sp. z o.o.?",
   faq_a13:"Это отдельная услуга, но цену фиксируем заранее — от 700 zł, без сюрпризов в конце года.",
   form_tag:"Оставьте заявку",
-  form_h2:"Перезвоним и разберём вашу ситуацию",
+  form_h2:"Перезвоним и разберём<br>вашу ситуацию",
   form_p:"Оставьте контакты — свяжемся в рабочее время за 2–3 часа. Бесплатно и без обязательств: подскажем, с чего начать или как перейти от бухгалтера.",
   form_b1:"Ответ в мессенджере / по телефону за 2–3 ч",
   form_b2:"На украинском и русском",
@@ -875,7 +993,8 @@ var RU={
   form_alt_pre:"Хотите быстрее? ",
   form_alt_link:"Напишите в WhatsApp →",
   cta_h2:"Разберём вашу ситуацию за 10 минут",
-  cta_p:"Напишите в WhatsApp слово СТАРТ — зададим несколько вопросов и подскажем, с чего начать: регистрация, настройка ZUS/VAT/KSeF или переход от бухгалтера.",
+  cta_lead:"Напишите в WhatsApp<br>слово <b>СТАРТ</b>",
+  cta_p:"Зададим несколько вопросов и подскажем, с чего начать: регистрация, настройка ZUS/VAT/KSeF или переход от бухгалтера.",
   cta_btn:"Написать в WhatsApp",
   foot_desc:"Бухгалтерия и регистрация бизнеса для украинцев в Польше. JDG, sp. z o.o., ZUS, VAT, KSeF — на родном языке.",
   foot_contact_h:"Контакт",
