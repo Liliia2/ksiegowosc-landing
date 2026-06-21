@@ -850,10 +850,9 @@ if(leadForm){
       .then(function(r){return r.json().catch(function(){return {ok:r.ok};});})
       .then(function(res){
         if(res&&res.ok){
-          statusEl.className='form-status ok';
-          statusEl.textContent=fmsg('ok');
           leadForm.reset();
-          try{fbq('track','Lead',{content_name:'form'});}catch(e){}
+          window.location.href='dziekujemy.html?lang='+currentLang;
+          return;
         }else{
           statusEl.className='form-status bad';
           statusEl.textContent=fmsg('fail');

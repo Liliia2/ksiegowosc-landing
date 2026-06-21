@@ -3,3 +3,5 @@ integrations/
 .claude/
 index.html.bak-fontx2
 *.bak-*
+
+.vercel

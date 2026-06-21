@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Дякуємо! Заявку отримано — Gryphon Group</title>
+<meta name="description" content="Дякуємо за заявку. Зв'яжемося з вами в робочий час протягом 2–3 годин.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F6F1E8; --paper:#FBF8F2; --white:#FFFFFF;
+  --ink:#2A1A0E; --muted:#5A4636; --hair:rgba(42,26,14,.13);
+  --green:#8A5524; --green-d:#43291A; --wa:#1FA855;
+  --shadow:0 1px 0 rgba(27,26,23,.04), 0 18px 40px -28px rgba(11,77,59,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Manrope",sans-serif;color:var(--ink);line-height:1.65;
+  background:var(--sand);min-height:100vh;display:flex;flex-direction:column;
+  background-image:radial-gradient(1200px 600px at 80% -10%, #FCEFD7 0%, rgba(252,239,215,0) 60%),
+                   radial-gradient(900px 500px at -10% 10%, #EFE3D0 0%, rgba(239,227,208,0) 55%);
+  -webkit-font-smoothing:antialiased;
+}
+h1{font-family:"Spectral",serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
+.tb{display:flex;justify-content:center;padding:26px 20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{height:48px;width:auto;border-radius:3px}
+.brand .bt{display:flex;flex-direction:column;line-height:1.08}
+.brand .bt b{font-family:"Spectral",serif;font-weight:600;font-size:29.7px;letter-spacing:.04em;text-transform:uppercase;color:var(--green-d)}
+.brand .bt small{font-size:15.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--green-d);margin-top:3px}
+.wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:20px 20px 60px}
+.card{background:var(--white);border:1px solid var(--hair);border-radius:24px;
+  box-shadow:var(--shadow);max-width:560px;width:100%;padding:48px 40px;text-align:center}
+.check{width:84px;height:84px;border-radius:50%;background:#EAF6EE;display:flex;
+  align-items:center;justify-content:center;margin:0 auto 26px}
+.check svg{width:42px;height:42px}
+.card h1{font-size:40px;margin-bottom:16px;color:var(--green-d)}
+.card .lead{font-size:20.5px;color:var(--muted);margin-bottom:8px}
+.card .sub{font-size:17px;color:var(--muted);margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-weight:700;font-size:18px;border-radius:14px;padding:15px 26px;
+  text-decoration:none;cursor:pointer;border:0;transition:transform .15s ease, box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 12px 26px -14px rgba(31,168,85,.7);width:100%}
+.btn-ghost{background:transparent;color:var(--green-d);border:1.5px solid var(--hair);margin-top:14px;width:100%}
+.tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.04em;
+  color:var(--green);background:#EFE3D0;border-radius:999px;padding:6px 14px;margin-bottom:22px}
+.lang{margin-top:28px;font-size:15px;color:var(--muted)}
+.lang a{color:var(--green);font-weight:700;text-decoration:none;cursor:pointer}
+@media(max-width:560px){.card{padding:36px 24px}.card h1{font-size:32px}.brand .bt b{font-size:25.7px}}
+</style>
+</head>
+<body>
+  <div class="tb">
+    <a class="brand" href="index.html"><img src="img/logo-mark.png" alt="Gryphon Group"><span class="bt"><b>Gryphon Group</b><small>Sp. z o.o.</small></span></a>
+  </div>
+  <main class="wrap">
+    <div class="card">
+      <div class="check">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.5l5 5L20 6.5" stroke="#1FA855" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="tag" data-t="tag">Заявку отримано</span>
+      <h1 data-t="h1">Дякуємо!</h1>
+      <p class="lead" data-t="lead">Ваша заявка в нас. Зв'яжемося з вами в робочий час протягом 2–3 годин — у месенджері або телефоном.</p>
+      <p class="sub" data-t="sub">Перший розбір вашої ситуації — безкоштовно й без зобов'язань.</p>
+      <a class="btn btn-wa" id="waBtn" href="#" data-t="wa">Хочете швидше? Напишіть у WhatsApp →</a>
+      <a class="btn btn-ghost" href="index.html" data-t="back">← Повернутися на сайт</a>
+      <p class="lang"><a id="langToggle"></a></p>
+    </div>
+  </main>
+<script>
+var WA='48516929619';
+var PIXEL_ID='981613794647834';
+var IS_LOCAL=/localhost|127\.0\.0\.1/.test(location.hostname)||location.protocol==='file:';
+
+var T={
+  ua:{
+    title:"Дякуємо! Заявку отримано — Gryphon Group",
+    tag:"Заявку отримано",
+    h1:"Дякуємо!",
+    lead:"Ваша заявка в нас. Зв'яжемося з вами в робочий час протягом 2–3 годин — у месенджері або телефоном.",
+    sub:"Перший розбір вашої ситуації — безкоштовно й без зобов'язань.",
+    wa:"Хочете швидше? Напишіть у WhatsApp →",
+    back:"← Повернутися на сайт",
+    waMsg:"Вітаю! Я щойно залишив(ла) заявку на сайті по бухгалтерії.",
+    toggle:"Читати російською",
+    htmlLang:"uk"
+  },
+  ru:{
+    title:"Спасибо! Заявка получена — Gryphon Group",
+    tag:"Заявка получена",
+    h1:"Спасибо!",
+    lead:"Ваша заявка у нас. Свяжемся с вами в рабочее время в течение 2–3 часов — в мессенджере или по телефону.",
+    sub:"Первый разбор вашей ситуации — бесплатно и без обязательств.",
+    wa:"Хотите быстрее? Напишите в WhatsApp →",
+    back:"← Вернуться на сайт",
+    waMsg:"Здравствуйте! Я только что оставил(а) заявку на сайте по бухгалтерии.",
+    toggle:"Читати українською",
+    htmlLang:"ru"
+  }
+};
+
+function getLang(){
+  var p=new URLSearchParams(location.search).get('lang');
+  return p==='ru'?'ru':'ua';
+}
+function apply(lang){
+  var t=T[lang];
+  document.documentElement.lang=t.htmlLang;
+  document.title=t.title;
+  document.querySelectorAll('[data-t]').forEach(function(el){
+    var k=el.getAttribute('data-t'); if(t[k])el.textContent=t[k];
+  });
+  document.getElementById('waBtn').href='https://wa.me/'+WA+'?text='+encodeURIComponent(t.waMsg);
+  var tog=document.getElementById('langToggle');
+  tog.textContent=t.toggle;
+  tog.onclick=function(){var n=lang==='ua'?'ru':'ua';apply(n);
+    history.replaceState(null,'','dziekujemy.html?lang='+n);};
+}
+apply(getLang());
+
+/* Meta Pixel: ця сторінка = підтверджена конверсія (Lead) */
+if(!IS_LOCAL){
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+try{fbq('init',PIXEL_ID);fbq('track','PageView');fbq('track','Lead',{content_name:'form_thankyou'});}catch(e){}
+}
+</script>
+</body>
+</html>
