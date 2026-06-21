@@ -846,12 +846,19 @@ if(leadForm){
     }
     var btn=document.getElementById('leadSubmit'),old=btn.textContent;btn.disabled=true;btn.textContent=fmsg('sending');
     var body=new URLSearchParams();new FormData(leadForm).forEach(function(v,k){body.append(k,v);});
-    /* Apps Script віддає відповідь через крос-доменний 302, який браузер не дає прочитати.
-       Тому шлемо в режимі no-cors (заявка доходить) і ведемо на сторінку подяки. */
-    fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',body:body})
-      .then(function(){
-        leadForm.reset();
-        window.location.href='dziekujemy.html?lang='+currentLang;
+    /* Apps Script віддає CORS-заголовок (Access-Control-Allow-Origin: *),
+       тож читаємо відповідь і ведемо на подяку лише при підтвердженні ok. */
+    fetch(LEAD_ENDPOINT,{method:'POST',body:body})
+      .then(function(r){return r.json().catch(function(){return {ok:r.ok};});})
+      .then(function(res){
+        if(res&&res.ok){
+          leadForm.reset();
+          window.location.href='dziekujemy.html?lang='+currentLang;
+        }else{
+          statusEl.className='form-status bad';
+          statusEl.textContent=fmsg('fail');
+          btn.disabled=false;btn.textContent=old;
+        }
       })
       .catch(function(){
         statusEl.className='form-status bad';
