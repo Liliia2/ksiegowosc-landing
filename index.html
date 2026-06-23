@@ -659,7 +659,7 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
       </div>
       <form class="form-card" id="leadForm" novalidate>
         <input type="hidden" name="source" value="Лендинг бухгалтерія">
-        <input type="text" name="company_extra" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <input type="text" name="company_extra" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
 
         <label for="f-name"><span data-i18n="form_l_name">Ім'я</span> <span style="color:#C0392B">*</span></label>
         <input type="text" id="f-name" name="name" placeholder="Як до вас звертатися" data-i18n-ph="form_ph_name" required>
@@ -830,7 +830,7 @@ if(leadForm){
     e.preventDefault();
     /* honeypot: бот заповнив приховане поле → тихо «успіх», нічого не шлемо */
     var hp=leadForm.querySelector('.hp');
-    if(hp&&hp.value){statusEl.className='form-status ok';statusEl.textContent=fmsg('hp');leadForm.reset();return;}
+    if(hp&&hp.value.trim()){statusEl.className='form-status ok';statusEl.textContent=fmsg('hp');leadForm.reset();return;}
     var ok=true;
     ['f-name','f-phone','f-email'].forEach(function(id){var el=document.getElementById(id);if(!el.value.trim()){el.classList.add('err');ok=false;}else{el.classList.remove('err');}});
     var consent=document.getElementById('consentMain');
