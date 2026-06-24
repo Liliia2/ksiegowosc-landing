@@ -7,7 +7,9 @@
 <meta name="description" content="Ведення JDG і sp. z o.o. у Польщі українською та російською. Пояснюємо ZUS, VAT, KSeF людською мовою. Калькулятор вартості, відповідь у месенджері за 2–3 год.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-liliia.webp" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --sand:#F6F1E8; --sand-2:#EFE8DA; --paper:#FBF8F2; --white:#FFFFFF;
@@ -45,8 +47,8 @@ section{padding:74px 0}
 
 /* HERO */
 .hero{padding:64px 0 78px;position:relative;overflow:hidden;
-  background:linear-gradient(90deg, #F6F1E8 0%, #F6F1E8 30%, rgba(246,241,232,.90) 46%, rgba(246,241,232,.5) 66%, rgba(246,241,232,.12) 100%), url(img/warsaw_hero.png) right center/cover no-repeat}
-@media(max-width:860px){.hero{background:linear-gradient(rgba(246,241,232,.88), rgba(246,241,232,.93)), url(img/warsaw_hero.png) center/cover no-repeat}}
+  background:linear-gradient(90deg, #F6F1E8 0%, #F6F1E8 30%, rgba(246,241,232,.90) 46%, rgba(246,241,232,.5) 66%, rgba(246,241,232,.12) 100%), url(img/warsaw_hero.webp) right center/cover no-repeat}
+@media(max-width:860px){.hero{background:linear-gradient(rgba(246,241,232,.88), rgba(246,241,232,.93)), url(img/warsaw_hero.webp) center/cover no-repeat}}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
 .hero h1{font-size:48px;margin:18px 0 18px}
 .hero h1 em{font-style:normal;color:inherit}
@@ -93,7 +95,7 @@ section{padding:74px 0}
 /* м'яка фонова тінь від віконного світла на бежевій підкладці всього блоку */
 #kalkulator{position:relative}
 #kalkulator::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url(img/shadow_overlay.png) center top/cover no-repeat;mix-blend-mode:multiply;opacity:.03}
+  background:url(img/shadow_overlay.webp) center top/cover no-repeat;mix-blend-mode:multiply;opacity:.03}
 #kalkulator .wrap{position:relative;z-index:1}
 /* «Включено в тариф» — две колонки */
 #kalkulator .list-card.incl{display:flex;flex-direction:column}
@@ -129,7 +131,7 @@ select:focus,input:focus{outline:none;border-color:var(--green)}
 .list-card ul{list-style:none;display:grid;gap:10px}
 .list-card li{display:flex;gap:10px;font-size:19.6px;align-items:flex-start}
 .li-ic{flex:0 0 auto;color:var(--green);font-weight:800;margin-top:1px}
-.badge{display:inline-block;font-size:15.5px;font-weight:700;color:var(--amber);background:var(--amber-50);
+.badge{display:inline-block;font-size:15.5px;font-weight:700;color:var(--green);background:var(--amber-50);
   border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:middle}
 details.extra{background:var(--paper);border:1px solid var(--hair);border-radius:var(--r);padding:4px 22px}
 details.extra summary{cursor:pointer;font-weight:700;font-size:21.6px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
@@ -144,7 +146,7 @@ details.extra .body li b{color:var(--ink);font-weight:600;white-space:nowrap}
 /* diff */
 .diff{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
 .diff::after{content:"";position:absolute;right:0;top:0;bottom:0;width:58%;z-index:0;pointer-events:none;
-  background:url(img/abstract_geometry.png) right center/cover no-repeat;mix-blend-mode:screen;opacity:.55}
+  background:url(img/abstract_geometry.webp) right center/cover no-repeat;mix-blend-mode:screen;opacity:.55}
 .diff .sec-head{text-align:center;max-width:760px;margin:0 auto 38px}
 .diff .cards{grid-template-columns:repeat(3,1fr);align-items:stretch}
 .diff .card{padding:24px 24px 26px}
@@ -167,7 +169,7 @@ details.extra .body li b{color:var(--ink);font-weight:600;white-space:nowrap}
   background:var(--green);color:#fff;font-family:"Spectral",serif;font-size:29.7px;font-weight:600;margin-bottom:14px}
 .step h3{font-size:23px;margin-bottom:7px}
 .step p{font-size:18.9px;color:var(--muted)}
-.step .when{align-self:flex-start;margin-top:auto;font-size:16.2px;font-weight:700;color:var(--amber);background:var(--amber-50);border-radius:6px;padding:3px 9px}
+.step .when{align-self:flex-start;margin-top:auto;font-size:16.2px;font-weight:700;color:var(--green);background:var(--amber-50);border-radius:6px;padding:3px 9px}
 @media(min-width:861px){.steps .step:not(:last-child)::after{content:"";position:absolute;top:46px;right:-10px;width:20px;height:2px;background:var(--green-50);z-index:1}}
 @media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.steps{grid-template-columns:1fr}}
@@ -233,8 +235,8 @@ details.extra .body li b{color:var(--ink);font-weight:600;white-space:nowrap}
 footer{background:#E8D7BA;color:#5A4636;padding:80px 0 0;font-size:18.9px;border-top:1px solid rgba(67,41,26,.12)}
 footer p{color:#5A4636;line-height:1.65}
 footer .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;align-items:start}
-footer h4{color:var(--green-d);font-family:"Spectral",serif;font-size:26px;margin-bottom:14px}
-footer .reqs{font-size:15px;color:var(--green-d);opacity:.6;margin-bottom:10px;line-height:1.6}
+footer h3{color:var(--green-d);font-family:"Spectral",serif;font-size:26px;margin-bottom:14px}
+footer .reqs{font-size:15px;color:var(--green-d);opacity:.85;margin-bottom:10px;line-height:1.6}
 footer a{color:var(--green-d);text-decoration:none;border-bottom:1px solid rgba(67,41,26,.2)}
 footer a:hover{color:var(--green-d);border-bottom-color:rgba(67,41,26,.5)}
 /* нижня строчка-копірайт — коричнева плашка на всю ширину, світлий текст */
@@ -374,6 +376,17 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
   *{transition:none !important; animation:none !important}
   .painlist .p:hover, .cards .card:hover, .list-card:hover, .step:hover, .btn:hover{transform:none}
 }
+/* ---- Cookie consent банер (РОДО: піксель лише після згоди) ---- */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:300;display:none;max-width:560px;margin:0 auto;background:var(--white);color:var(--ink);border:1px solid var(--hair);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}
+.cookie-banner.show{display:block}
+.cookie-banner p{font-size:14px;line-height:1.5;color:var(--muted);margin-bottom:12px}
+.cookie-banner a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
+.cookie-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.cookie-actions button{font-family:inherit;font-weight:700;font-size:14px;border-radius:var(--r-sm);padding:9px 18px;cursor:pointer;border:1px solid var(--hair)}
+.cookie-decline{background:transparent;color:var(--muted)}
+.cookie-decline:hover{color:var(--ink)}
+.cookie-accept{background:var(--green);color:#fff;border-color:var(--green)}
+.cookie-accept:hover{filter:brightness(1.08)}
 </style>
 </head>
 <body>
@@ -381,7 +394,7 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="wrap tb">
-    <a class="brand" href="#"><img src="img/logo-mark.png" alt="Gryphon Group"><span class="bt"><b>Gryphon Group</b><small>Sp. z o.o.</small></span></a>
+    <a class="brand" href="#"><img src="img/logo-mark.png" width="69" height="78" alt="Gryphon Group"><span class="bt"><b>Gryphon Group</b><small>Sp. z o.o.</small></span></a>
     <div class="tb-right">
       <div class="lang" id="lang"><button data-lang="ua" class="active">UA</button><button data-lang="ru">RU</button></div>
       <a class="btn btn-wa wa" data-msg="Вітаю! Маю питання по бухгалтерії"><span data-i18n="nav_cta">Написати нам</span></a>
@@ -412,7 +425,7 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
       </div>
     </div>
     <div class="hero-visual rv" style="animation-delay:.2s">
-      <img src="img/hero-liliia.png" alt="Бухгалтер-експерт Gryphon Group">
+      <img src="img/hero-liliia.webp" width="896" height="1200" fetchpriority="high" decoding="async" alt="Бухгалтер-експерт Gryphon Group">
     </div>
   </div>
 </header>
@@ -701,19 +714,19 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <img src="img/logo-mark.png" alt="" style="height:46px;margin-bottom:10px;display:block">
-        <h4>Gryphon Group Sp. z o.o.</h4>
+        <img src="img/logo-mark.png" width="69" height="78" alt="" style="height:46px;width:auto;margin-bottom:10px;display:block">
+        <h3>Gryphon Group Sp. z o.o.</h3>
         <p class="reqs">NIP 8133823354 · REGON 384467200 · KRS 0000805925 · RPK047401</p>
         <p data-i18n="foot_desc">Бухгалтерія та реєстрація бізнесу для українців у Польщі. JDG, sp. z o.o., ZUS, VAT, KSeF — рідною мовою.</p>
       </div>
       <div>
-        <h4 data-i18n="foot_contact_h">Контакт</h4>
+        <h3 data-i18n="foot_contact_h">Контакт</h3>
         <p><span data-i18n="foot_phone_label">Тел. / WhatsApp:</span><br><a class="wa" href="#" data-msg="Вітаю! Маю питання по бухгалтерії">+48 516 929 619</a></p>
         <p><span data-i18n="foot_email_label">E-mail: </span><a href="mailto:admin@gryphongroup.pl">admin@gryphongroup.pl</a></p>
         <p>ul. Aleja Armii Krajowej 80/18,<br>35-307 Rzeszów</p>
       </div>
       <div>
-        <h4 data-i18n="foot_docs_h">Документи</h4>
+        <h3 data-i18n="foot_docs_h">Документи</h3>
         <p><a href="#" class="open-policy" data-i18n="foot_privacy">Політика приватності</a></p>
       </div>
     </div>
@@ -748,18 +761,43 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
   </div>
 </div>
 
+<!-- COOKIE CONSENT -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Згода на cookie">
+  <p>Ми використовуємо cookie для аналітики й реклами, щоб покращувати сайт і показувати релевантні пропозиції. Деталі — у <a href="#" class="open-policy">Політиці приватності</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" id="cookieDecline" class="cookie-decline">Відхилити</button>
+    <button type="button" id="cookieAccept" class="cookie-accept">Прийняти</button>
+  </div>
+</div>
+
 <script>
-/* ---- Meta Pixel (підставити PIXEL_ID; не вантажиться на localhost) ---- */
+/* ---- Meta Pixel (вантажиться ЛИШЕ після згоди на cookie — РОДО) ---- */
 var PIXEL_ID='981613794647834';
 var IS_LOCAL=/localhost|127\.0\.0\.1/.test(location.hostname)||location.protocol==='file:';
-if(!IS_LOCAL){
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-try{fbq('init',PIXEL_ID);fbq('track','PageView');}catch(e){}
+var pixelLoaded=false;
+function loadPixel(){
+  if(pixelLoaded||IS_LOCAL||!PIXEL_ID)return;
+  pixelLoaded=true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  try{fbq('init',PIXEL_ID);fbq('track','PageView');}catch(e){}
 }
+/* ---- Cookie consent: показ банера + завантаження пікселя після згоди ---- */
+(function(){
+  var COOKIE_KEY='gg_consent';
+  var banner=document.getElementById('cookieBanner');
+  function hide(){ if(banner) banner.classList.remove('show'); }
+  var consent=null;
+  try{ consent=localStorage.getItem(COOKIE_KEY); }catch(e){}
+  if(consent==='granted'){ loadPixel(); }
+  else if(consent!=='denied' && banner){ banner.classList.add('show'); }
+  var acc=document.getElementById('cookieAccept'), dec=document.getElementById('cookieDecline');
+  if(acc) acc.addEventListener('click',function(){ try{localStorage.setItem(COOKIE_KEY,'granted');}catch(e){} hide(); loadPixel(); });
+  if(dec) dec.addEventListener('click',function(){ try{localStorage.setItem(COOKIE_KEY,'denied');}catch(e){} hide(); });
+})();
 
 /* ---- Мова (поточна) ---- */
 var currentLang='ua';
