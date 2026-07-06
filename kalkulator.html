@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Бухгалтерія для українців у Польщі — Gryphon Group</title>
-<meta name="description" content="Ведення JDG і sp. z o.o. у Польщі українською та російською. Пояснюємо ZUS, VAT, KSeF людською мовою. Калькулятор вартості, відповідь у месенджері за 2–3 год.">
+<title>Калькулятор форм оподаткування JDG 2026 — ryczałt, skala чи liniówka | Gryphon Group</title>
+<meta name="description" content="Яку форму оподаткування обрати для JDG у Польщі — ryczałt, skala, liniówka чи sp. z o.o.? Порахуйте орієнтовне навантаження за ставками 2026. Українською.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="img/warsaw_hero.webp" media="(max-width:860px)" fetchpriority="high">
@@ -122,7 +122,49 @@ select:focus,input:focus{outline:none;border-color:var(--green)}
 .result .price span{font-size:24.3px;color:var(--muted)}
 .result .bd{font-size:17.6px;color:var(--muted);margin-top:8px;border-top:1px solid var(--hair);padding-top:8px}
 .result .btn{margin-top:16px;width:100%;justify-content:center}
+.result .price{text-transform:uppercase}
 .calc-note{font-size:16.9px;color:var(--muted);margin-top:12px;line-height:1.5}
+/* міні-таблиця порівняння 3 форм у результаті калькулятора */
+.forms-mini{display:grid;gap:8px;margin-top:14px}
+.forms-mini .fm-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;
+  background:var(--white);border:1px solid var(--hair);border-radius:var(--r-sm);padding:11px 14px;font-size:18.2px}
+.forms-mini .fm-row.best{border-color:var(--green);background:var(--green-50);box-shadow:0 1px 0 rgba(67,41,26,.05)}
+.forms-mini .fm-name{font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+.forms-mini .fm-row.best .fm-name{color:var(--green-d)}
+.forms-mini .fm-tag{font-size:13.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--green);background:var(--amber-50);border-radius:6px;padding:2px 7px}
+.forms-mini .fm-val{font-weight:700;color:var(--ink);white-space:nowrap}
+.forms-mini .fm-val small{font-size:14px;color:var(--muted);font-weight:600}
+/* тизер: розмитий результат над формою-замком — видно, що розрахунок готовий */
+.gate-teaser{position:relative;margin:12px 0 14px;border-radius:var(--r-sm);overflow:hidden}
+.gate-teaser .forms-mini{margin-top:0;filter:blur(5px) saturate(.92);opacity:.92;pointer-events:none;user-select:none}
+.gate-teaser::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(244,234,218,0) 38%,rgba(244,234,218,.5) 100%)}
+/* смужка терміновості під калькулятором */
+.calc-urgency{margin-top:22px;display:flex;align-items:flex-start;gap:11px;
+  background:var(--amber-50);border:1px solid rgba(181,121,26,.3);border-left:4px solid var(--amber);
+  border-radius:var(--r-sm);padding:15px 20px;font-size:18px;color:var(--green-d);line-height:1.55}
+.calc-urgency .cu-ic{font-size:21px;flex:0 0 auto;line-height:1.4}
+/* форма-замок результату калькулятора */
+.gate-lead{font-size:17.6px;color:var(--muted);margin:6px 0 14px;line-height:1.5}
+#calcForm input[type=text],#calcForm input[type=tel],#calcForm input[type=email]{
+  width:100%;font-family:inherit;font-size:18.9px;color:var(--ink);background:var(--white);
+  border:1.5px solid var(--hair);border-radius:var(--r-sm);padding:12px 14px;margin-bottom:10px;transition:border-color .15s}
+#calcForm input:focus{outline:none;border-color:var(--green)}
+#calcForm input.err{border-color:#C0392B}
+.gate-consent{display:flex;gap:10px;align-items:flex-start;margin:6px 0 14px;font-size:15.5px;font-weight:500;line-height:1.45;color:var(--muted);cursor:pointer}
+.gate-consent input{flex:0 0 auto;width:18px;height:18px;margin-top:1px;accent-color:var(--green);cursor:pointer}
+.gate-consent a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
+#calcForm .btn{width:100%;justify-content:center;margin-top:2px}
+.gate-thanks{font-size:16.9px;color:var(--green-d);background:var(--green-50);border-radius:var(--r-sm);padding:12px 14px;margin-top:14px;line-height:1.5}
+/* блок цін */
+.price-cards .card{display:flex;flex-direction:column;border-top:3px solid var(--green)}
+.price-big{font-family:"Spectral",serif;font-size:42px;font-weight:600;color:var(--green-d);margin:4px 0 10px;line-height:1.05}
+.price-big span{font-size:18px;color:var(--muted);font-weight:600;font-family:"Manrope",sans-serif}
+.price-rows{display:grid;gap:9px;margin:6px 0 12px}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px dashed var(--hair);padding-bottom:8px;font-size:19.6px;color:var(--ink)}
+.price-row b{font-family:"Spectral",serif;font-size:25px;color:var(--green-d);white-space:nowrap}
+.price-cards .card p{font-size:17.6px;color:var(--muted);margin-top:auto;padding-top:6px}
+.price-cta{text-align:center;margin-top:34px}
 
 /* lists */
 .lists{display:grid;gap:16px}
@@ -388,6 +430,53 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
 .cookie-decline:hover{color:var(--ink)}
 .cookie-accept{background:var(--green);color:#fff;border-color:var(--green)}
 .cookie-accept:hover{filter:brightness(1.08)}
+/* ===== TRUST: цифри довіри + відгуки Oferteo ===== */
+.trust-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:30px}
+.trust-stat{background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:22px 16px;text-align:center}
+.trust-stat .ts-num{font-family:"Spectral",serif;font-size:40px;font-weight:600;color:var(--green-d);line-height:1}
+.trust-stat .ts-lbl{font-size:16.2px;color:var(--muted);margin-top:8px;line-height:1.35}
+@media(max-width:620px){.trust-stats{grid-template-columns:1fr 1fr}}
+.reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.review{background:var(--white);border:1px solid var(--hair);border-radius:var(--r);padding:22px 24px;display:flex;flex-direction:column}
+.review .stars{color:var(--amber);font-size:18px;letter-spacing:2px;margin-bottom:10px}
+.review p{font-size:18.2px;color:var(--ink);line-height:1.6;margin-bottom:14px}
+.review .rv-meta{margin-top:auto;font-size:16.2px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.review .rv-name{font-weight:700;color:var(--green-d)}
+.review .rv-ok{font-size:12.5px;font-weight:700;color:var(--green);background:var(--green-50);border-radius:6px;padding:1px 6px;margin-left:5px;white-space:nowrap}
+.reviews-cta{text-align:center;margin-top:28px}
+.trust-stat,.review{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s;will-change:transform}
+.trust-stat:hover,.review:hover{transform:translateY(-5px);box-shadow:0 1px 0 rgba(67,41,26,.05),0 22px 44px -24px rgba(67,41,26,.5);border-color:rgba(138,85,36,.42)}
+@media(max-width:620px){.reviews{grid-template-columns:1fr}}
+/* ===== блок «Ваш бухгалтер» ===== */
+.person-card{display:grid;grid-template-columns:.82fr 1.18fr;background:var(--white);border:1px solid var(--hair);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.person-card .pc-photo{position:relative;min-height:340px}
+.person-card .pc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.person-card .pc-body{padding:40px 42px;display:flex;flex-direction:column;justify-content:center}
+.person-card .pc-body .tag{align-self:flex-start;margin-bottom:14px}
+.person-card .pc-body h2{font-size:33px;color:var(--green-d);margin-bottom:6px}
+.person-card .pc-role{font-size:18px;color:var(--green);font-weight:700;margin-bottom:16px}
+.person-card .pc-body p{font-size:19px;color:var(--muted);line-height:1.6;margin-bottom:18px}
+.person-card .pc-stats{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:16px;color:var(--green-d);font-weight:600}
+.person-card .pc-stats span{display:inline-flex;align-items:center;gap:7px}
+.person-card .pc-stats span::before{content:"✓";color:var(--green);font-weight:800}
+@media(max-width:760px){.person-card{grid-template-columns:1fr}.person-card .pc-photo{min-height:300px}.person-card .pc-body{padding:28px 24px}}
+/* ===== липка мобільна CTA (лише телефон, зʼявляється після прокрутки) ===== */
+.sticky-cta{position:fixed;left:14px;right:14px;bottom:14px;z-index:80;display:none;
+  align-items:center;justify-content:center;gap:9px;
+  background:var(--green);color:#fff;font-family:inherit;font-weight:700;font-size:18.5px;
+  text-decoration:none;border-radius:999px;padding:15px 22px;
+  box-shadow:0 14px 30px -10px rgba(67,41,26,.6);
+  transform:translateY(140%);transition:transform .35s ease}
+.sticky-cta.show{transform:none}
+.sticky-cta svg{width:21px;height:21px;flex:0 0 auto}
+@media(max-width:860px){.sticky-cta{display:flex}}
+@media(prefers-reduced-motion:reduce){.sticky-cta{transition:none}}
+/* рядок-запобіжник під кнопками дії */
+.cta-reassure{font-size:14.5px;color:var(--muted);margin-top:13px;display:flex;flex-wrap:wrap;gap:7px 15px;align-items:center;justify-content:center}
+.cta-reassure span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.cta-reassure span::before{content:"✓";color:var(--green);font-weight:800}
+.band--deep .cta-reassure{color:var(--muted)}
+.band--deep .cta-reassure span::before{color:var(--green)}
 </style>
 </head>
 <body>
@@ -407,17 +496,17 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow rv" data-i18n="hero_eyebrow">Бухгалтерія для українців у Польщі</span>
-      <h1 class="rv" style="animation-delay:.05s" data-i18n="hero_h1">Відкрили JDG чи <em>sp. z o.o.</em> — і не розумієте, що з ZUS, VAT і KSeF?</h1>
-      <p class="lead rv" style="animation-delay:.12s" data-i18n="hero_lead">Переводимо польську бюрократію на зрозумілу вам мову — українською й російською — і беремо її на себе.</p>
+      <span class="eyebrow rv" data-i18n="hero_eyebrow">Бухгалтерія у Польщі</span>
+      <h1 class="rv" style="animation-delay:.05s" data-i18n="hero_h1">JDG чи <em>spółka</em>? Ryczałt, skala чи liniówka? Порахуйте, що вигідніше саме вам</h1>
+      <p class="lead rv" style="animation-delay:.12s" data-i18n="hero_lead">Та сама діяльність, різна форма — а на руках у вас різниця в тисячі злотих за рік. Подивіться, який варіант лишає більше саме вам.</p>
       <ul class="hero-bullets rv" style="animation-delay:.15s">
-        <li><span class="hb-ic">✓</span><span data-i18n="hero_b1">Команда з практичним досвідом</span></li>
-        <li><span class="hb-ic">✓</span><span data-i18n="hero_b2">Рішення під вашу нішу</span></li>
-        <li><span class="hb-ic">✓</span><span data-i18n="hero_b3">Фокус на бізнес-результаті</span></li>
+        <li><span class="hb-ic">✓</span><span data-i18n="hero_b1">Порівняння 4 варіантів: JDG і spółka</span></li>
+        <li><span class="hb-ic">✓</span><span data-i18n="hero_b2">Реальні ставки 2026 — рахуємо, не на око</span></li>
+        <li><span class="hb-ic">✓</span><span data-i18n="hero_b3">Зрозуміло й рідною мовою</span></li>
       </ul>
       <div class="hero-cta rv" style="animation-delay:.18s">
-        <a class="btn btn-wa wa" href="#" data-msg="Вітаю! Відкриваю/веду бізнес у Польщі, хочу консультацію по бухгалтерії (СТАРТ)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="hero_cta_wa">Написати в WhatsApp</span></a>
-        <a class="btn btn-ivory" href="#kalkulator" data-i18n="hero_cta_calc">Порахувати вартість</a>
+        <a class="btn btn-wa" href="#kalkulator" data-i18n="hero_cta_calc">Порахувати мій податок →</a>
+        <a class="btn btn-ghost wa" href="#" data-msg="Вітаю! Відкриваю JDG, не знаю яку форму оподаткування обрати. Допоможіть порахувати (СТАРТ)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="hero_cta_wa">Запитати бухгалтера</span></a>
       </div>
       <div class="trust rv" style="animation-delay:.24s">
         <span><span class="dot"></span><span data-i18n="trust_1"><b>Рідна мова</b> — укр/рус</span></span>
@@ -435,17 +524,15 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
 <section class="pains band band--light">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tag" data-i18n="pains_tag">Це про вас?</span>
-      <h2 data-i18n="pains_h2">Коли «nie ogarniam» — це&nbsp;нормально</h2>
-      <p data-i18n="pains_p">Польська система складна навіть для поляків. Ви не зобов'язані розбиратися в усіх абревіатурах, щоб спокійно вести бізнес.</p>
+      <span class="tag" data-i18n="pains_tag">Корисно знати</span>
+      <h2 data-i18n="pains_h2">Чому два однакові підприємці<br>платять різний податок</h2>
+      <p data-i18n="pains_p">Однакова діяльність — а на руках різні гроші. Ось що вирішує, скільки залишиться саме вам.</p>
     </div>
     <div class="painlist">
-      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 16.5h4"/></svg></span><span data-i18n="pain_1">«Відкрив фірму, щоб заробляти більше — а не тонути в паперах, яких не розумію»</span></div>
-      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.02M4.5 12h.02M4.5 18h.02"/></svg></span><span data-i18n="pain_2">«Не розумію, що вибрати: ryczałt, skala чи liniowy»</span></div>
-      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><span data-i18n="pain_3">«Чекаю тиждень на відповідь від бухгалтера»</span></div>
-      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg></span><span data-i18n="pain_4">«Ніхто не нагадує про дедлайни, wakacje od ZUS чи Mały ZUS Plus»</span></div>
-      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M12 4.5l8.5 14.5h-17z"/><path d="M12 10.5v4M12 17.3v.02"/></svg></span><span data-i18n="pain_5">«Боюся штрафу через одну дрібну формальність»</span></div>
-      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M9 9.5h6M9 12.5h4"/></svg></span><span data-i18n="pain_6">«З KSeF лишаюсь сам — ще й чужою мовою»</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 16.5h4"/></svg></span><span data-i18n="pain_1">На ryczałcie витрати не віднімаються — він вигідний лише тим, у кого витрат мало</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.02M4.5 12h.02M4.5 18h.02"/></svg></span><span data-i18n="pain_2">Liniówka 19% починає вигравати лише з певного доходу — нижче skala дешевша</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><span data-i18n="pain_3">Mały ZUS Plus може зрізати внески на тисячі — але його треба свідомо оформити</span></div>
+      <div class="p"><span class="q"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg></span><span data-i18n="pain_4">Раз на рік — місяць без ZUS (wakacje składkowe). Більшість про це не знає</span></div>
     </div>
   </div>
 </section>
@@ -461,7 +548,7 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
     <div class="cards">
       <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span><h3 data-i18n="warm_c1_h">Веде і пояснює</h3><p data-i18n="warm_c1_p">Пояснимо кожне рішення простими словами. Не знаємо відповіді — перевіримо й повернемось із нею.</p></div>
       <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2"/><path d="M5 3 2.5 5.5M22 6l-2.5-2.5"/></svg></span><h3 data-i18n="warm_c2_h">Тримає дедлайни</h3><p data-i18n="warm_c2_p">Нагадування SMS: 19-го — ZUS і PIT, 24-го — VAT. Нічого не треба тримати в голові.</p></div>
-      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></span><h3 data-i18n="warm_c3_h">На зв'язку 2–3 год</h3><p data-i18n="warm_c3_p">Зателефонуємо в urząd і ZUS замість вас. Відповідь у месенджері в робочий час за 2–3 години.</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3 data-i18n="warm_c3_h">Розвивайте бізнес — решту закриємо ми</h3><p data-i18n="warm_c3_p">US, ZUS, urząd pracy, перевірки, спірні питання — спілкуємось і розбираємось замість вас. Ваша справа — заробляти, наша — тримати бюрократію в порядку.</p></div>
     </div>
     <div class="list-card incl" style="margin-top:16px">
       <h3 data-i18n="warm_list_h">І ще ми беремо на себе</h3>
@@ -476,79 +563,148 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
   </div>
 </section>
 
-<!-- CALC -->
+<!-- CALC: форми оподаткування JDG -->
 <section id="kalkulator" class="band band--light">
   <div class="wrap">
     <div class="sec-head calc-head">
-      <span class="tag" data-i18n="calc_tag">Прозора ціна</span>
-      <h2 data-i18n="calc_h2">Порахуйте орієнтовну вартість обслуговування</h2>
-      <p data-i18n="calc_p">Оберіть форму, статус VAT і кількість документів. Точну вартість підтвердимо в розмові — без прихованих доплат «за кожне слово».</p>
+      <span class="tag" data-i18n="calc_tag">Калькулятор форм оподаткування</span>
+      <h2 data-i18n="calc_h2">Ryczałt, skala, liniówka — чи одразу&nbsp;sp.&nbsp;z&nbsp;o.o.?</h2>
+      <p data-i18n="calc_p">Введіть кілька цифр — і побачите, що залишає вам більше грошей: одна з 3 форм JDG чи спулка. Orientacyjnie, за ставками 2026.</p>
     </div>
     <div class="calc-grid">
       <div class="calc">
-        <label for="forma" data-i18n="calc_l_forma">Форма бізнесу</label>
-        <div class="field"><select id="forma">
-          <option value="ryczalt" data-i18n="opt_ryczalt">JDG — ryczałt</option>
-          <option value="kpir" data-i18n="opt_kpir">JDG — KPiR (книга)</option>
-          <option value="spzoo" data-i18n="opt_spzoo">sp. z o.o. — повна бухгалтерія</option>
+        <label for="przychod" data-i18n="calc_l_przychod">Річний дохід з JDG (przychód), zł</label>
+        <div class="field num"><input type="number" id="przychod" min="0" step="1000" value="180000"></div>
+
+        <label for="koszty" data-i18n="calc_l_koszty">Річні витрати фірми (koszty), zł</label>
+        <div class="field num"><input type="number" id="koszty" min="0" step="1000" value="20000"></div>
+
+        <label for="zus" data-i18n="calc_l_zus">Składki ZUS</label>
+        <div class="field"><select id="zus">
+          <option value="full" data-i18n="opt_zus_full">Повні</option>
+          <option value="pref" data-i18n="opt_zus_pref">Пільгові (preferencyjne / ulga na start)</option>
         </select></div>
 
-        <label for="vat" data-i18n="calc_l_vat">Платник VAT</label>
-        <div class="field"><select id="vat">
-          <option value="nie" data-i18n="opt_vat_no">Ні</option>
-          <option value="tak" data-i18n="opt_vat_yes">Так (+ JPK_VAT)</option>
+        <label for="stawka" data-i18n="calc_l_stawka">Ставка ryczałtu під вашу галузь</label>
+        <div class="field"><select id="stawka">
+          <option value="12" data-i18n="opt_st_12">12% — частина послуг IT</option>
+          <option value="14" data-i18n="opt_st_14">14% — мед., інженерні, архітектурні</option>
+          <option value="15" data-i18n="opt_st_15">15% — консалтинг, реклама, фото, переклади</option>
+          <option value="8.5" data-i18n="opt_st_85">8,5% — інші послуги, освіта</option>
+          <option value="5.5" data-i18n="opt_st_55">5,5% — будівництво, виробництво</option>
+          <option value="3" selected data-i18n="opt_st_3">3% — торгівля, гастрономія</option>
         </select></div>
-
-        <label for="docs" data-i18n="calc_l_docs">Документів на місяць</label>
-        <div class="field"><select id="docs"></select></div>
-
-        <label for="prac" data-i18n="calc_l_prac">Працівники (kadry-płace), осіб</label>
-        <div class="field num"><input type="number" id="prac" min="0" value="0"></div>
 
         <div class="result">
-          <div class="small" data-i18n="calc_small">Орієнтовно netto / місяць</div>
-          <div class="price" id="price">300 <span>zł</span></div>
-          <div class="bd" id="bd"></div>
-          <a class="btn btn-wa wa" href="#" data-msg="Вітаю! Порахував(ла) на сайті орієнтовну вартість. Хочу точну пропозицію (СТАРТ)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="calc_btn">Отримати пропозицію</span></a>
+          <!-- ЗАМОК: результат показуємо лише після контакту -->
+          <div id="calcGate">
+            <div class="small" data-i18n="gate_small">Ваш розрахунок готовий 🔒</div>
+            <div class="gate-teaser"><div class="forms-mini" id="formsMiniTeaser" aria-hidden="true"></div></div>
+            <p class="gate-lead" data-i18n="gate_lead">Введіть контакт — і одразу побачите, яка форма залишає вам більше. Безкоштовно.</p>
+            <form id="calcForm" novalidate>
+              <input type="text" name="hp_field" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+              <input type="text" id="c-name" name="name" placeholder="Ім'я" data-i18n-ph="gate_ph_name" required>
+              <input type="tel" id="c-phone" name="phone" placeholder="Телефон" data-i18n-ph="gate_ph_phone" required>
+              <input type="email" id="c-email" name="email" placeholder="E-mail" required>
+              <label class="consent gate-consent"><input type="checkbox" id="cConsent" name="consent" required><span data-i18n="consent_main">Я ознайомився/лася з <a href="#" class="open-policy">Політикою приватності</a> і даю згоду на обробку моїх даних з метою опрацювання заявки та зворотного зв'язку.</span></label>
+              <button type="submit" class="btn btn-wa" id="calcSubmit" data-i18n="gate_btn">Показати мій розрахунок →</button>
+              <p class="form-status" id="calcStatus" role="status"></p>
+            </form>
+          </div>
+          <!-- РЕЗУЛЬТАТ: розкривається після відправки -->
+          <div id="calcResult" style="display:none">
+            <div class="small" data-i18n="calc_small">За вашими цифрами найвигідніше</div>
+            <div class="price" id="bestForm">RYCZAŁT</div>
+            <div class="bd" id="bestBd"></div>
+            <div class="forms-mini" id="formsMini"></div>
+            <p class="gate-thanks" data-i18n="gate_thanks">Дякуємо! Детальний розклад під ваші нюанси підготує бухгалтер і незабаром зв'яжеться з вами.</p>
+          </div>
         </div>
-        <p class="calc-note" data-i18n="calc_note">Калькулятор показує орієнтовну ціну місячного обслуговування. Додаткові послуги (реєстрація sp. z o.o., річний звіт, декларації тощо) — у переліку праворуч.</p>
+        <p class="calc-note" data-i18n="calc_note">Orientacyjne wyliczenie за ставками 2026 — не є податковою консультацією. Sp. z o.o. показана за типовим сценарієм (powołanie без зарплати правління, прибуток дивідендами; повна бухгалтерія рахується окремо). Точний розрахунок під ваші нюанси (VAT-ЗЕД, працівники, зарплата правління, спільне розрахування, Mały ZUS Plus, ставка під ваш PKD) зробимо безкоштовно після заявки.</p>
       </div>
 
       <div class="list-card incl">
-          <h3 data-i18n="incl_h">Включено в тариф</h3>
+          <h3 data-i18n="incl_h">Що дає детальний розрахунок за заявкою</h3>
           <ul>
-            <li><span class="li-ic">✓</span><span data-i18n="incl_1">Свій бухгалтер + необмежені консультації, відповідь 2–3 год</span></li>
-            <li><span class="li-ic">✓</span><span data-i18n="incl_2">Розрахунок авансів PIT і VAT, висилка JPK_VAT, VAT-UE</span></li>
-            <li><span class="li-ic">✓</span><span data-i18n="incl_3">Розрахунки ZUS і річний składki zdrowotnej</span></li>
-            <li><span class="li-ic">✓</span><span data-i18n="incl_4">Представництво перед US / ZUS</span></li>
-            <li><span class="li-ic">✓</span><span data-i18n="incl_5">Програма фактурування + супровід KSeF</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_1">Точний PIT, ZUS і składka zdrowotna по 3 формах JDG + порівняння зі sp. z o.o.</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_2">Підбір правильної ставки ryczałtu під ваш вид діяльності (PKD)</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_3">Урахування VAT, ЗЕД-операцій і працівників</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_4">Mały ZUS Plus, ulga na start, wakacje składkowe — що вам належить</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_5">Спільне розрахування з подружжям, якщо це вигідніше</span></li>
             <li><span class="li-ic">✓</span><span data-i18n="incl_6">Пояснення рішень українською / російською</span></li>
-            <li><span class="li-ic">✓</span><span data-i18n="incl_7">Річна декларація PIT власника на основі наших книг<span class="badge">0 zł</span></span></li>
-            <li><span class="li-ic">✓</span><span data-i18n="incl_8">Відкриття JDG безкоштовно (договір від 12 міс)</span></li>
+            <li><span class="li-ic">✓</span><span data-i18n="incl_7">Відкриття JDG і реєстрація форми оподаткування<span class="badge">0 zł</span></span></li>
           </ul>
           <div class="incl-foot">
             <span class="incl-foot-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-            <p data-i18n="incl_foot">Усе перелічене — без прихованих доплат, у вашій фіксованій ціні.</p>
+            <p data-i18n="incl_foot">Безкоштовно й без зобов'язань — допоможемо обрати форму, яка реально залишає вам більше.</p>
           </div>
       </div>
     </div>
-    <details class="extra calc-extra">
-          <summary><span data-i18n="extra_summary">Додаткові послуги (окрема оплата)</span> <span class="plus">+</span></summary>
-          <div class="body">
-            <p data-i18n="extra_p">Найчастіші — повний перелік надамо разом із договором:</p>
-            <ul>
-              <li data-i18n="extra_1">Реєстрація sp. z o.o. <b>1300 zł</b></li>
-              <li data-i18n="extra_2">Працівники (kadry-płace) <b>40–50 zł/особу</b></li>
-              <li data-i18n="extra_3">Річний звіт sp. z o.o. <b>від 700 zł</b></li>
-              <li data-i18n="extra_4">Bilans otwarcia <b>+800 zł</b></li>
-              <li data-i18n="extra_5">Виставлення фактури в імені клієнта <b>40 zł</b></li>
-              <li data-i18n="extra_6">Довідки US / ZUS <b>70–100 zł</b></li>
-              <li data-i18n="extra_7">Декларації VAT-26, A1, PCC, IFT <b>60–250 zł</b></li>
-              <li data-i18n="extra_8">Документи import / eksport <b>+30 zł/док</b></li>
-              <li data-i18n="extra_9">Термінові / святкові послуги <b>+100%</b></li>
-            </ul>
-          </div>
-        </details>
+    <div class="calc-urgency"><span class="cu-ic">⏳</span><span data-i18n="urg_txt"><b>Форму оподаткування обирають при реєстрації.</b> Помилишся — переплачуєш цілий рік: змінити форму можна лише раз на рік, у вузькому терміні. Тому варто порахувати до старту.</span></div>
+  </div>
+</section>
+
+<!-- PERSON: ваш бухгалтер -->
+<section class="band band--dark">
+  <div class="wrap">
+    <div class="person-card">
+      <div class="pc-photo">
+        <img src="img/alina-office.webp" width="900" height="500" loading="lazy" decoding="async" alt="Аліна — бухгалтер Gryphon Group">
+      </div>
+      <div class="pc-body">
+        <span class="tag" data-i18n="person_tag">Хто веде вашу бухгалтерію</span>
+        <h2 data-i18n="person_h2">Аліна — ваш бухгалтер, а не кол-центр</h2>
+        <div class="pc-role" data-i18n="person_role">Бухгалтер Gryphon Group</div>
+        <p data-i18n="person_p">Веду українських підприємців у Польщі — від відкриття JDG до щомісячного обліку. Пояснюю кожне рішення рідною мовою, спокійно й без бюрократичних термінів. Зі мною ви не залишаєтесь сам на сам із ZUS, US і KSeF.</p>
+        <div class="pc-stats">
+          <span data-i18n="person_s1">Закріплений особистий бухгалтер</span>
+          <span data-i18n="person_s2">200+ клієнтів Gryphon Group</span>
+          <span data-i18n="person_s3">Діяльність застрахована (OC)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST / REVIEWS -->
+<section class="band band--light">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;max-width:760px;margin:0 auto 36px">
+      <span class="tag" data-i18n="rev_tag">Нам довіряють</span>
+      <h2 data-i18n="rev_h2">Реальні відгуки наших клієнтів</h2>
+      <p data-i18n="rev_p">5.0 на Oferteo — і кожен відгук можна перевірити за посиланням.</p>
+    </div>
+    <div class="trust-stats">
+      <div class="trust-stat"><div class="ts-num">7</div><div class="ts-lbl" data-i18n="rev_s1">років на ринку Польщі</div></div>
+      <div class="trust-stat"><div class="ts-num">200+</div><div class="ts-lbl" data-i18n="rev_s2">клієнтів на обслуговуванні</div></div>
+      <div class="trust-stat"><div class="ts-num">★ 5.0</div><div class="ts-lbl" data-i18n="rev_s3">рейтинг на Oferteo</div></div>
+      <div class="trust-stat"><div class="ts-num">OC</div><div class="ts-lbl" data-i18n="rev_s4">діяльність застрахована</div></div>
+    </div>
+    <div class="reviews">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>Chciałbym serdecznie podziękować zespołowi księgowości Gryphon Group za niezwykle profesjonalną obsługę! Wasza praca znacznie ułatwia nasze codzienne życie — każde zadanie wykonywane jest z dużą uwagą i troską o klienta. Szczególnie doceniam Waszą szybkość działania oraz gotowość do pomocy nawet w najtrudniejszych sytuacjach.</p>
+        <div class="rv-meta"><span class="rv-name">C.</span><span>Oferteo</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>С Лилией мы сотрудничаем в течение этого года. За это время могу высказаться только в комплиментарном ключе: компетентный, исполнительный, всегда готовый решать возникающие вопросы.</p>
+        <div class="rv-meta"><span class="rv-name">Y. V.</span><span>Oferteo</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>Jakość realizacji oraz kontakt ze specjalistą na najwyższym poziomie. 👍🔥</p>
+        <div class="rv-meta"><span class="rv-name">S.<span class="rv-ok" data-i18n="rev_confirmed">✓ підтверджений</span></span><span>Oferteo</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>Szybka obsługa, zawsze na czas, dobry kontakt, dobra wiedza w zakresie księgowości.</p>
+        <div class="rv-meta"><span class="rv-name">E.</span><span>Oferteo</span></div>
+      </div>
+    </div>
+    <div class="reviews-cta">
+      <a class="btn btn-ghost" href="https://www.oferteo.pl/gryphon-group-sp-z-o-o/firma/5550506" target="_blank" rel="noopener" data-i18n="rev_btn">Усі відгуки на Oferteo →</a>
+    </div>
   </div>
 </section>
 
@@ -561,8 +717,45 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
     </div>
     <div class="cards">
       <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9s1.3-6.5 3.8-9z"/></svg></span><h3 data-i18n="diff_c1_h">Рідною мовою</h3><p data-i18n="diff_c1_p">Пояснюємо ZUS, VAT, KSeF українською й російською. Без мовного бар'єра і страху помилитися чужою мовою.</p></div>
-      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.5-1-1.5-1.6-2.7-1.6-1.7 0-2.9 1.1-2.9 2.5 0 3.1 5.8 1.6 5.8 4.7 0 1.4-1.3 2.5-3 2.5-1.3 0-2.4-.6-2.9-1.7"/><path d="M12 6v1.6M12 16.4V18"/></svg></span><h3 data-i18n="diff_c2_h">Чесна, прозора ціна</h3><p data-i18n="diff_c2_p">Бачите вартість одразу в калькуляторі. Багато бюро ховають ціну «за запитом» — у нас усе відкрито.</p></div>
-      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.5c0-3.3 2.9-5.6 6.5-5.6s6.5 2.3 6.5 5.6"/></svg></span><h3 data-i18n="diff_c3_h">Свій бухгалтер, не «робот»</h3><p data-i18n="diff_c3_p">Закріплений спеціаліст, який відповідає за 2–3 год і пояснює рішення, а не онлайн-сервіс «зроби сам».</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.5-1-1.5-1.6-2.7-1.6-1.7 0-2.9 1.1-2.9 2.5 0 3.1 5.8 1.6 5.8 4.7 0 1.4-1.3 2.5-3 2.5-1.3 0-2.4-.6-2.9-1.7"/><path d="M12 6v1.6M12 16.4V18"/></svg></span><h3 data-i18n="diff_c2_h">Рахуємо, а не радимо навмання</h3><p data-i18n="diff_c2_p">Показуємо розрахунок на ваших цифрах. Багато бюро навіть не пояснюють різниці між ryczałt, skala і liniówka — а вона у тисячах злотих.</p></div>
+      <div class="card"><span class="ico-line"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.5c0-3.3 2.9-5.6 6.5-5.6s6.5 2.3 6.5 5.6"/></svg></span><h3 data-i18n="diff_c3_h">Твій бухгалтер, завжди на зв'язку</h3><p data-i18n="diff_c3_p">Закріплена жива людина, яка відповідає й пояснює кожне рішення — а не онлайн-сервіс «зроби сам» чи бухгалтер, що зникає на тижні.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="band band--light">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;max-width:780px;margin:0 auto 38px">
+      <span class="tag" data-i18n="price_tag">Прозорі ціни</span>
+      <h2 data-i18n="price_h2">Визначились із формою? Реєстрацію і облік&nbsp;беремо на себе</h2>
+      <p data-i18n="price_p">Без прихованих доплат «за кожне слово» і без сюрпризів наприкінці місяця. Фіксована ціна, рідною мовою.</p>
+    </div>
+    <div class="cards price-cards">
+      <div class="card">
+        <span class="ico-line"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 11v6M9 14h6"/></svg></span>
+        <h3 data-i18n="price_c1_h">Реєстрація фірми</h3>
+        <div class="price-rows">
+          <div class="price-row"><span data-i18n="price_c1_l1">JDG</span><b data-i18n="price_c1_v1">0 zł</b></div>
+          <div class="price-row"><span data-i18n="price_c1_l2">sp. z o.o. під ключ</span><b data-i18n="price_c1_v2">1300 zł</b></div>
+        </div>
+        <p data-i18n="price_c1_p">Відкриваємо під ключ і пояснюємо кожен крок.</p>
+      </div>
+      <div class="card">
+        <span class="ico-line"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M15 11h.01M8 15h2M15 15h.01"/></svg></span>
+        <h3 data-i18n="price_c2_h">Ведення JDG</h3>
+        <div class="price-big"><span data-i18n="price_from">від</span> 200 <span>zł/міс</span></div>
+        <p data-i18n="price_c2_p">Податки, ZUS, декларації та KSeF — на нас.</p>
+      </div>
+      <div class="card">
+        <span class="ico-line"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-4 8 4v13"/><path d="M3 21h18M9 21v-5h6v5M9 12h.01M15 12h.01"/></svg></span>
+        <h3 data-i18n="price_c3_h">Ведення sp. z o.o.</h3>
+        <div class="price-big"><span data-i18n="price_from">від</span> 300 <span>zł/міс</span></div>
+        <p data-i18n="price_c3_p">Повна бухгалтерія спулки під контролем.</p>
+      </div>
+    </div>
+    <div class="price-cta">
+      <a class="btn btn-wa" href="#zayavka" data-i18n="price_btn">Залишити заявку →</a>
     </div>
   </div>
 </section>
@@ -603,30 +796,30 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
   </div>
 </section>
 
-<!-- SWITCH -->
+<!-- SPÓŁKA: міст під кут C (JDG чи spółka) -->
 <section class="band band--dark">
   <div class="wrap">
     <div class="switch-card">
       <div class="switch-l">
-        <span class="tag" data-i18n="sw_tag">Уже маєте бухгалтера?</span>
-        <h2 data-i18n="sw_h2">Платите бухгалтеру,<br>а відповіді все<br>одно шукаєте на форумах?</h2>
+        <span class="tag" data-i18n="sp_tag">А якщо думаєте про spółkę?</span>
+        <h2 data-i18n="sp_h2">Коли JDG стає замало —<br>час подивитись<br>у бік sp. z o.o.</h2>
         <ul class="switch-pains">
-          <li data-i18n="sw_p1">Не бере слухавку, на повідомлення відповідає за тиждень</li>
-          <li data-i18n="sw_p2">За рік — жодної поради чи пояснення, за що ви платите</li>
-          <li data-i18n="sw_p3">Знову підняли ціну, а сервіс лишився той самий</li>
-          <li data-i18n="sw_p4">Помилки в розрахунках, декларації подаються із запізненням</li>
+          <li data-i18n="sp_p1">Дохід виріс — і податок з ZUS на JDG «з'їдає» все більше</li>
+          <li data-i18n="sp_p2">З'явилися партнери або інвестор, треба ділити частки</li>
+          <li data-i18n="sp_p3">Не хочете відповідати за борги фірми власним майном</li>
+          <li data-i18n="sp_p4">Працюєте з великими контрагентами, яким потрібна spółka</li>
         </ul>
       </div>
       <div class="switch-r">
-        <h3 data-i18n="sw_r_h">Перенесемо облік без хаосу</h3>
+        <h3 data-i18n="sp_r_h">Перевіримо, що вигідніше саме вам</h3>
         <ul>
-          <li><span class="li-ic">✓</span><span data-i18n="sw_r1">Заберемо документи в попереднього бюро і звіримо залишки</span></li>
-          <li><span class="li-ic">✓</span><span data-i18n="sw_r2">Пояснимо вашу ситуацію зрозумілою мовою — українською / російською</span></li>
-          <li><span class="li-ic">✓</span><span data-i18n="sw_r3">Нормальний контакт: відповідь за 2–3 год, без доплат «за кожне слово»</span></li>
-          <li><span class="li-ic">✓</span><span data-i18n="sw_r4">Перший місяць — без ризику: не підійде, спокійно розходимось</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="sp_r1">Порахуємо JDG і sp. z o.o. на ваших цифрах — де менше навантаження</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="sp_r2">Пояснимо плюси й мінуси кожного варіанта зрозумілою мовою</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="sp_r3">Якщо spółka — зареєструємо під ключ і налаштуємо облік</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="sp_r4">Якщо рано — чесно скажемо лишитись на JDG, без нав'язування</span></li>
         </ul>
-        <a class="btn btn-wa wa" href="#" data-msg="Вітаю! Хочу перейти від свого бухгалтера. Що для цього потрібно? (ПЕРЕХІД)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="sw_btn">Написати в WhatsApp</span></a>
-        <p class="switch-note" data-i18n="sw_note">Або напишіть слово <b>ПЕРЕХІД</b> — скажемо, які документи потрібні, щоб спокійно змінити бухгалтера.</p>
+        <a class="btn btn-wa" href="#zayavka" data-i18n="sp_btn">Перевірити мій випадок →</a>
+        <p class="switch-note" data-i18n="sp_note">Заповніть заявку нижче — порахуємо ваш випадок безкоштовно і без зобов'язань.</p>
       </div>
     </div>
   </div>
@@ -649,7 +842,7 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
       <details><summary><span data-i18n="faq_q7">Можна перейти від іншого бухгалтера?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a7">Так. Перенесемо облік без хаосу, пояснимо вашу ситуацію і будемо на зв'язку. Перший місяць — без ризику.</div></details>
       <details><summary><span data-i18n="faq_q8">Чи допомагаєте відкрити JDG або sp. z o.o.?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a8">Так. Відкриття JDG — безкоштовно за договір обслуговування від 12 міс; реєстрацію sp. z o.o. зробимо під ключ. Пояснимо кожен крок і допоможемо обрати правильний PKD.</div></details>
       <details><summary><span data-i18n="faq_q9">KSeF — що мені робити?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a9">Пояснимо простими словами і налаштуємо під ключ: доступи, виставлення й отримання фактур. З KSeF ви не лишитесь сам.</div></details>
-      <details><summary><span data-i18n="faq_q10">Що входить у ціну обслуговування?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a10">Свій бухгалтер, необмежені консультації з відповіддю за 2–3 год, розрахунок податків і ZUS, висилка JPK_VAT/VAT-UE, супровід KSeF і річна декларація PIT власника на основі наших книг — без доплат.</div></details>
+      <details><summary><span data-i18n="faq_q10">Що входить у ціну обслуговування?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a10">Свій бухгалтер, необмежені консультації зі швидкою відповіддю, розрахунок податків і ZUS, висилка JPK_VAT/VAT-UE, супровід KSeF і річна декларація PIT власника на основі наших книг — без доплат.</div></details>
       <details><summary><span data-i18n="faq_q11">Це фіксована ціна чи залежить від документів?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a11">Фіксована за обраний щабель «до N документів». У калькуляторі ви одразу бачите вартість для вашої ситуації.</div></details>
       <details><summary><span data-i18n="faq_q12">Фірма ще не працює — скільки платити?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a12">Для sp. z o.o., яка ще не веде діяльності (до 5 документів) — лише 350 zł/міс (300 без VAT). Поки фірма не заробляє, ви не платите великі гроші.</div></details>
       <details><summary><span data-i18n="faq_q13">Що з річним звітом sp. z o.o.?</span><span class="plus">+</span></summary><div class="ans" data-i18n="faq_a13">Це окрема послуга, але ціну фіксуємо наперед — від 700 zł, без сюрпризів наприкінці року.</div></details>
@@ -662,17 +855,17 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
   <div class="wrap">
     <div class="form-grid">
       <div class="form-l">
-        <span class="tag" data-i18n="form_tag">Залиште заявку</span>
-        <h2 data-i18n="form_h2">Передзвонимо і розберемо<br>вашу ситуацію</h2>
-        <p data-i18n="form_p">Залиште контакти — зв'яжемося в робочий час за 2–3 години. Безкоштовно й без зобов'язань: підкажемо, з чого почати або як перейти від бухгалтера.</p>
+        <span class="tag" data-i18n="form_tag">Детальний розрахунок</span>
+        <h2 data-i18n="form_h2">Надішлемо точний розклад<br>під вашу ситуацію</h2>
+        <p data-i18n="form_p">Залиште контакти — порахуємо точний PIT, ZUS і składkę zdrowotną по всіх 3 формах саме під ваші цифри й коротко розберемо, з чого почати. Безкоштовно, у робочий час.</p>
         <ul class="form-bul">
-          <li><span class="li-ic">✓</span><span data-i18n="form_b1">Відповідь у месенджері / телефоном за 2–3 год</span></li>
+          <li><span class="li-ic">✓</span><span data-i18n="form_b1">Швидка відповідь у месенджері або телефоном</span></li>
           <li><span class="li-ic">✓</span><span data-i18n="form_b2">Українською та російською</span></li>
           <li><span class="li-ic">✓</span><span data-i18n="form_b3">Перший розбір ситуації — безкоштовно</span></li>
         </ul>
       </div>
       <form class="form-card" id="leadForm" novalidate>
-        <input type="hidden" name="source" value="Лендинг бухгалтерія">
+        <input type="hidden" name="source" value="Лендинг калькулятор A+C (форми оподаткування)">
         <input type="text" name="hp_field" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
 
         <label for="f-name"><span data-i18n="form_l_name">Ім'я</span> <span style="color:#C0392B">*</span></label>
@@ -681,8 +874,8 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
         <label for="f-phone"><span data-i18n="form_l_phone">Телефон</span> <span style="color:#C0392B">*</span></label>
         <input type="tel" id="f-phone" name="phone" placeholder="+48 ___ ___ ___" required>
 
-        <label for="f-email"><span data-i18n="form_l_email">E-mail</span> <span style="color:#C0392B">*</span></label>
-        <input type="email" id="f-email" name="email" placeholder="you@example.com" required>
+        <label for="f-email"><span data-i18n="form_l_email">E-mail</span> <span class="opt" data-i18n="form_opt">(необов'язково)</span></label>
+        <input type="email" id="f-email" name="email" placeholder="you@example.com">
 
         <label for="f-msg"><span data-i18n="form_l_msg">Коротко про ситуацію</span> <span class="opt" data-i18n="form_opt">(необов'язково)</span></label>
         <textarea id="f-msg" name="message" rows="3" placeholder="Напр.: відкриваю JDG / хочу перейти від бухгалтера / питання по KSeF" data-i18n-ph="form_ph_msg"></textarea>
@@ -690,7 +883,8 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
         <label class="consent"><input type="checkbox" id="consentMain" name="consent" required><span data-i18n="consent_main">Я ознайомився/лася з <a href="#" class="open-policy">Політикою приватності</a> і даю згоду на обробку моїх даних з метою опрацювання заявки та зворотного зв'язку.</span></label>
         <label class="consent"><input type="checkbox" id="consentMkt" name="consent_marketing" value="yes"><span data-i18n="consent_mkt">Погоджуюся отримувати від Gryphon Group комерційні пропозиції e-mail, телефоном або SMS.</span></label>
 
-        <button type="submit" class="btn btn-wa" id="leadSubmit" data-i18n="form_btn">Надіслати заявку</button>
+        <button type="submit" class="btn btn-wa" id="leadSubmit" data-i18n="form_btn">Отримати мій розрахунок безкоштовно →</button>
+        <p class="cta-reassure" data-i18n="reassure"><span>Безкоштовно</span><span>Ні до чого не зобов'язує</span><span>Перший місяць без ризику</span></p>
         <p class="form-status" id="formStatus" role="status"></p>
         <p class="form-alt"><span data-i18n="form_alt_pre">Бажаєте швидше? </span><a href="#" class="wa" data-msg="Вітаю! Хочу залишити заявку по бухгалтерії (СТАРТ)"><span data-i18n="form_alt_link">Напишіть у WhatsApp →</span></a></p>
       </form>
@@ -703,9 +897,10 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
   <div class="wrap">
     <div class="cta">
       <h2 data-i18n="cta_h2">Розберемо вашу ситуацію за 10 хвилин</h2>
-      <p class="cta-lead" data-i18n="cta_lead">Напишіть у WhatsApp<br>слово <b>СТАРТ</b></p>
+      <p class="cta-lead" data-i18n="cta_lead">Напишіть нам <b>у WhatsApp</b></p>
       <p class="cta-sub" data-i18n="cta_p">Поставимо кілька питань і підкажемо, з чого почати: реєстрація, налаштування ZUS/VAT/KSeF або перехід від бухгалтера.</p>
-      <a class="btn btn-wa wa cta-btn" href="#" data-msg="СТАРТ"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="cta_btn">Написати в WhatsApp</span></a>
+      <a class="btn btn-wa wa cta-btn" href="#" data-msg="Вітаю! Хочу розібрати свою ситуацію по бухгалтерії (СТАРТ)"><svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg><span data-i18n="cta_btn">Написати в WhatsApp</span></a>
+      <p class="cta-reassure" data-i18n="reassure"><span>Безкоштовно</span><span>Ні до чого не зобов'язує</span><span>Перший місяць без ризику</span></p>
     </div>
   </div>
 </section>
@@ -771,6 +966,12 @@ footer .legal{margin-top:64px;background:#6E4A2A;color:#F2E7D4;padding:22px 0;fo
   </div>
 </div>
 
+<!-- STICKY MOBILE CTA -->
+<a class="sticky-cta wa" data-msg="Вітаю! Маю питання по бухгалтерії (СТАРТ)" aria-label="Написати у WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+  <span data-i18n="sticky_cta">Запитати бухгалтера</span>
+</a>
+
 <script>
 /* ---- Meta Pixel (вантажиться ЛИШЕ після згоди на cookie — РОДО) ---- */
 var PIXEL_ID='981613794647834';
@@ -803,38 +1004,76 @@ function loadPixel(){
 /* ---- Мова (поточна) ---- */
 var currentLang='ua';
 
-/* ---- Pricing (договірний прайс 2026) ---- */
-var PRICES={
-  ryczalt:{do5:{nie:200,tak:300},do15:{nie:280,tak:350},do25:{nie:340,tak:390},do40:{nie:420,tak:480},do65:{nie:630,tak:690},do80:{nie:850,tak:900},do100:{nie:930,tak:990}},
-  kpir:{do5:{nie:200,tak:300},do15:{nie:280,tak:350},do25:{nie:340,tak:390},do40:{nie:420,tak:480},do65:{nie:650,tak:710},do80:{nie:900,tak:960},do100:{nie:1020,tak:1060}},
-  spzoo:{do5:{nie:300,tak:350},do30:{nie:600,tak:700},do50:{nie:1000,tak:1250}}
-};
-var DOC_LABELS={do5:'до 5',do15:'до 15',do25:'до 25',do30:'до 30',do40:'до 40',do50:'до 50',do65:'до 65',do80:'до 80',do100:'до 100'};
-var EMP=50;
-var formaEl=document.getElementById('forma'),vatEl=document.getElementById('vat'),docsEl=document.getElementById('docs'),pracEl=document.getElementById('prac'),priceEl=document.getElementById('price'),bdEl=document.getElementById('bd');
-var calcTracked=false;
+/* ---- Калькулятор форм оподаткування JDG (ставки 2026, звірено 1:1 з xlsx) ---- */
+var TAX2026={spolPelne:1788.29,fpifs:138.47,spolPref:456.18,minWynagr:4806,
+  zdrRyLow:498.5064,zdrRyMid:830.844,zdrRyHigh:1495.5192,odliczLin:14345.69,miesiace:12};
+var elPrzychod=document.getElementById('przychod'),elKoszty=document.getElementById('koszty'),
+    elZus=document.getElementById('zus'),elStawka=document.getElementById('stawka'),
+    elBestForm=document.getElementById('bestForm'),elBestBd=document.getElementById('bestBd'),
+    elFormsMini=document.getElementById('formsMini'),elFormsMiniTeaser=document.getElementById('formsMiniTeaser');
+var taxTracked=false,lastCalc=null;
 
-function fillDocs(){
-  var f=formaEl.value,keys=Object.keys(PRICES[f]);
-  var suf=currentLang==='ru'?' документов':' документів';
-  docsEl.innerHTML=keys.map(function(k){return '<option value="'+k+'">'+DOC_LABELS[k]+suf+'</option>';}).join('');
+function obliczFormy(przychod,koszty,zusTryb,stawkaRy){
+  var mc=TAX2026.miesiace,wak=mc-1;
+  var spol=zusTryb==='pref'?TAX2026.spolPref*wak:(TAX2026.spolPelne+TAX2026.fpifs)*wak; /* z FP */
+  var spolBezFP=zusTryb==='pref'?TAX2026.spolPref*wak:TAX2026.spolPelne*wak;
+  var minZdr=TAX2026.minWynagr*0.09*mc;
+  var dochod=Math.max(0,przychod-koszty-spol); /* lin/skala, без księgowości */
+  var zdrLin=Math.max(dochod>0?Math.round(dochod*0.049):0,minZdr);
+  var zdrSkala=Math.max(dochod>0?Math.round(dochod*0.09):0,minZdr);
+  var zdrRyMc=TAX2026.zdrRyMid;
+  if(przychod<=60000)zdrRyMc=TAX2026.zdrRyLow;else if(przychod>300000)zdrRyMc=TAX2026.zdrRyHigh;
+  var zdrRy=zdrRyMc*mc;
+  var odlLin=Math.min(zdrLin,TAX2026.odliczLin),odlRy=0.5*zdrRy;
+  var podstLin=Math.max(0,dochod-odlLin);
+  var pitLin=podstLin>0?Math.round(podstLin*0.19):0;
+  var podstSkala=Math.max(0,dochod),pitSkala=0;
+  if(podstSkala>0)pitSkala=podstSkala<=120000?Math.max(0,Math.round(podstSkala*0.12-3600)):Math.round(10800+(podstSkala-120000)*0.32);
+  var podstRy=Math.max(0,przychod-spolBezFP-odlRy);
+  var pitRy=Math.round((stawkaRy/100)*podstRy);
+  /* Sp. z o.o.: powołanie (без зарплати/ZUS), прибуток дивідендами — CIT 9% + 19% PIT */
+  var dochodSp=Math.max(0,przychod-koszty);
+  var cit=Math.round(dochodSp*0.09);
+  var pitDyw=Math.round((dochodSp-cit)*0.19);
+  return [
+    {key:'liniowka',name:'Liniówka 19%',short:'LINIÓWKA',load:Math.round(pitLin+spol+zdrLin)},
+    {key:'skala',name:'Skala 12/32%',short:'SKALA',load:Math.round(pitSkala+spol+zdrSkala)},
+    {key:'ryczalt',name:'Ryczałt '+stawkaRy.toString().replace('.',',')+'%',short:'RYCZAŁT',load:Math.round(pitRy+spol+zdrRy)},
+    {key:'spolka',name:'Sp. z o.o.',short:'SP. Z O.O.',load:cit+pitDyw}
+  ];
 }
-function calc(){
-  var f=formaEl.value,v=vatEl.value,d=docsEl.value;
-  if(!PRICES[f][d])d=Object.keys(PRICES[f])[0];
-  var base=PRICES[f][d][v];
-  var prac=Math.max(0,parseInt(pracEl.value)||0);
-  var empCost=prac*EMP;
-  var total=base+empCost;
-  priceEl.innerHTML=total.toLocaleString('pl-PL')+' <span>zł</span>';
-  var bd=(currentLang==='ru'?'Обслуживание: ':'Обслуговування: ')+base+' zł';
-  if(empCost>0)bd+=(currentLang==='ru'?' · сотрудники: ':' · працівники: ')+empCost+' zł ('+prac+'×'+EMP+')';
-  bdEl.textContent=bd;
-  if(!calcTracked){calcTracked=true;try{fbq('track','ViewContent',{content_name:'kalkulator'});}catch(e){}}
+function plnFmt(n){return Number(n).toLocaleString('pl-PL');}
+function calcTax(){
+  var przychod=Math.max(0,parseInt(elPrzychod.value)||0);
+  var koszty=Math.max(0,parseInt(elKoszty.value)||0);
+  if(koszty>przychod)koszty=przychod;
+  var forms=obliczFormy(przychod,koszty,elZus.value,parseFloat(elStawka.value));
+  var sorted=forms.slice().sort(function(a,b){return a.load-b.load;});
+  var best=sorted[0],diff=sorted[sorted.length-1].load-best.load;
+  lastCalc={przychod:przychod,koszty:koszty,zus:elZus.value,best:best,diff:diff};
+  var ru=currentLang==='ru',yr=ru?'год':'рік';
+  elBestForm.textContent=best.short;
+  elBestBd.innerHTML=(ru?'Ориентировочная нагрузка (PIT + ZUS + składka zdrowotna) ≈ ':'Orientacyjне навантаження (PIT + ZUS + składka zdrowotna) ≈ ')+'<b>'+plnFmt(best.load)+' zł/'+yr+'</b>'+(diff>0?((ru?'. Это на ':'. Це на ')+'<b>'+plnFmt(diff)+' zł/'+yr+'</b>'+(ru?' меньше самого дорогого варианта.':' менше за найдорожчий варіант.')):'.');
+  var miniHtml=forms.map(function(f){
+    var b=f.key===best.key;
+    return '<div class="fm-row'+(b?' best':'')+'"><span class="fm-name">'+f.name+(b?' <span class="fm-tag">'+(ru?'выгоднее':'вигідніше')+'</span>':'')+'</span><span class="fm-val">'+plnFmt(f.load)+' <small>zł/'+yr+'</small></span></div>';
+  }).join('');
+  elFormsMini.innerHTML=miniHtml;
+  if(elFormsMiniTeaser)elFormsMiniTeaser.innerHTML=miniHtml;
+  if(!taxTracked){taxTracked=true;try{fbq('track','ViewContent',{content_name:'kalkulator_formy'});}catch(e){}}
 }
-[formaEl,vatEl,pracEl].forEach(function(el){el.addEventListener('change',function(){if(el===formaEl)fillDocs();calc();});});
-docsEl.addEventListener('change',calc);
-fillDocs();calc();
+[elPrzychod,elKoszty,elZus,elStawka].forEach(function(el){el.addEventListener('input',calcTax);el.addEventListener('change',calcTax);});
+calcTax();
+
+/* prefill повідомлення форми контекстом розрахунку */
+function prefillForm(){
+  var msg=document.getElementById('f-msg');
+  if(!msg||!lastCalc||msg.value.trim())return;
+  var ru=currentLang==='ru';
+  msg.value=(ru?'Считал формы налогообложения: доход ':'Рахував форми оподаткування: дохід ')+plnFmt(lastCalc.przychod)+' zł, '+(ru?'расходы ':'витрати ')+plnFmt(lastCalc.koszty)+' zł, ZUS '+(lastCalc.zus==='pref'?(ru?'льготный':'пільговий'):(ru?'полный':'повний'))+'. '+(ru?'Ориентировочно выгоднее — ':'Orientacyjно вигідніше — ')+lastCalc.best.name+'. '+(ru?'Хочу детальный расклад.':'Хочу детальний розклад.');
+}
+var calcCta=document.getElementById('calcCta');
+if(calcCta)calcCta.addEventListener('click',prefillForm);
 
 /* ---- WhatsApp links + Lead pixel ---- */
 var WA='48516929619';
@@ -844,6 +1083,15 @@ document.querySelectorAll('a.wa').forEach(function(a){
   a.target='_blank';a.rel='noopener';
   a.addEventListener('click',function(){try{fbq('track','Lead',{content_name:msg.slice(0,40)});}catch(e){}});
 });
+
+/* ---- липка мобільна CTA: показ після прокрутки ---- */
+(function(){
+  var sc=document.querySelector('.sticky-cta');
+  if(!sc)return;
+  function upd(){ if(window.scrollY>600) sc.classList.add('show'); else sc.classList.remove('show'); }
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
 
 /* ---- Policy modal ---- */
 var modal=document.getElementById('policyModal');
@@ -861,7 +1109,7 @@ function fmsg(k){return (FMSG[currentLang]||FMSG.ua)[k];}
 
 /* ---- Lead form (Google Apps Script → Telegram + Google Sheet) ---- */
 /* Підставити Web App URL після деплою скрипта (integrations/google-apps-script.gs) */
-var LEAD_ENDPOINT='https://gryphon-crm-inky.vercel.app/api/lead';
+var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbwJYfSwOE4T5uAj3wW7NF1Av6ae4AMlYtx9eoNGAvhGNcatOh_AZedxNhg34EMqE6dJ3Q/exec';
 var leadForm=document.getElementById('leadForm');
 if(leadForm){
   var statusEl=document.getElementById('formStatus');
@@ -871,7 +1119,7 @@ if(leadForm){
     var hp=leadForm.querySelector('.hp');
     if(hp&&hp.value.trim()){statusEl.className='form-status ok';statusEl.textContent=fmsg('hp');leadForm.reset();return;}
     var ok=true;
-    ['f-name','f-phone','f-email'].forEach(function(id){var el=document.getElementById(id);if(!el.value.trim()){el.classList.add('err');ok=false;}else{el.classList.remove('err');}});
+    ['f-name','f-phone'].forEach(function(id){var el=document.getElementById(id);if(!el.value.trim()){el.classList.add('err');ok=false;}else{el.classList.remove('err');}});
     var consent=document.getElementById('consentMain');
     if(!ok||!consent.checked){
       statusEl.className='form-status bad';
@@ -885,15 +1133,13 @@ if(leadForm){
     }
     var btn=document.getElementById('leadSubmit'),old=btn.textContent;btn.disabled=true;btn.textContent=fmsg('sending');
     var body=new URLSearchParams();new FormData(leadForm).forEach(function(v,k){body.append(k,v);});
-    body.set('direction','Бухгалтерія');
-    body.set('source','Лендинг');
-    body.set('source_page','ksiegowosc.gryphongroup.pl');
     /* Apps Script віддає CORS-заголовок (Access-Control-Allow-Origin: *),
        тож читаємо відповідь і ведемо на подяку лише при підтвердженні ok. */
     fetch(LEAD_ENDPOINT,{method:'POST',body:body})
       .then(function(r){return r.json().catch(function(){return {ok:r.ok};});})
       .then(function(res){
         if(res&&res.ok){
+          try{fbq('track','Lead',{content_name:'forma_kalkulator'});}catch(e){}
           leadForm.reset();
           window.location.href='dziekujemy.html?lang='+currentLang;
         }else{
@@ -910,32 +1156,72 @@ if(leadForm){
   });
 }
 
+/* ---- Замок калькулятора: результат показуємо лише після контакту ---- */
+function calcContextMsg(){
+  if(!lastCalc)return '';
+  var ru=currentLang==='ru';
+  return (ru?'Считал формы налогообложения: доход ':'Рахував форми оподаткування: дохід ')+lastCalc.przychod.toLocaleString('pl-PL')+' zł, '+(ru?'расходы ':'витрати ')+lastCalc.koszty.toLocaleString('pl-PL')+' zł, ZUS '+(lastCalc.zus==='pref'?(ru?'льготный':'пільговий'):(ru?'полный':'повний'))+'. '+(ru?'Ориентировочно выгоднее — ':'Orientacyjно вигідніше — ')+lastCalc.best.name+'.';
+}
+(function(){
+  var gForm=document.getElementById('calcForm');
+  if(!gForm)return;
+  var gStatus=document.getElementById('calcStatus');
+  function revealResult(){
+    var g=document.getElementById('calcGate'),r=document.getElementById('calcResult');
+    if(typeof calcTax==='function')calcTax();
+    if(g)g.style.display='none';
+    if(r)r.style.display='block';
+  }
+  gForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    var hp=gForm.querySelector('.hp');
+    if(hp&&hp.value.trim()){revealResult();return;}
+    var ok=true;
+    ['c-name','c-phone','c-email'].forEach(function(id){var el=document.getElementById(id);if(!el.value.trim()){el.classList.add('err');ok=false;}else{el.classList.remove('err');}});
+    var cons=document.getElementById('cConsent');
+    if(!ok||!cons.checked){gStatus.className='form-status bad';gStatus.textContent=fmsg('fill');return;}
+    if(!LEAD_ENDPOINT||LEAD_ENDPOINT.indexOf('PASTE_')===0){gStatus.className='form-status bad';gStatus.textContent=fmsg('nowire');return;}
+    var btn=document.getElementById('calcSubmit'),old=btn.textContent;btn.disabled=true;btn.textContent=fmsg('sending');
+    var body=new URLSearchParams();
+    new FormData(gForm).forEach(function(v,k){body.append(k,v);});
+    body.append('source','Калькулятор-замок (форми оподаткування A+C)');
+    body.append('message',calcContextMsg());
+    fetch(LEAD_ENDPOINT,{method:'POST',body:body})
+      .then(function(r){return r.json().catch(function(){return {ok:r.ok};});})
+      .then(function(res){
+        if(res&&res.ok){try{fbq('track','Lead',{content_name:'kalkulator_gate'});}catch(e){} revealResult();}
+        else{gStatus.className='form-status bad';gStatus.textContent=fmsg('fail');btn.disabled=false;btn.textContent=old;}
+      })
+      .catch(function(){gStatus.className='form-status bad';gStatus.textContent=fmsg('fail');btn.disabled=false;btn.textContent=old;});
+  });
+})();
+
 /* ---- i18n UA/RU (перемикач як на лендингу лізингу) ---- */
 var RU={
   nav_cta:"Написать нам",
   cookie_text:"Мы хотим показывать вам полезное и не тратить рекламу впустую — для этого используем cookie. Принимая, вы помогаете делать сайт лучше. Подробнее — в <a href=\"#\" class=\"open-policy\">Политике конфиденциальности</a>.",
   cookie_decline:"Только необходимые",
   cookie_accept:"Принять",
-  hero_eyebrow:"Бухгалтерия для украинцев в Польше",
-  hero_h1:"Открыли JDG или <em>sp. z o.o.</em> — и не понимаете, что с ZUS, VAT и KSeF?",
-  hero_lead:"Переводим польскую бюрократию на понятный вам язык — на украинском и русском — и берём её на себя.",
-  hero_b1:"Команда с практическим опытом",
-  hero_b2:"Решение под вашу нишу",
-  hero_b3:"Фокус на бизнес-результате",
-  hero_cta_wa:"Написать в WhatsApp",
-  hero_cta_calc:"Рассчитать стоимость",
+  hero_eyebrow:"Бухгалтерия в Польше",
+  hero_h1:"JDG или <em>spółka</em>? Ryczałt, skala или liniówka? Посчитайте, что выгоднее именно вам",
+  hero_lead:"Та же деятельность, разная форма — а на руках у вас разница в тысячи злотых за год. Посмотрите, какой вариант оставляет больше именно вам.",
+  hero_b1:"Сравнение 4 вариантов: JDG и spółka",
+  hero_b2:"Реальные ставки 2026 — считаем, не на глаз",
+  hero_b3:"Понятно и на родном языке",
+  hero_cta_wa:"Спросить бухгалтера",
+  hero_cta_calc:"Посчитать мой налог →",
   trust_1:"<b>Родной язык</b> — укр/рус",
   trust_2:"<b>Контакт</b> с бухгалтером",
   trust_3:"<b>Онлайн</b> по всей Польше",
-  pains_tag:"Это про вас?",
-  pains_h2:"Когда «nie ogarniam» — это&nbsp;нормально",
-  pains_p:"Польская система сложна даже для поляков. Вы не обязаны разбираться во всех аббревиатурах, чтобы спокойно вести бизнес.",
-  pain_1:"«Открыл фирму, чтобы зарабатывать больше — а не тонуть в бумагах, которых не понимаю»",
-  pain_2:"«Не понимаю, что выбрать: ryczałt, skala или liniowy»",
-  pain_3:"«Жду неделю ответа от бухгалтера»",
-  pain_4:"«Никто не напоминает о дедлайнах, wakacje od ZUS или Mały ZUS Plus»",
-  pain_5:"«Боюсь штрафа из-за одной мелкой формальности»",
-  pain_6:"«С KSeF остаюсь один — да ещё на чужом языке»",
+  pains_tag:"Полезно знать",
+  pains_h2:"Почему два одинаковых предпринимателя<br>платят разный налог",
+  pains_p:"Одна и та же деятельность — а на руках разные деньги. Вот что решает, сколько останется именно вам.",
+  pain_1:"На ryczałcie расходы не вычитаются — он выгоден лишь тем, у кого расходов мало",
+  pain_2:"Liniówka 19% начинает выигрывать только с определённого дохода — ниже skala дешевле",
+  pain_3:"Mały ZUS Plus может срезать взносы на тысячи — но его нужно осознанно оформить",
+  pain_4:"Раз в год — месяц без ZUS (wakacje składkowe). Большинство об этом не знает",
+  pain_5:"У spółki ZUS нет, зато есть двойное налогообложение — выгодно не всегда",
+  pain_6:"Składka zdrowotna считается по-разному для каждой формы — и это меняет итог",
   warm_tag:"Вы не одни",
   warm_h2:"Что ваш бухгалтер делает&nbsp;за&nbsp;вас",
   warm_p:"Настоящий бухгалтер, не бот. Не нужно помнить аббревиатуры и дедлайны — мы держим это за вас.",
@@ -943,58 +1229,87 @@ var RU={
   warm_c1_p:"Объясним каждое решение простыми словами. Не знаем ответа — проверим и вернёмся с ним.",
   warm_c2_h:"Держит дедлайны",
   warm_c2_p:"Напоминания SMS: 19-го — ZUS и PIT, 24-го — VAT. Ничего не нужно держать в голове.",
-  warm_c3_h:"На связи 2–3 ч",
-  warm_c3_p:"Позвоним в urząd и ZUS вместо вас. Ответ в мессенджере в рабочее время за 2–3 часа.",
+  warm_c3_h:"Развивайте бизнес — остальное закроем мы",
+  warm_c3_p:"US, ZUS, urząd pracy, проверки, спорные вопросы — общаемся и разбираемся вместо вас. Ваше дело — зарабатывать, наше — держать бюрократию в порядке.",
   warm_list_h:"И ещё мы берём на себя",
   warm_li1:"Подаём декларации в US и ZUS — без вашего участия",
   warm_li2:"Сообщаем об изменениях в законах, которые касаются именно вас",
   warm_li3:"Оформляем wakacje od ZUS, чтобы льгота не пропала",
   warm_li4:"Помогаем выставить фактуру и настроить KSeF под ключ",
   warm_li5:"Первый месяц — без риска: не подойдёт, спокойно расходимся",
-  calc_tag:"Прозрачная цена",
-  calc_h2:"Рассчитайте ориентировочную стоимость обслуживания",
-  calc_p:"Выберите форму, статус VAT и количество документов. Точную стоимость подтвердим в разговоре — без скрытых доплат «за каждое слово».",
-  calc_l_forma:"Форма бизнеса",
-  opt_ryczalt:"JDG — ryczałt",
-  opt_kpir:"JDG — KPiR (книга)",
-  opt_spzoo:"sp. z o.o. — полная бухгалтерия",
-  calc_l_vat:"Плательщик VAT",
-  opt_vat_no:"Нет",
-  opt_vat_yes:"Да (+ JPK_VAT)",
-  calc_l_docs:"Документов в месяц",
-  calc_l_prac:"Сотрудники (kadry-płace), чел.",
-  calc_small:"Ориентировочно netto / месяц",
-  calc_btn:"Получить предложение",
-  calc_note:"Калькулятор показывает ориентировочную цену месячного обслуживания. Дополнительные услуги (регистрация sp. z o.o., годовой отчёт, декларации и т. д.) — в списке справа.",
-  incl_h:"Включено в тариф",
-  incl_1:"Свой бухгалтер + неограниченные консультации, ответ 2–3 ч",
-  incl_2:"Расчёт авансов PIT и VAT, отправка JPK_VAT, VAT-UE",
-  incl_3:"Расчёты ZUS и годовой składki zdrowotnej",
-  incl_4:"Представительство перед US / ZUS",
-  incl_5:"Программа фактурирования + сопровождение KSeF",
+  calc_tag:"Калькулятор форм налогообложения",
+  calc_h2:"Ryczałt, skala, liniówka — или сразу&nbsp;sp.&nbsp;z&nbsp;o.o.?",
+  calc_p:"Введите несколько цифр — и увидите, что оставляет вам больше денег: одна из 3 форм JDG или спулка. Ориентировочно, по ставкам 2026.",
+  calc_l_przychod:"Годовой доход с JDG (przychód), zł",
+  calc_l_koszty:"Годовые расходы фирмы (koszty), zł",
+  calc_l_zus:"Взносы ZUS",
+  opt_zus_full:"Полные",
+  opt_zus_pref:"Льготные (preferencyjne / ulga na start)",
+  calc_l_stawka:"Ставка ryczałtu под вашу отрасль",
+  opt_st_12:"12% — часть IT-услуг",
+  opt_st_14:"14% — мед., инженерные, архитектурные",
+  opt_st_15:"15% — консалтинг, реклама, фото, переводы",
+  opt_st_85:"8,5% — прочие услуги, образование",
+  opt_st_55:"5,5% — строительство, производство",
+  opt_st_3:"3% — торговля, гастрономия",
+  calc_small:"По вашим цифрам выгоднее всего",
+  calc_btn:"Получить детальный расклад и персональный разбор →",
+  calc_note:"Ориентировочный расчёт по ставкам 2026 — не является налоговой консультацией. Sp. z o.o. показана по типовому сценарию (powołanie без зарплаты правления, прибыль дивидендами; полная бухгалтерия считается отдельно). Точный расчёт под ваши нюансы (VAT-ВЭД, сотрудники, зарплата правления, совместное налогообложение, Mały ZUS Plus, ставка под ваш PKD) сделаем бесплатно после заявки.",
+  gate_small:"Ваш расчёт готов 🔒",
+  gate_lead:"Введите контакт — и сразу увидите, какая форма оставляет вам больше. Бесплатно.",
+  gate_ph_name:"Имя",
+  gate_ph_phone:"Телефон",
+  gate_btn:"Показать мой расчёт →",
+  gate_thanks:"Спасибо! Детальный расклад под ваши нюансы подготовит бухгалтер и вскоре свяжется с вами.",
+  incl_h:"Что даёт детальный расчёт по заявке",
+  incl_1:"Точный PIT, ZUS и składka zdrowotna по 3 формам JDG + сравнение со sp. z o.o.",
+  incl_2:"Подбор правильной ставки ryczałtu под ваш вид деятельности (PKD)",
+  incl_3:"Учёт VAT, ВЭД-операций и сотрудников",
+  incl_4:"Mały ZUS Plus, ulga na start, wakacje składkowe — что вам положено",
+  incl_5:"Совместное налогообложение с супругом, если это выгоднее",
   incl_6:"Объяснение решений на украинском / русском",
-  incl_7:"Годовая декларация PIT владельца на основе наших книг<span class=\"badge\">0 zł</span>",
-  incl_8:"Открытие JDG бесплатно (договор от 12 мес)",
-  incl_foot:"Всё перечисленное — без скрытых доплат, в вашей фиксированной цене.",
-  extra_summary:"Дополнительные услуги (отдельная оплата)",
-  extra_p:"Самые частые — полный список предоставим вместе с договором:",
-  extra_1:"Регистрация sp. z o.o. <b>1300 zł</b>",
-  extra_2:"Сотрудники (kadry-płace) <b>40–50 zł/чел.</b>",
-  extra_3:"Годовой отчёт sp. z o.o. <b>от 700 zł</b>",
-  extra_4:"Bilans otwarcia <b>+800 zł</b>",
-  extra_5:"Выставление фактуры от имени клиента <b>40 zł</b>",
-  extra_6:"Справки US / ZUS <b>70–100 zł</b>",
-  extra_7:"Декларации VAT-26, A1, PCC, IFT <b>60–250 zł</b>",
-  extra_8:"Документы import / eksport <b>+30 zł/док</b>",
-  extra_9:"Срочные / праздничные услуги <b>+100%</b>",
+  incl_7:"Открытие JDG и регистрация формы налогообложения<span class=\"badge\">0 zł</span>",
+  incl_foot:"Бесплатно и без обязательств — поможем выбрать форму, которая реально оставляет вам больше.",
+  rev_tag:"Нам доверяют",
+  rev_h2:"Реальные отзывы наших клиентов",
+  rev_p:"5.0 на Oferteo — и каждый отзыв можно проверить по ссылке.",
+  rev_s1:"лет на рынке Польши",
+  rev_s2:"клиентов на обслуживании",
+  rev_s3:"рейтинг на Oferteo",
+  rev_s4:"деятельность застрахована",
+  rev_confirmed:"✓ подтверждённый",
+  rev_btn:"Все отзывы на Oferteo →",
+  person_tag:"Кто ведёт вашу бухгалтерию",
+  person_h2:"Алина — ваш бухгалтер, а не колл-центр",
+  person_role:"Бухгалтер Gryphon Group",
+  person_p:"Веду украинских предпринимателей в Польше — от открытия JDG до ежемесячного учёта. Объясняю каждое решение на родном языке, спокойно и без бюрократических терминов. Со мной вы не остаётесь один на один с ZUS, US и KSeF.",
+  person_s1:"Закреплённый личный бухгалтер",
+  person_s2:"200+ клиентов Gryphon Group",
+  person_s3:"Деятельность застрахована (OC)",
+  sticky_cta:"Спросить бухгалтера",
+  reassure:"<span>Бесплатно</span><span>Ни к чему не обязывает</span><span>Первый месяц без риска</span>",
+  urg_txt:"<b>Форму налогообложения выбирают при регистрации.</b> Ошибёшься — переплачиваешь целый год: сменить форму можно лишь раз в год, в узкий срок. Поэтому стоит посчитать до старта.",
+  price_tag:"Прозрачные цены",
+  price_h2:"Определились с формой? Регистрацию и учёт&nbsp;берём на себя",
+  price_p:"Без скрытых доплат «за каждое слово» и без сюрпризов в конце месяца. Фиксированная цена, на родном языке.",
+  price_c1_h:"Регистрация фирмы",
+  price_c1_l1:"JDG",
+  price_c1_l2:"sp. z o.o. под ключ",
+  price_c1_p:"Открываем под ключ и объясняем каждый шаг.",
+  price_c2_h:"Ведение JDG",
+  price_c2_p:"Налоги, ZUS, декларации и KSeF — на нас.",
+  price_c3_h:"Ведение sp. z o.o.",
+  price_c3_p:"Полная бухгалтерия спулки под контролем.",
+  price_from:"от",
+  price_btn:"Оставить заявку →",
   diff_tag:"Чем отличаемся",
   diff_h2:"Почему нас выбирают украинцы&nbsp;в&nbsp;Польше",
   diff_c1_h:"На родном языке",
   diff_c1_p:"Объясняем ZUS, VAT, KSeF на украинском и русском. Без языкового барьера и страха ошибиться на чужом языке.",
-  diff_c2_h:"Честная, прозрачная цена",
-  diff_c2_p:"Видите стоимость сразу в калькуляторе. Многие бюро прячут цену «по запросу» — у нас всё открыто.",
-  diff_c3_h:"Свой бухгалтер, не «робот»",
-  diff_c3_p:"Закреплённый специалист, который отвечает за 2–3 ч и объясняет решения, а не онлайн-сервис «сделай сам».",
+  diff_c2_h:"Считаем, а не советуем наугад",
+  diff_c2_p:"Показываем расчёт на ваших цифрах. Многие бюро даже не объясняют разницы между ryczałt, skala и liniówka — а она в тысячах злотых.",
+  diff_c3_h:"Твой бухгалтер, всегда на связи",
+  diff_c3_p:"Закреплённый живой человек, который отвечает и объясняет каждое решение — а не онлайн-сервис «сделай сам» или бухгалтер, что пропадает на недели.",
   steps_tag:"Просто и прозрачно",
   steps_h2:"Как мы работаем — 4 шага",
   steps_p:"От первого сообщения до спокойствия,<br>когда все декларации поданы без вашего&nbsp;участия.",
@@ -1009,19 +1324,19 @@ var RU={
   step4_h:"Подаём и напоминаем",
   step4_p:"Сами подаём декларации в US и ZUS. SMS-напоминания: 19-го — ZUS и PIT, 24-го — VAT. Вы ничего не держите в голове.",
   step4_when:"19-го и 24-го",
-  sw_tag:"Уже есть бухгалтер?",
-  sw_h2:"Платите бухгалтеру,<br>а ответы всё<br>равно ищете на форумах?",
-  sw_p1:"Не берёт трубку, на сообщения отвечает через неделю",
-  sw_p2:"За год — ни одного совета или объяснения, за что вы платите",
-  sw_p3:"Снова подняли цену, а сервис остался прежним",
-  sw_p4:"Ошибки в расчётах, декларации подаются с опозданием",
-  sw_r_h:"Перенесём учёт без хаоса",
-  sw_r1:"Заберём документы у предыдущего бюро и сверим остатки",
-  sw_r2:"Объясним вашу ситуацию понятным языком — на украинском / русском",
-  sw_r3:"Нормальный контакт: ответ за 2–3 ч, без доплат «за каждое слово»",
-  sw_r4:"Первый месяц — без риска: не подойдёт, спокойно расходимся",
-  sw_btn:"Написать в WhatsApp",
-  sw_note:"Или напишите слово <b>ПЕРЕХІД</b> — скажем, какие документы нужны, чтобы спокойно сменить бухгалтера.",
+  sp_tag:"А если думаете о spółke?",
+  sp_h2:"Когда JDG становится мало —<br>время посмотреть<br>в сторону sp. z o.o.",
+  sp_p1:"Доход вырос — и налог с ZUS на JDG «съедает» всё больше",
+  sp_p2:"Появились партнёры или инвестор, нужно делить доли",
+  sp_p3:"Не хотите отвечать за долги фирмы личным имуществом",
+  sp_p4:"Работаете с крупными контрагентами, которым нужна spółka",
+  sp_r_h:"Проверим, что выгоднее именно вам",
+  sp_r1:"Посчитаем JDG и sp. z o.o. на ваших цифрах — где меньше нагрузка",
+  sp_r2:"Объясним плюсы и минусы каждого варианта понятным языком",
+  sp_r3:"Если spółka — зарегистрируем под ключ и настроим учёт",
+  sp_r4:"Если рано — честно скажем остаться на JDG, без навязывания",
+  sp_btn:"Проверить мой случай →",
+  sp_note:"Заполните заявку ниже — посчитаем ваш случай бесплатно и без обязательств.",
   faq_tag:"Частые вопросы",
   faq_h2:"Коротко о главном",
   faq_q1:"На каком языке вы работаете?",
@@ -1043,17 +1358,17 @@ var RU={
   faq_q9:"KSeF — что мне делать?",
   faq_a9:"Объясним простыми словами и настроим под ключ: доступы, выставление и получение фактур. С KSeF вы не останетесь один.",
   faq_q10:"Что входит в цену обслуживания?",
-  faq_a10:"Свой бухгалтер, неограниченные консультации с ответом за 2–3 ч, расчёт налогов и ZUS, отправка JPK_VAT/VAT-UE, сопровождение KSeF и годовая декларация PIT владельца на основе наших книг — без доплат.",
+  faq_a10:"Свой бухгалтер, неограниченные консультации с быстрым ответом, расчёт налогов и ZUS, отправка JPK_VAT/VAT-UE, сопровождение KSeF и годовая декларация PIT владельца на основе наших книг — без доплат.",
   faq_q11:"Это фиксированная цена или зависит от документов?",
   faq_a11:"Фиксированная за выбранную ступень «до N документов». В калькуляторе вы сразу видите стоимость для вашей ситуации.",
   faq_q12:"Фирма ещё не работает — сколько платить?",
   faq_a12:"Для sp. z o.o., которая ещё не ведёт деятельность (до 5 документов) — всего 350 zł/мес (300 без VAT). Пока фирма не зарабатывает, вы не платите большие деньги.",
   faq_q13:"Что с годовым отчётом sp. z o.o.?",
   faq_a13:"Это отдельная услуга, но цену фиксируем заранее — от 700 zł, без сюрпризов в конце года.",
-  form_tag:"Оставьте заявку",
-  form_h2:"Перезвоним и разберём<br>вашу ситуацию",
-  form_p:"Оставьте контакты — свяжемся в рабочее время за 2–3 часа. Бесплатно и без обязательств: подскажем, с чего начать или как перейти от бухгалтера.",
-  form_b1:"Ответ в мессенджере / по телефону за 2–3 ч",
+  form_tag:"Детальный расчёт",
+  form_h2:"Пришлём точный расклад<br>под вашу ситуацию",
+  form_p:"Оставьте контакты — посчитаем точный PIT, ZUS и składkę zdrowotną по всем 3 формам именно под ваши цифры и коротко разберём, с чего начать. Бесплатно, в рабочее время.",
+  form_b1:"Быстрый ответ в мессенджере или по телефону",
   form_b2:"На украинском и русском",
   form_b3:"Первый разбор ситуации — бесплатно",
   form_l_name:"Имя",
@@ -1065,11 +1380,11 @@ var RU={
   form_ph_msg:"Напр.: открываю JDG / хочу перейти от бухгалтера / вопрос по KSeF",
   consent_main:"Я ознакомился(лась) с <a href=\"#\" class=\"open-policy\">Политикой конфиденциальности</a> и даю согласие на обработку моих данных с целью обработки заявки и обратной связи.",
   consent_mkt:"Согласен(на) получать от Gryphon Group коммерческие предложения по e-mail, телефону или SMS.",
-  form_btn:"Отправить заявку",
+  form_btn:"Получить мой расчёт бесплатно →",
   form_alt_pre:"Хотите быстрее? ",
   form_alt_link:"Напишите в WhatsApp →",
   cta_h2:"Разберём вашу ситуацию за 10 минут",
-  cta_lead:"Напишите в WhatsApp<br>слово <b>СТАРТ</b>",
+  cta_lead:"Напишите нам <b>в WhatsApp</b>",
   cta_p:"Зададим несколько вопросов и подскажем, с чего начать: регистрация, настройка ZUS/VAT/KSeF или переход от бухгалтера.",
   cta_btn:"Написать в WhatsApp",
   foot_desc:"Бухгалтерия и регистрация бизнеса для украинцев в Польше. JDG, sp. z o.o., ZUS, VAT, KSeF — на родном языке.",
@@ -1109,7 +1424,7 @@ function setLang(lang){
   currentLang=lang;
   document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===lang);});
   try{localStorage.setItem('gg_lang_ksieg',lang);}catch(e){}
-  fillDocs();calc();
+  if(typeof calcTax==='function')calcTax();
 }
 document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'));});});
 var savedLang='ua';try{savedLang=localStorage.getItem('gg_lang_ksieg')||'ua';}catch(e){}

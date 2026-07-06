@@ -122,8 +122,12 @@ function apply(lang){
 }
 apply(getLang());
 
-/* Meta Pixel: ця сторінка = підтверджена конверсія (Lead) */
-if(!IS_LOCAL){
+/* Meta Pixel: ця сторінка = підтверджена конверсія (Lead).
+   Вантажиться ЛИШЕ після згоди на cookie (РОДО) — так само, як на index/kalkulator. */
+var PIXEL_ID='981613794647834';
+var IS_LOCAL=/localhost|127\.0\.0\.1/.test(location.hostname)||location.protocol==='file:';
+var cookieConsent=null;try{cookieConsent=localStorage.getItem('gg_consent');}catch(e){}
+if(!IS_LOCAL && PIXEL_ID && cookieConsent==='granted'){
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
